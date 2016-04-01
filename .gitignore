@@ -1,4 +1,7 @@
-\Sem4BackEnd\Sem4BackEnd\bin\
-\Sem4BackEnd\Sem4BackEnd\obj\
+\Sem4BackEnd\Sem4BackEnd
+\bin\
+\Sem4BackEnd\Sem4BackEnd
+\obj\
 *.exe
 *.bin
+*.sue
