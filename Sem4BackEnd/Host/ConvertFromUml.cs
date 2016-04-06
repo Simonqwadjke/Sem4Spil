@@ -17,7 +17,7 @@ namespace Host {
         private void btnConvertProperties_Click(object sender, EventArgs e) {
             String[] input = rtbInputProperties.Lines;
             foreach(String line in input) {
-                String[] words = line.Split(" ");
+                String[] words = line.Split(' ');
                 foreach(String word in words) {
 
                 }
