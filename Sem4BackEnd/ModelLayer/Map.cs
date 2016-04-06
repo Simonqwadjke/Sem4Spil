@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ModelLayer {
-    class Lab {
+namespace ModelLayer{
+    class Map {
     }
 }

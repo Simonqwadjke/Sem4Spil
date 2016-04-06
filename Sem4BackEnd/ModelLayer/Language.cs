@@ -5,6 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ModelLayer {
-    class Base {
+    [Flags]
+    public enum enumLang {
+        England = 1,
+        Denmark = 2,
+    }
+     public class Language {
+         private Language() { }
     }
 }

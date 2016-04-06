@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>0</y>
+      <w>180</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>User
+--
+//Game items
+mad : Map
+upgrades : Upgrades
+garison : List&lt;Group&gt;
+battles : List&lt;Battle&gt;
+invaders : List&lt;User&gt;
+//User data
++userID : int
++name : String
++username : String
++password : String (nullable)
++email : String
++age : int
++country : String
++ranking : double
++level : int
+//program data
+-session : string
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>270</x>
+      <y>270</y>
+      <w>180</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Map
+--
++buildinds : List&lt;Buildsing&gt;
++units : List&lt;Units&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>140</x>
+      <y>280</y>
+      <w>150</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>130.0;40.0;10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>270</x>
+      <y>410</y>
+      <w>180</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Group
+--
++units : List&lt;Units&gt;
++unitCap : int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>490</x>
+      <y>400</y>
+      <w>180</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Unit
+--
++HP : int
++damage : int
++armor : int
++radius : double
++speed
++unitSize : int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>440</x>
+      <y>300</y>
+      <w>160</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>140.0;100.0;140.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>440</x>
+      <y>460</y>
+      <w>70</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>100</x>
+      <y>280</y>
+      <w>190</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>170.0;180.0;10.0;180.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>270</x>
+      <y>550</y>
+      <w>180</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Battle
+--
++invatedID :i nt
++invaterID : int
++outcome : int/string?
++plunderedWood : int
++plunderedIron + int
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>60</x>
+      <y>280</y>
+      <w>230</w>
+      <h>350</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>210.0;330.0;10.0;330.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>270</x>
+      <y>710</y>
+      <w>180</w>
+      <h>230</h>
+    </coordinates>
+    <panel_attributes>Upgrades
+--
++damageGrowth : final int
++armorGrowth : final int
++recourseGriwth : final int
++damageLevel : int
++armorLevel : int
++recourseLevel : int
++riflemanLevel : int
++rankLevel : int
++HqLevel : int
++LabLevel : int
++sawmillLevel : int
++ironMineLevel : int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>660</x>
+      <y>410</y>
+      <w>190</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;50.0;170.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>660</x>
+      <y>470</y>
+      <w>190</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;170.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>830</x>
+      <y>370</y>
+      <w>180</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Rifleman
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>830</x>
+      <y>490</y>
+      <w>180</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Tank
+--
+splashDamage : int
+splashRadius : double
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>20</x>
+      <y>280</y>
+      <w>270</w>
+      <h>560</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>250.0;540.0;10.0;540.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
