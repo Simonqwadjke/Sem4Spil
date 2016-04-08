@@ -5,6 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ModelLayer.Units {
-    class Group {
+    public class Group {
     }
 }
