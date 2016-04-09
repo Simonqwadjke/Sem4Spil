@@ -9,11 +9,11 @@ namespace DataAccessLayer
 {
     class DBConnection
     {
-        public static readonly string connectionString =   "Data Source=kraka.ucn.dk;"
+        private static readonly string connectionString =  "Data Source=kraka.ucn.dk;"
                                                          + "Initial Catalog=dmab0914_2sem_7;"
                                                          + "UID=dmab0914_2sem_7;"
                                                          + "Password=IsAllowed";
-        public static readonly SqlConnection dbconn = new SqlConnection(connectionString);
+        private static readonly SqlConnection dbconn = new SqlConnection(connectionString);
         public static SqlTransaction transaction;
         private static SqlCommand dbCmd;
 
