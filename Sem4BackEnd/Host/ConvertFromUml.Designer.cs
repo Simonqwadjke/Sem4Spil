@@ -26,9 +26,10 @@
             this.rtbInputProperties = new System.Windows.Forms.RichTextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpProperties = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnFieldnProp = new System.Windows.Forms.Button();
             this.rtbOutputProperties = new System.Windows.Forms.RichTextBox();
-            this.btnConvertProperties = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnProp = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tpProperties.SuspendLayout();
             this.SuspendLayout();
@@ -54,7 +55,8 @@
             // tpProperties
             // 
             this.tpProperties.BackColor = System.Drawing.SystemColors.Control;
-            this.tpProperties.Controls.Add(this.btnConvertProperties);
+            this.tpProperties.Controls.Add(this.btnProp);
+            this.tpProperties.Controls.Add(this.btnFieldnProp);
             this.tpProperties.Controls.Add(this.rtbOutputProperties);
             this.tpProperties.Controls.Add(this.rtbInputProperties);
             this.tpProperties.Location = new System.Drawing.Point(4, 22);
@@ -64,15 +66,15 @@
             this.tpProperties.TabIndex = 0;
             this.tpProperties.Text = "UML to properties";
             // 
-            // tabPage2
+            // btnFieldnProp
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(192, 74);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.btnFieldnProp.Location = new System.Drawing.Point(235, 336);
+            this.btnFieldnProp.Name = "btnFieldnProp";
+            this.btnFieldnProp.Size = new System.Drawing.Size(75, 23);
+            this.btnFieldnProp.TabIndex = 2;
+            this.btnFieldnProp.Text = "Field/Property";
+            this.btnFieldnProp.UseVisualStyleBackColor = true;
+            this.btnFieldnProp.Click += new System.EventHandler(this.btnFieldProperty_Click);
             // 
             // rtbOutputProperties
             // 
@@ -82,15 +84,25 @@
             this.rtbOutputProperties.TabIndex = 1;
             this.rtbOutputProperties.Text = "";
             // 
-            // btnConvertProperties
+            // tabPage2
             // 
-            this.btnConvertProperties.Location = new System.Drawing.Point(235, 336);
-            this.btnConvertProperties.Name = "btnConvertProperties";
-            this.btnConvertProperties.Size = new System.Drawing.Size(75, 23);
-            this.btnConvertProperties.TabIndex = 2;
-            this.btnConvertProperties.Text = "Convert";
-            this.btnConvertProperties.UseVisualStyleBackColor = true;
-            this.btnConvertProperties.Click += new System.EventHandler(this.btnConvertProperties_Click);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(316, 365);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnProp
+            // 
+            this.btnProp.Location = new System.Drawing.Point(154, 336);
+            this.btnProp.Name = "btnProp";
+            this.btnProp.Size = new System.Drawing.Size(75, 23);
+            this.btnProp.TabIndex = 3;
+            this.btnProp.Text = "Property";
+            this.btnProp.UseVisualStyleBackColor = true;
+            this.btnProp.Click += new System.EventHandler(this.btnProp_Click);
             // 
             // ConvertFromUml
             // 
@@ -111,8 +123,9 @@
         private System.Windows.Forms.RichTextBox rtbInputProperties;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tpProperties;
-        private System.Windows.Forms.Button btnConvertProperties;
+        private System.Windows.Forms.Button btnFieldnProp;
         private System.Windows.Forms.RichTextBox rtbOutputProperties;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Button btnProp;
     }
 }

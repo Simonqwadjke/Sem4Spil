@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 #region Temp
 using ModelLayer;
+using System.Threading;
 #endregion
 
 namespace Host {
@@ -18,6 +19,7 @@ namespace Host {
         User user;
 
         private Program() {
+            new Thread(() => new ConvertFromUml().ShowDialog()).Start();
             Console.ReadLine();
         }
 
