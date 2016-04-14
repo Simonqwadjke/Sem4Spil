@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    class DBConnection
+    public class DBConnection
     {
         private static readonly string connectionString =  "Data Source=kraka.ucn.dk;"
                                                          + "Initial Catalog=dmab0914_2sem_7;"
