@@ -9,7 +9,16 @@ using ModelLayer;
 
 namespace DataAccessLayer
 {
-    public class DBBattles
+    public class DBBattles : IDBBattles
     {
+        public bool GetBattles(User user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool SaveBattle()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

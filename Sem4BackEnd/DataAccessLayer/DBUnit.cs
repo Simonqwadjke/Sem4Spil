@@ -9,7 +9,16 @@ using ModelLayer;
 
 namespace DataAccessLayer
 {
-    public class DBUnit
+    public class DBUnit : IDBUnit
     {
+        public bool GetUserUnits(User user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool SaveUserUnits(User user)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

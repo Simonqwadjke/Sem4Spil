@@ -9,5 +9,8 @@ namespace DataAccessLayer
 {
     public interface IDBBattles
     {
+        bool GetBattles(User user);
+        bool SaveBattle(Battle battle);
+
     }
 }

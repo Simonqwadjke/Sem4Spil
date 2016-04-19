@@ -10,7 +10,16 @@ using ModelLayer;
 
 namespace DataAccessLayer
 {
-    public class DBBuilding
+    public class DBBuilding : IDBBuilding
     {
+        public bool GetUserBuildings(User user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool SaveUserBuildings(User user)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
