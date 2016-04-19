@@ -44,7 +44,7 @@ namespace DataAccessLayer
 
         public User Login(string username, string password)
         {
-            return new User();
+            return new User("");
         }
 
         public bool CreateUser(User user)
@@ -55,12 +55,12 @@ namespace DataAccessLayer
 
             using (SqlCommand command = DBConnection.GetDbCommand(query))
             {
-                command.Parameters.AddWithValue("@USERID", user.ID);
+                //command.Parameters.AddWithValue("@USERID", user.ID);
                 command.Parameters.AddWithValue("@NAME", user.Name);
                 command.Parameters.AddWithValue("@USERNAME", user.Username);
                 command.Parameters.AddWithValue("@PASSWORD", user.Password);
                 command.Parameters.AddWithValue("@EMAIL", user.Email);
-                command.Parameters.AddWithValue("@AGE", user.Age);
+                //command.Parameters.AddWithValue("@AGE", user.Age);
                 command.Parameters.AddWithValue("@COUNTRY", user.Country);
                 command.Parameters.AddWithValue("@RANKING", user.Ranking);
                 command.Parameters.AddWithValue("@LEVEL", user.Level);
@@ -75,12 +75,12 @@ namespace DataAccessLayer
 
         private User CreateUserObject(IDataReader reader)
         {
-            User user = new User();
+            User user = new User("");
             try
             {
                 user.Name = reader["Name"].ToString();
                 user.Username = reader["Username"].ToString();
-                user.Age = Convert.ToInt32(reader["Age"]);
+                //user.Age = Convert.ToInt32(reader["Age"]);
                 user.Email = reader["Email"].ToString();
                 user.Country = reader["Country"].ToString();
                 user.Ranking = Convert.ToInt32(reader["Ranking"]);

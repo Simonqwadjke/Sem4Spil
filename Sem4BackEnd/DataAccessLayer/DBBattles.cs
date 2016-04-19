@@ -20,5 +20,10 @@ namespace DataAccessLayer
         {
             throw new NotImplementedException();
         }
+
+        public bool SaveBattle(Battle battle)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

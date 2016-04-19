@@ -40,13 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="!DBUpgrade.cs" />
+    <Compile Include="IDBUpgrade.cs" />
     <Compile Include="DBBattles.cs" />
     <Compile Include="DBBuilding.cs" />
     <Compile Include="DBConnection.cs" />
     <Compile Include="DBUnit.cs" />
     <Compile Include="DBUpgrade.cs" />
     <Compile Include="DBUser.cs" />
+    <Compile Include="IDBBattles.cs" />
+    <Compile Include="IDBBuilding.cs" />
     <Compile Include="IDBUnit.cs" />
     <Compile Include="IDBUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

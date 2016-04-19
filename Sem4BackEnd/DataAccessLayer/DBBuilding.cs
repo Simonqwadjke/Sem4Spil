@@ -21,5 +21,10 @@ namespace DataAccessLayer
         {
             throw new NotImplementedException();
         }
+
+        public bool DeleteBuildings(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

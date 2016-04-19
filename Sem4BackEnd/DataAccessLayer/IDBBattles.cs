@@ -11,6 +11,5 @@ namespace DataAccessLayer
     {
         bool GetBattles(User user);
         bool SaveBattle(Battle battle);
-
     }
 }
