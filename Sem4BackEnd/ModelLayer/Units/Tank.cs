@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ModelLayer.Buildings.Defense {
-    public class FlameThrower : Defensive {
-        public int BurnTime {
+namespace ModelLayer.Units {
+    class Tank : Unit{
+        public int SplashDamage {
             get;
             set;
         }
-        public int BurnDamage {
+        public double SplashRadius {
             get;
             set;
         }

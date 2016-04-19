@@ -5,6 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ModelLayer.Buildings.Passive {
-    public class HeadQuarters {
+    public class HeadQuarters : Building {
     }
 }

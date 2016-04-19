@@ -5,6 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ModelLayer.Buildings.Passive {
-    public class Labratory : Building {
+    public abstract class Resouce : Building {
+        public int prodductionHour {
+            get;
+            set;
+        }
     }
 }

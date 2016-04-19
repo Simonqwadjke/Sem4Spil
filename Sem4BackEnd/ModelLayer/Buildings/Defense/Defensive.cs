@@ -5,12 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ModelLayer.Buildings.Defense {
-    public class FlameThrower : Defensive {
-        public int BurnTime {
+    public abstract class Defensive : Building{
+        public int Damage {
             get;
             set;
         }
-        public int BurnDamage {
+        public double Range {
+            get;
+            set;
+        }
+        public int AttackSpeed {
             get;
             set;
         }

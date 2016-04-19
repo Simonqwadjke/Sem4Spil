@@ -43,6 +43,7 @@
     <Compile Include="Battle.cs" />
     <Compile Include="Buildings\Building.cs" />
     <Compile Include="Buildings\Defense\Cannon.cs" />
+    <Compile Include="Buildings\Defense\Defensive.cs" />
     <Compile Include="Buildings\Defense\FlameThrower.cs" />
     <Compile Include="Buildings\Defense\GatlingTurret.cs" />
     <Compile Include="Buildings\Defense\Wall.cs" />
@@ -54,6 +55,8 @@
     <Compile Include="Buildings\Passive\Labratory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Units\Group.cs" />
+    <Compile Include="Units\Rifleman.cs" />
+    <Compile Include="Units\Tank.cs" />
     <Compile Include="Units\Unit.cs" />
     <Compile Include="Upgrades.cs" />
     <Compile Include="User.cs" />

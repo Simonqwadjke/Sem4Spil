@@ -6,15 +6,8 @@ using System.Threading.Tasks;
 using System.Drawing;
 
 namespace ModelLayer.Buildings {
-    public class Building {
-        private Building() {
-
-        }
+    public abstract class Building {
         public int HitPoints {
-            get;
-            set;
-        }
-        public int Damage {
             get;
             set;
         }
@@ -22,31 +15,26 @@ namespace ModelLayer.Buildings {
             get;
             set;
         }
-        public double Radius {
-            get;
-            set;
-        }
-        public double Speed {
-            get;
-            set;
-        }
         public int UnitSize {
             get;
             set;
         }
-        public Point location {
+        public int Level {
             get;
             set;
         }
-
-        public Size size {
+        public Point Location {
+            get;
+            set;
+        }
+        public Size Size {
             get;
             set;
         }
 
         public bool checkLocation(Point location) {
-            if(location.X >= this.location.X && location.X <= this.location.X + size.Width && 
-               location.Y >= this.location.Y && location.Y <= this.location.Y + size.Height) {
+            if(location.X >= this.Location.X && location.X <= this.Location.X + Size.Width && 
+               location.Y >= this.Location.Y && location.Y <= this.Location.Y + Size.Height) {
                 return true;
             }
             return false;

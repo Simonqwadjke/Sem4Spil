@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace ModelLayer.Units {
-    abstract class Unit {
+    public abstract class Unit {
         public int HitPoints {
             get;
             set;
@@ -18,7 +19,7 @@ namespace ModelLayer.Units {
             get;
             set;
         }
-        public double Radius {
+        public double Range {
             get;
             set;
         }
@@ -26,7 +27,15 @@ namespace ModelLayer.Units {
             get;
             set;
         }
+        public int AttackSpeed {
+            get;
+            set;
+        }
         public int UnitSize {
+            get;
+            set;
+        }
+        public Point Loaction {
             get;
             set;
         }

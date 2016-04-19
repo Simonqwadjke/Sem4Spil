@@ -5,6 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ModelLayer.Buildings.Defense {
-    public class Cannon {
+    public class Cannon : Defensive {
+        public int SplashDamage {
+            get;
+            set;
+        }
+        public double SplashRadius {
+            get;
+            set;
+        }
     }
 }

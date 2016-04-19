@@ -6,5 +6,13 @@ using System.Threading.Tasks;
 
 namespace ModelLayer.Units {
     public class Group {
+        public List<Unit> units {
+            get;
+            set;
+        }
+        public int unitCap {
+            get;
+            set;
+        }
     }
 }

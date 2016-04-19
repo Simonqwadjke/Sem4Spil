@@ -5,6 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ModelLayer.Buildings.Defense {
-    public class Wall {
+    public class Wall : Defensive {
+        public int DefensiveFactor {
+            get;
+            set;
+        }
     }
 }

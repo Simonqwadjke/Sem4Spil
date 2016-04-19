@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ModelLayer.Buildings.Defense {
-    public class GatlingTurret : Defensive {
-        public double Accuracy {
+namespace ModelLayer.Units {
+    class Rifleman : Unit{
+        public int Accuricy {
             get;
             set;
         }

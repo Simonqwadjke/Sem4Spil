@@ -7,21 +7,29 @@ using ModelLayer.Buildings;
 using ModelLayer.Units;
 using System.Drawing;
 
-namespace ModelLayer{
+namespace ModelLayer {
     public class Map {
-        private List<Building> buildings;
-        private List<Group> units;
-
-        public int owner {
+        public User Owner {
             get;
-            private set;
+            set;
         }
-
-        public Map(int owner, List<Building> buildings) {
-            this.buildings = buildings;
-            this.owner = owner;
+        public List<Building> Buildinds {
+            get;
+            set;
         }
-
+        public List<Group> Units {
+            get;
+            set;
+        }
+        public int wood {
+            get;
+            set;
+        }
+        public int iron {
+            get;
+            set;
+        }
+        /*
         public bool placeUnit(Group group, Point location) {
             return true; //if placement is valid;
         }
@@ -34,6 +42,6 @@ namespace ModelLayer{
                 }
             }
             return value;
-        }
+        }*/
     }
 }
