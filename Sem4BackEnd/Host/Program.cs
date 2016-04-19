@@ -16,8 +16,6 @@ namespace Host {
             new Program();
         }
 
-        User user;
-
         private Program() {
             new Thread(() => new ConvertFromUml().ShowDialog()).Start();
             Console.ReadLine();

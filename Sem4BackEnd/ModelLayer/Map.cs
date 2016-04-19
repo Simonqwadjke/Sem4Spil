@@ -10,7 +10,7 @@ using System.Drawing;
 namespace ModelLayer{
     public class Map {
         private List<Building> buildings;
-        private List<Unit> units;
+        private List<Group> units;
 
         public int owner {
             get;
@@ -22,7 +22,7 @@ namespace ModelLayer{
             this.owner = owner;
         }
 
-        public bool placeUnit(Group group, int x, int y) {
+        public bool placeUnit(Group group, Point location) {
             return true; //if placement is valid;
         }
 

@@ -7,16 +7,27 @@ using ModelLayer.Units;
 
 namespace ModelLayer {
     public class User {
-        public Map map { get; set; }
-        public Upgrades upgrades {
+        public Map Mad {
             get;
             set;
         }
-        public List<Group> groups {
+        public Upgrades Upgrades {
             get;
             set;
         }
-        public int ID {
+        public List<Group> Garison {
+            get;
+            set;
+        }
+        public List<Battle> Battles {
+            get;
+            set;
+        }
+        public List<User> Invaders {
+            get;
+            set;
+        }
+        public int UserID {
             get;
             set;
         }
@@ -36,7 +47,7 @@ namespace ModelLayer {
             get;
             set;
         }
-        public int Age {
+        public DateTime BirthDate {
             get;
             set;
         }
@@ -52,11 +63,13 @@ namespace ModelLayer {
             get;
             set;
         }
-        private String Session {
+        public String Session {
             get;
-            set;
-        }
+            private set;
 
-        public User() { }
+        }
+        public User(String session) {
+            this.Session = session;
+        }
     }
 }
