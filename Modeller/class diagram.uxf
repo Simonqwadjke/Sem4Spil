@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>300</x>
-      <y>0</y>
+      <x>0</x>
+      <y>170</y>
       <w>180</w>
       <h>290</h>
     </coordinates>
@@ -37,22 +37,22 @@ invaders : List&lt;User&gt;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>570</x>
-      <y>300</y>
+      <x>270</x>
+      <y>470</y>
       <w>180</w>
       <h>100</h>
     </coordinates>
     <panel_attributes>Map
 --
-+buildinds : List&lt;Buildsing&gt;
-+units : List&lt;Units&gt;</panel_attributes>
+-buildinds : List&lt;Building&gt;
+-units : List&lt;Unit&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>440</x>
-      <y>280</y>
+      <x>140</x>
+      <y>450</y>
       <w>150</w>
       <h>90</h>
     </coordinates>
@@ -62,8 +62,8 @@ invaders : List&lt;User&gt;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>570</x>
-      <y>440</y>
+      <x>270</x>
+      <y>610</y>
       <w>180</w>
       <h>100</h>
     </coordinates>
@@ -76,8 +76,8 @@ invaders : List&lt;User&gt;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>790</x>
-      <y>430</y>
+      <x>490</x>
+      <y>610</y>
       <w>180</w>
       <h>140</h>
     </coordinates>
@@ -94,19 +94,19 @@ invaders : List&lt;User&gt;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>740</x>
-      <y>330</y>
+      <x>440</x>
+      <y>500</y>
       <w>160</w>
-      <h>120</h>
+      <h>130</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>140.0;100.0;140.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>140.0;110.0;140.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>740</x>
-      <y>490</y>
+      <x>440</x>
+      <y>660</y>
       <w>70</w>
       <h>30</h>
     </coordinates>
@@ -116,8 +116,8 @@ invaders : List&lt;User&gt;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
-      <y>280</y>
+      <x>100</x>
+      <y>450</y>
       <w>190</w>
       <h>230</h>
     </coordinates>
@@ -127,8 +127,8 @@ invaders : List&lt;User&gt;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>570</x>
-      <y>580</y>
+      <x>270</x>
+      <y>750</y>
       <w>180</w>
       <h>120</h>
     </coordinates>
@@ -146,8 +146,8 @@ invaders : List&lt;User&gt;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>360</x>
-      <y>280</y>
+      <x>60</x>
+      <y>450</y>
       <w>230</w>
       <h>380</h>
     </coordinates>
@@ -157,8 +157,8 @@ invaders : List&lt;User&gt;
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>570</x>
-      <y>740</y>
+      <x>270</x>
+      <y>910</y>
       <w>180</w>
       <h>230</h>
     </coordinates>
@@ -182,30 +182,30 @@ invaders : List&lt;User&gt;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>960</x>
-      <y>440</y>
+      <x>660</x>
+      <y>610</y>
       <w>190</w>
-      <h>70</h>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;50.0;170.0;10.0</additional_attributes>
+    <additional_attributes>10.0;60.0;170.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>960</x>
-      <y>500</y>
+      <x>660</x>
+      <y>680</y>
       <w>190</w>
-      <h>90</h>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;170.0;70.0</additional_attributes>
+    <additional_attributes>10.0;10.0;170.0;60.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1130</x>
-      <y>400</y>
+      <x>830</x>
+      <y>570</y>
       <w>180</w>
       <h>100</h>
     </coordinates>
@@ -217,8 +217,8 @@ accuracy : double</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1130</x>
-      <y>520</y>
+      <x>830</x>
+      <y>690</y>
       <w>180</w>
       <h>100</h>
     </coordinates>
@@ -232,8 +232,8 @@ splashRadius : double
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>320</x>
-      <y>280</y>
+      <x>20</x>
+      <y>450</y>
       <w>270</w>
       <h>590</h>
     </coordinates>
