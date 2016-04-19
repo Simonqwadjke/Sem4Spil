@@ -56,6 +56,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ApplicationServer\ApplicationServer.csproj">
+      <Project>{7adef41c-1bc9-46f9-9fc5-05ac03c0f7e0}</Project>
+      <Name>ApplicationServer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ModelLayer\ModelLayer.csproj">
       <Project>{3c46ab5b-9661-4fce-8fa5-237ee09ae563}</Project>
       <Name>ModelLayer</Name>
