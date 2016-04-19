@@ -34,6 +34,7 @@ namespace DataAccessLayer
                     }
                 }
             }
+            //TODO: Add more Exceptions
             catch (Exception e)
             {
                 Console.WriteLine("Unknown error in GetUser: " + e.Message);
@@ -44,6 +45,7 @@ namespace DataAccessLayer
 
         public User Login(string username, string password)
         {
+            //TODO: Implement
             return new User("");
         }
 
@@ -52,24 +54,33 @@ namespace DataAccessLayer
             bool success = false;
             string query = "INSERT INTO UserData(UserID,Name,Username,Password,Email,Age,Country,Ranking,Level)"
                          + " VALUES(@USERID, @NAME, @USERNAME, @PASSWORD, @EMAIL, @AGE, @COUNTRY, @RANKING, @LEVEL)";
-
-            using (SqlCommand command = DBConnection.GetDbCommand(query))
+            try
             {
-                //command.Parameters.AddWithValue("@USERID", user.ID);
-                command.Parameters.AddWithValue("@NAME", user.Name);
-                command.Parameters.AddWithValue("@USERNAME", user.Username);
-                command.Parameters.AddWithValue("@PASSWORD", user.Password);
-                command.Parameters.AddWithValue("@EMAIL", user.Email);
-                //command.Parameters.AddWithValue("@AGE", user.Age);
-                command.Parameters.AddWithValue("@COUNTRY", user.Country);
-                command.Parameters.AddWithValue("@RANKING", user.Ranking);
-                command.Parameters.AddWithValue("@LEVEL", user.Level);
-
-                if (command.ExecuteNonQuery() > 0)
+                using (SqlCommand command = DBConnection.GetDbCommand(query))
                 {
-                    success = true;
+                    //TODO: Remove comments
+                    //command.Parameters.AddWithValue("@USERID", user.ID);
+                    command.Parameters.AddWithValue("@NAME", user.Name);
+                    command.Parameters.AddWithValue("@USERNAME", user.Username);
+                    command.Parameters.AddWithValue("@PASSWORD", user.Password);
+                    command.Parameters.AddWithValue("@EMAIL", user.Email);
+                    //command.Parameters.AddWithValue("@AGE", user.Age);
+                    command.Parameters.AddWithValue("@COUNTRY", user.Country);
+                    command.Parameters.AddWithValue("@RANKING", user.Ranking);
+                    command.Parameters.AddWithValue("@LEVEL", user.Level);
+
+                    if (command.ExecuteNonQuery() > 0)
+                    {
+                        success = true;
+                    }
                 }
             }
+            //TODO: Add more Exceptions
+            catch (Exception e)
+            {
+                Console.WriteLine("Unknown error in CreateUser: " + e.Message);
+            }
+
             return success;
         }
 

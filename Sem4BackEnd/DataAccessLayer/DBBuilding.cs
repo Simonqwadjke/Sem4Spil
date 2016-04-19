@@ -14,16 +14,19 @@ namespace DataAccessLayer
     {
         public bool GetUserBuildings(User user)
         {
+            //TODO: Implement
             throw new NotImplementedException();
         }
 
         public bool SaveUserBuildings(User user)
         {
+            //TODO: Implement
             throw new NotImplementedException();
         }
 
         public bool DeleteBuildings(int id)
         {
+            //TODO: Implement
             throw new NotImplementedException();
         }
     }

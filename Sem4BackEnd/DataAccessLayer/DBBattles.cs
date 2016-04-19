@@ -13,16 +13,19 @@ namespace DataAccessLayer
     {
         public bool GetBattles(User user)
         {
+            //TODO: Implement
             throw new NotImplementedException();
         }
 
         public bool SaveBattle()
         {
+            //TODO: Implement
             throw new NotImplementedException();
         }
 
         public bool SaveBattle(Battle battle)
         {
+            //TODO: Implement
             throw new NotImplementedException();
         }
     }

@@ -36,3 +36,15 @@ primary key (BattleID),
 foreign key (DefenderID) references UserData(UserID),
 foreign key (AttackerID) references UserData(UserID)
 );
+
+create table Upgrades
+(
+UserID		int NOT NULL,
+Damage		int NOT NULL,
+Armor		int NOT NULL,
+Resource	int NOT NULL,
+Rifleman	int NOT NULL,
+Tank		int NOT NULL,
+Primary key (UserID),
+foreign key (UserID) references UserData(UserID)
+);
