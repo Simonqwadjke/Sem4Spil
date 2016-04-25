@@ -14,27 +14,39 @@ namespace DataAccessLayer
     {
         public bool GetUserUnits(User user)
         {
-            List<Unit> list = new List<Unit>();
             bool success = false;
-            //TODO: fix SELECT
-            string query = "SELECT * FROM Group, Unit"
-                         + " WHERE Unit.GroupID = Group.GroupID AND Group.UserID = @USERID";
+            List<int> GroupNo = GetGroupNo(user);
 
-            try
+            if (GroupNo.Count > 0)
             {
-                using (SqlCommand command = DBConnection.GetDbCommand(query))
-                {
-                    command.Parameters.AddWithValue("@USERID", user.UserID);
+                //TODO: fix SELECT
+                string query = "";
 
-                    using (IDataReader reader = command.ExecuteReader())
+                for (int i = 0; i < GroupNo.Count; i++)
+                {
+                    query += " SELECT * FROM Unit, Group"
+                           + " WHERE GroupID = " + GroupNo[i];
+                }
+
+                try
+                {
+                    using (SqlCommand command = DBConnection.GetDbCommand(query))
                     {
-                        
+                        command.Parameters.AddWithValue("@USERID", user.UserID);
+
+                        using (IDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                FillUserUnitGroups(user, reader);
+                            }
+                        }
                     }
                 }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Unknown error in GetUserUnits: " + e.Message);
+                catch (Exception e)
+                {
+                    Console.WriteLine("Unknown error in GetUserUnits: " + e.Message);
+                }
             }
 
             return success;
@@ -44,6 +56,62 @@ namespace DataAccessLayer
         {
             //TODO: Implement
             throw new NotImplementedException();
+        }
+
+        private bool FillUserUnitGroups(User user, IDataReader reader)
+        {
+            bool success = false;
+            List<List<Unit>> groups = new List<List<Unit>>();
+            try
+            {
+                do
+                {
+                    List<Unit> list = new List<Unit>();
+                    while (reader.Read())
+                    {
+                        //TODO: make Units and add to List
+                        Unit unit = null;
+
+                        list.Add(unit);
+                    }
+                    groups.Add(list);
+                } while (reader.NextResult());
+            }
+            //TODO: Add more exceptions
+            catch (Exception e)
+            {
+                Console.WriteLine("Unknown error in FillUserGroups: " + e.Message);
+            }
+
+            return success;
+        }
+
+        private List<int> GetGroupNo(User user)
+        {
+            List<int> GroupNo = new List<int>();
+            string query = "SELECT GroupID FROM Group, UserData"
+                         + " WHERE Group.UserID = UserData.UserID AND UserData.UserID = @USERID";
+
+            try
+            {
+                using (SqlCommand command = DBConnection.GetDbCommand(query))
+                {
+                    command.Parameters.AddWithValue("@USERID", user.UserID);
+
+                    using (IDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            GroupNo.Add(Convert.ToInt32(reader["GroupID"]));
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Unknown error at GetGroupNo: " + e.Message);
+            }
+            return GroupNo;
         }
     }
 }

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ServiceModel;
 using ApplicationServer;
+using ServiceLibrary;
 
 #region Temp
 using ModelLayer;
@@ -31,15 +33,22 @@ namespace Host {
                         new Thread(() => Application.Run(new ConvertFromUml())).Start();
 
                         break;
+                    case "user":
+                        createUser();
+                        break;
+                    case "server":
+                        using (ServiceHost host = new ServiceHost(typeof(ServiceLibrary.IServerService)))
+                        {
+                            Console.WriteLine("Might be running service now");
+                            Console.ReadLine();
+                        }
+                        break;
                     case "close threads":
                         Application.Exit();
                         break;
                     case "exit":
                         Application.Exit();
                         running = false;
-                        break;
-                    case "user":
-                        createUser();
                         break;
                 }
             } while(running);
