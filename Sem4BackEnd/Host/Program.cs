@@ -18,8 +18,16 @@ namespace Host {
     class Program {
 
 
-        static void Main(string[] args) {
-            new Program();
+        static void Main(string[] args)
+        {
+            using (ServiceHost host = new ServiceHost(typeof(ServiceLibrary.ServerService)))
+            {
+                host.Open();
+                Console.WriteLine(host.State.ToString());
+                Console.WriteLine("Might be running service now");
+                Console.ReadLine();
+            }
+            //new Program();
         }
 
         private Program() {
@@ -37,11 +45,6 @@ namespace Host {
                         createUser();
                         break;
                     case "server":
-                        using (ServiceHost host = new ServiceHost(typeof(ServiceLibrary.IServerService)))
-                        {
-                            Console.WriteLine("Might be running service now");
-                            Console.ReadLine();
-                        }
                         break;
                     case "close threads":
                         Application.Exit();
