@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 using ModelLayer.Units;
 
 namespace ModelLayer {
+    [DataContract]
     public class User {
         public Map Mad {
             get;
@@ -31,6 +33,7 @@ namespace ModelLayer {
             get;
             set;
         }
+        [DataMember]
         public String Name {
             get;
             set;
@@ -63,6 +66,7 @@ namespace ModelLayer {
             get;
             set;
         }
+        [DataMember]
         public String Session {
             get;
             private set;
