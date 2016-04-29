@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 using ModelLayer.Buildings;
 using ModelLayer.Units;
 using System.Drawing;
 
 namespace ModelLayer {
+    [DataContract]
     public class Map {
         public User Owner {
             get;

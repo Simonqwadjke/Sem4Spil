@@ -9,26 +9,32 @@ using ModelLayer.Units;
 namespace ModelLayer {
     [DataContract]
     public class User {
-        public Map Mad {
+        [DataMember]
+        public Map Map {
             get;
             set;
         }
+        [DataMember]
         public Upgrades Upgrades {
             get;
             set;
         }
+        [DataMember]
         public List<Group> Garison {
             get;
             set;
         }
+        [DataMember]
         public List<Battle> Battles {
             get;
             set;
         }
+        [DataMember]
         public List<User> Invaders {
             get;
             set;
         }
+        [DataMember]
         public int UserID {
             get;
             set;
@@ -38,30 +44,37 @@ namespace ModelLayer {
             get;
             set;
         }
+        [DataMember]
         public String Username {
             get;
             set;
         }
+        [DataMember]
         public String Password {
             get;
             set;
         }
+        [DataMember]
         public String Email {
             get;
             set;
         }
+        [DataMember]
         public DateTime BirthDate {
             get;
             set;
         }
+        [DataMember]
         public String Country {
             get;
             set;
         }
+        [DataMember]
         public int Ranking {
             get;
             set;
         }
+        [DataMember]
         public int Level {
             get;
             set;
