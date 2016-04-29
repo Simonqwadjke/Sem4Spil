@@ -46,6 +46,9 @@ namespace DataAccessLayer
         public User Login(string username, string password)
         {
             //TODO: Implement
+            string query = "SELECT Name, Email, Age, Country, Ranking, Level, Lastlogin FROM UserData";
+
+
             return new User("");
         }
 

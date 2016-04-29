@@ -14,6 +14,7 @@ namespace ServiceLibrary {
 
         public User ReturnNumber()
         {
+            Console.WriteLine("Success!");
             return new User("stuff");
         }
     }

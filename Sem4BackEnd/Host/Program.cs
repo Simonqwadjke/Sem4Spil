@@ -13,9 +13,11 @@ using System.Threading;
 using System.Windows.Forms;
 #endregion
 
-namespace Host {
+namespace Host
+{
 
-    class Program {
+    class Program
+    {
 
 
         static void Main(string[] args)
@@ -23,20 +25,31 @@ namespace Host {
             using (ServiceHost host = new ServiceHost(typeof(ServiceLibrary.ServerService)))
             {
                 host.Open();
-                Console.WriteLine(host.State.ToString());
-                Console.WriteLine("Might be running service now");
-                Console.ReadLine();
+                while (host.State.ToString().Equals("Opened"))
+                {
+                    Console.Clear();
+                    Console.WriteLine("Service is open");
+                    Console.WriteLine("Number of ChannelDispatchers: " + host.ChannelDispatchers.Count);
+                    Console.WriteLine("BaseAddress: " + host.BaseAddresses[0].ToString());
+                    if (Console.ReadLine().Equals("exit"))
+                    {
+                        host.Close();
+                    }
+                }
             }
             //new Program();
         }
 
-        private Program() {
+        private Program()
+        {
             ConvertFromUml form = new ConvertFromUml();
             bool running = true;
-            do {
+            do
+            {
                 header();
                 String s = Console.ReadLine();
-                switch(s) {
+                switch (s)
+                {
                     case "parser":
                         new Thread(() => Application.Run(new ConvertFromUml())).Start();
 
@@ -54,10 +67,11 @@ namespace Host {
                         running = false;
                         break;
                 }
-            } while(running);
+            } while (running);
         }
 
-        private void header() {
+        private void header()
+        {
             Console.Clear();
             Console.WriteLine("########################################################");
             Console.WriteLine("possible inputs:");
@@ -67,53 +81,60 @@ namespace Host {
             Console.WriteLine("########################################################");
         }
 
-        private void userHeader() {
+        private void userHeader()
+        {
             Console.Clear();
             Console.WriteLine("########################################################");
             Console.WriteLine("");
             Console.WriteLine("########################################################");
         }
 
-        private void createUser() {
+        private void createUser()
+        {
             User user = new User(new SessionMannager().createSession());
             user.UserID = 1;
             bool running = true;
-            do {
+            do
+            {
                 String s = Console.ReadLine();
                 String firstword = s.Split()[0];
-                switch(firstword.ToLower()) {
+                switch (firstword.ToLower())
+                {
                     case "name":
-                        if(s.Split()[1] == "=" && s.Split().Length == 3) {
+                        if (s.Split()[1] == "=" && s.Split().Length == 3)
+                        {
                             user.Name = s.Split()[2];
                         }
                         break;
                     case "username":
-                        if(s.Split()[1] == "=" && s.Split().Length == 3) {
+                        if (s.Split()[1] == "=" && s.Split().Length == 3)
+                        {
                             user.Username = s.Split()[2];
                         }
                         break;
                     case "password":
-                        if(s.Split()[1] == "=" && s.Split().Length == 3) {
+                        if (s.Split()[1] == "=" && s.Split().Length == 3)
+                        {
                             user.Password = s.Split()[2];
                         }
                         break;
                     case "email":
-                        if(s.Split()[1] == "=" && s.Split().Length == 3) { }
+                        if (s.Split()[1] == "=" && s.Split().Length == 3) { }
                         break;
                     case "birthdate":
-                        if(s.Split()[1] == "=" && s.Split().Length == 3) { }
+                        if (s.Split()[1] == "=" && s.Split().Length == 3) { }
                         break;
                     case "country":
-                        if(s.Split()[1] == "=" && s.Split().Length == 3) { }
+                        if (s.Split()[1] == "=" && s.Split().Length == 3) { }
                         break;
                     case "ranking":
-                        if(s.Split()[1] == "=" && s.Split().Length == 3) { }
+                        if (s.Split()[1] == "=" && s.Split().Length == 3) { }
                         break;
                     case "level":
-                        if(s.Split()[1] == "=" && s.Split().Length == 3) { }
+                        if (s.Split()[1] == "=" && s.Split().Length == 3) { }
                         break;
                 }
-            } while(running);
+            } while (running);
         }
     }
 }
