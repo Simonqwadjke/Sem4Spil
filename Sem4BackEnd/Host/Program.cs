@@ -32,7 +32,6 @@ namespace Host
                     Console.WriteLine("Service is open");
                     Console.WriteLine("Number of ChannelDispatchers: " + host.ChannelDispatchers.Count);
                     Console.WriteLine("BaseAddress: " + host.BaseAddresses[0].ToString());
-                    Console.WriteLine(testHashing());
                     if (Console.ReadLine().Equals("exit"))
                     {
                         host.Close();

@@ -18,7 +18,7 @@ namespace ApplicationServer
             Byte[] inputBytes = Encoding.ASCII.GetBytes(user.Password);
             Byte[] hash = md5.ComputeHash(inputBytes);
             user.Password = hash.ToString();
-            return dbuser.Login(user.Username, user.Password);
+            return null;// dbuser.Login(user.Username, user.Password);
         }
     }
 }
