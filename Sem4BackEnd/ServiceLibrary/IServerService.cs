@@ -14,6 +14,7 @@ namespace ServiceLibrary {
 
         [OperationContract]
         User ReturnNumber();
-
+        [OperationContract]
+        User Login(User user);
     }
 }

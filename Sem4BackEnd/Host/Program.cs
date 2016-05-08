@@ -11,6 +11,7 @@ using ServiceLibrary;
 using ModelLayer;
 using System.Threading;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 #endregion
 
 namespace Host
@@ -31,6 +32,7 @@ namespace Host
                     Console.WriteLine("Service is open");
                     Console.WriteLine("Number of ChannelDispatchers: " + host.ChannelDispatchers.Count);
                     Console.WriteLine("BaseAddress: " + host.BaseAddresses[0].ToString());
+                    Console.WriteLine(testHashing());
                     if (Console.ReadLine().Equals("exit"))
                     {
                         host.Close();
@@ -38,6 +40,26 @@ namespace Host
                 }
             }
             //new Program();
+        }
+
+        private static string testHashing()
+        {
+            Random r = new Random();
+            string resource = "abcdefghijklmnopqrstuvxyz";
+            string outputstring = "";
+            for (int i = 0; i < 10; i++)
+            {
+                outputstring += resource[r.Next(24)];
+            }
+            MD5 md5 = MD5.Create();
+            Byte[] hash = md5.ComputeHash(Encoding.ASCII.GetBytes(outputstring));
+
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < hash.Length; i++)
+            {
+                sb.Append(hash[i].ToString("X2"));
+            }
+            return sb.ToString();
         }
 
         private Program()
@@ -91,7 +113,7 @@ namespace Host
 
         private void createUser()
         {
-            User user = new User(new SessionMannager().createSession());
+            User user = new User(new SessionManager().createSession());
             user.UserID = 1;
             bool running = true;
             do

@@ -8,12 +8,12 @@ using ModelLayer;
 
 
 namespace ApplicationServer {
-    public class SessionMannager {
+    public class SessionManager {
         List<Session> sessions;
         Timer cleaner;
         Random r;
 
-        public SessionMannager() {
+        public SessionManager() {
             sessions = new List<Session>();
             r = new Random();
             cleaner = new Timer();

@@ -9,7 +9,7 @@ using ModelLayer;
 
 namespace DataAccessLayer
 {
-    class DBUser : IDBUser
+    public class DBUser : IDBUser
     {
         public User GetUser(string username)
         {
@@ -46,14 +46,27 @@ namespace DataAccessLayer
         public User Login(string username, string password)
         {
             //TODO: Implement
-            string query = "SELECT Name, Email, Age, Country, Ranking, Level, Lastlogin FROM UserData";
+            string query = "SELECT Name, Email, Age, Country, Ranking, Level, Lastlogin FROM UserData"
+                         + " WHERE Username = '@USERNAME' AND Password = '@PASSWORD'";
+            User user = null;
 
+            using (SqlCommand command = DBConnection.GetDbCommand(query))
+            {
+                command.Parameters.AddWithValue("@USERNAME", username);
+                command.Parameters.AddWithValue("@PASSWORD", password);
 
-            return new User("");
+                using (IDataReader reader = command.ExecuteReader())
+                {
+                    CreateUserObject(reader);
+                }
+            }
+
+            return user;
         }
 
         public bool CreateUser(User user)
         {
+            user.UserID = GetMax.GetMaxID("User");
             bool success = false;
             string query = "INSERT INTO UserData(UserID,Name,Username,Password,Email,Age,Country,Ranking,Level)"
                          + " VALUES(@USERID, @NAME, @USERNAME, @PASSWORD, @EMAIL, @AGE, @COUNTRY, @RANKING, @LEVEL)";
@@ -61,13 +74,13 @@ namespace DataAccessLayer
             {
                 using (SqlCommand command = DBConnection.GetDbCommand(query))
                 {
-                    //TODO: Remove comments
-                    //command.Parameters.AddWithValue("@USERID", user.ID);
+                    //TODO: Fix Age naming
+                    command.Parameters.AddWithValue("@USERID", user.UserID);
                     command.Parameters.AddWithValue("@NAME", user.Name);
                     command.Parameters.AddWithValue("@USERNAME", user.Username);
                     command.Parameters.AddWithValue("@PASSWORD", user.Password);
                     command.Parameters.AddWithValue("@EMAIL", user.Email);
-                    //command.Parameters.AddWithValue("@AGE", user.Age);
+                    command.Parameters.AddWithValue("@AGE", user.BirthDate);
                     command.Parameters.AddWithValue("@COUNTRY", user.Country);
                     command.Parameters.AddWithValue("@RANKING", user.Ranking);
                     command.Parameters.AddWithValue("@LEVEL", user.Level);
@@ -94,7 +107,7 @@ namespace DataAccessLayer
             {
                 user.Name = reader["Name"].ToString();
                 user.Username = reader["Username"].ToString();
-                //user.Age = Convert.ToInt32(reader["Age"]);
+                user.BirthDate = Convert.ToDateTime(reader["Age"]);
                 user.Email = reader["Email"].ToString();
                 user.Country = reader["Country"].ToString();
                 user.Ranking = Convert.ToInt32(reader["Ranking"]);
