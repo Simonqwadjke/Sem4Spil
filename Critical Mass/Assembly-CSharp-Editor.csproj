@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{EFEFF6A5-BA35-B8A7-DFC8-1A7DAC40A15A}</ProjectGuid>
+    <ProjectGuid>{DD5EE26B-8B77-7D7A-BD1A-DE0CC920E4EF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
@@ -46,27 +46,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
-     <Compile Include="Assets\Editor\ImageEffects\AntialiasingEditor.cs" />
-     <Compile Include="Assets\Editor\ImageEffects\BloomAndFlaresEditor.cs" />
-     <Compile Include="Assets\Editor\ImageEffects\BloomEditor.cs" />
-     <Compile Include="Assets\Editor\ImageEffects\CameraMotionBlurEditor.cs" />
-     <Compile Include="Assets\Editor\ImageEffects\ColorCorrectionCurvesEditor.cs" />
-     <Compile Include="Assets\Editor\ImageEffects\ColorCorrectionLookupEditor.cs" />
-     <Compile Include="Assets\Editor\ImageEffects\CreaseShadingEditor.cs" />
-     <Compile Include="Assets\Editor\ImageEffects\DepthOfFieldDeprecatedEditor.cs" />
-     <Compile Include="Assets\Editor\ImageEffects\DepthOfFieldEditor.cs" />
-     <Compile Include="Assets\Editor\ImageEffects\EdgeDetectionEditor.cs" />
-     <Compile Include="Assets\Editor\ImageEffects\NoiseAndGrainEditor.cs" />
-     <Compile Include="Assets\Editor\ImageEffects\SunShaftsEditor.cs" />
-     <Compile Include="Assets\Editor\ImageEffects\TonemappingEditor.cs" />
-     <Compile Include="Assets\Editor\ImageEffects\VignetteAndChromaticAberrationEditor.cs" />
-     <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
-     <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
-     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
-     <None Include="Assets\Standard Assets\Environment\Water\Water\Shaders\FXWaterPro.shader" />
-     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
-     <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\WaterInclude.cginc" />
-     <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Advanced.shader" />
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
@@ -92,10 +71,13 @@
  <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll</HintPath>
  </Reference>
  <Reference Include="System.Runtime.Serialization">
- <HintPath>D:/Martin15/Dropbox/Arbejds Ting/4. sem/Repository/Sem4Spil/Catastrophic Failure/Assets/Plugins/System.Runtime.Serialization.dll</HintPath>
+ <HintPath>D:/Martin15/Dropbox/Arbejds Ting/4. sem/Repository/Sem4Spil/Critical Mass/Assets/Plugins/System.Runtime.Serialization.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Security">
+ <HintPath>D:/Martin15/Dropbox/Arbejds Ting/4. sem/Repository/Sem4Spil/Critical Mass/Assets/Plugins/System.Security.dll</HintPath>
  </Reference>
  <Reference Include="System.ServiceModel">
- <HintPath>D:/Martin15/Dropbox/Arbejds Ting/4. sem/Repository/Sem4Spil/Catastrophic Failure/Assets/Plugins/System.ServiceModel.dll</HintPath>
+ <HintPath>D:/Martin15/Dropbox/Arbejds Ting/4. sem/Repository/Sem4Spil/Critical Mass/Assets/Plugins/System.ServiceModel.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>D:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
@@ -106,15 +88,10 @@
  <Reference Include="UnityEditor.WindowsStandalone.Extensions">
  <HintPath>D:/Program Files/Unity/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
- <Reference Include="System.Security">
- <HintPath>D:/Martin15/Dropbox/Arbejds Ting/4. sem/Repository/Sem4Spil/Catastrophic Failure/Assets/Plugins/System.Security.dll</HintPath>
- </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{45F1C6F7-11CD-1305-46F9-5720516844EC}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{D08B04F1-66F2-337D-0C33-8603615BAD57}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
+      <Project>{3A3B276D-5852-998D-D462-976B9410C554}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

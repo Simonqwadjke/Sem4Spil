@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{D08B04F1-66F2-337D-0C33-8603615BAD57}</ProjectGuid>
+    <ProjectGuid>{3A3B276D-5852-998D-D462-976B9410C554}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -48,13 +48,6 @@
      <Compile Include="Assets\Script\ExitScript.cs" />
      <Compile Include="Assets\Script\LoginScript.cs" />
      <Compile Include="Assets\Script\ServerService.cs" />
-     <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
-     <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
-     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
-     <None Include="Assets\Standard Assets\Environment\Water\Water\Shaders\FXWaterPro.shader" />
-     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
-     <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\WaterInclude.cginc" />
-     <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Advanced.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -62,18 +55,14 @@
  <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="System.Runtime.Serialization">
- <HintPath>D:/Martin15/Dropbox/Arbejds Ting/4. sem/Repository/Sem4Spil/Catastrophic Failure/Assets/Plugins/System.Runtime.Serialization.dll</HintPath>
- </Reference>
- <Reference Include="System.ServiceModel">
- <HintPath>D:/Martin15/Dropbox/Arbejds Ting/4. sem/Repository/Sem4Spil/Catastrophic Failure/Assets/Plugins/System.ServiceModel.dll</HintPath>
+ <HintPath>D:/Martin15/Dropbox/Arbejds Ting/4. sem/Repository/Sem4Spil/Critical Mass/Assets/Plugins/System.Runtime.Serialization.dll</HintPath>
  </Reference>
  <Reference Include="System.Security">
- <HintPath>D:/Martin15/Dropbox/Arbejds Ting/4. sem/Repository/Sem4Spil/Catastrophic Failure/Assets/Plugins/System.Security.dll</HintPath>
+ <HintPath>D:/Martin15/Dropbox/Arbejds Ting/4. sem/Repository/Sem4Spil/Critical Mass/Assets/Plugins/System.Security.dll</HintPath>
  </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{45F1C6F7-11CD-1305-46F9-5720516844EC}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+ <Reference Include="System.ServiceModel">
+ <HintPath>D:/Martin15/Dropbox/Arbejds Ting/4. sem/Repository/Sem4Spil/Critical Mass/Assets/Plugins/System.ServiceModel.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
