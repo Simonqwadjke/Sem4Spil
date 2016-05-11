@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System.ServiceModel;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
+using System.ServiceModel;
+using System.Security.Cryptography;
 using ModelLayer;
 
 public class LoginScript : MonoBehaviour {
     
     IServerService client;
+    MD5 md5;
 
     public InputField usernameField;
     public InputField passwordField;
@@ -16,6 +18,7 @@ public class LoginScript : MonoBehaviour {
     void Start()
     {
         client = new ServerServiceClient(new BasicHttpBinding(), new EndpointAddress("http://localhost:8081/ServiceLibrary"));
+        md5 = MD5.Create();
         outputText.text = "Please Enter Username and Password";
     }
 
@@ -38,13 +41,25 @@ public class LoginScript : MonoBehaviour {
         bool success = false;
         User user = new User();
         user.Username = username;
-        user.Password = password;
+        user.Password = HashPassword(password);
         user = client.Login(user);
         if (user != null)
         {
             success = true;
         }
         return success;
+    }
+
+    string HashPassword(string password)
+    {
+        string hashedPassword = "";
+        byte[] input = System.Text.Encoding.ASCII.GetBytes(password);
+        byte[] hash = md5.ComputeHash(input);
+        for (int i = 0; i < hash.Length; i++)
+        {
+            hashedPassword += hash[i].ToString("X2");
+        }
+        return hashedPassword;
     }
 
 }
