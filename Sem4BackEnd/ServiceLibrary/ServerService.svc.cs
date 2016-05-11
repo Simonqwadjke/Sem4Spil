@@ -21,7 +21,8 @@ namespace ServiceLibrary {
 
         public User Login(User user)
         {
-            Console.WriteLine("Attempting Login for" + user.Username);
+            Console.WriteLine("Attempting Login for " + user.Username);
+            Console.WriteLine("           password: " + user.Password);
             return usermgr.Login(user);
         }
     }

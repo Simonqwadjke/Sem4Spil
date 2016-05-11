@@ -32,6 +32,7 @@ namespace Host
                     Console.WriteLine("Service is open");
                     Console.WriteLine("Number of ChannelDispatchers: " + host.ChannelDispatchers.Count);
                     Console.WriteLine("BaseAddress: " + host.BaseAddresses[0].ToString());
+                    Console.WriteLine(testHashing("pass"));
                     if (Console.ReadLine().Equals("exit"))
                     {
                         host.Close();
@@ -41,17 +42,24 @@ namespace Host
             //new Program();
         }
 
-        private static string testHashing()
+        private static string testHashing(string input)
         {
-            Random r = new Random();
-            string resource = "abcdefghijklmnopqrstuvxyz";
             string outputstring = "";
-            for (int i = 0; i < 10; i++)
-            {
-                outputstring += resource[r.Next(24)];
-            }
+            //if (input.Length > 0)
+            //{
+            //    Random r = new Random();
+            //    string resource = "abcdefghijklmnopqrstuvxyz";
+            //    for (int i = 0; i < 10; i++)
+            //    {
+            //        outputstring += resource[r.Next(24)];
+            //    }
+            //}
+            //else
+            //{
+            //    outputstring = input;
+            //}
             MD5 md5 = MD5.Create();
-            Byte[] hash = md5.ComputeHash(Encoding.ASCII.GetBytes(outputstring));
+            Byte[] hash = md5.ComputeHash(Encoding.ASCII.GetBytes(input));
 
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < hash.Length; i++)

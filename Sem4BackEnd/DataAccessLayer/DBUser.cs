@@ -47,17 +47,20 @@ namespace DataAccessLayer
         {
             //TODO: Implement
             string query = "SELECT Name, Email, Age, Country, Ranking, Level, Lastlogin FROM UserData"
-                         + " WHERE Username = '@USERNAME' AND Password = '@PASSWORD'";
+                         + " WHERE Username = @USERNAME AND Password = @PASSWORD";
             User user = null;
 
             using (SqlCommand command = DBConnection.GetDbCommand(query))
             {
                 command.Parameters.AddWithValue("@USERNAME", username);
                 command.Parameters.AddWithValue("@PASSWORD", password);
-
                 using (IDataReader reader = command.ExecuteReader())
                 {
-                    CreateUserObject(reader);
+                    if (reader.Read())
+                    {
+                        user = CreateUserObject(reader);
+                        user.Username = username;
+                    }
                 }
             }
 
@@ -106,7 +109,6 @@ namespace DataAccessLayer
             try
             {
                 user.Name = reader["Name"].ToString();
-                user.Username = reader["Username"].ToString();
                 user.BirthDate = Convert.ToDateTime(reader["Age"]);
                 user.Email = reader["Email"].ToString();
                 user.Country = reader["Country"].ToString();
