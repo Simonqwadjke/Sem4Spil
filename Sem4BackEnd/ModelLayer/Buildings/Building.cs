@@ -4,29 +4,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Runtime.Serialization;
 
 namespace ModelLayer.Buildings {
+    [DataContract]
     public abstract class Building {
+        [DataMember]
         public int HitPoints {
             get;
             set;
         }
+        [DataMember]
         public int Armor {
             get;
             set;
         }
+        [DataMember]
         public int UnitSize {
             get;
             set;
         }
+        [DataMember]
         public int Level {
             get;
             set;
         }
+        [DataMember]
         public Point Location {
             get;
             set;
         }
+        [DataMember]
         public Size Size {
             get;
             set;

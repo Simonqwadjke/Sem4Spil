@@ -11,22 +11,27 @@ using System.Drawing;
 namespace ModelLayer {
     [DataContract]
     public class Map {
+        [DataMember]
         public User Owner {
             get;
             set;
         }
+        [DataMember]
         public List<Building> Buildinds {
             get;
             set;
         }
+        [DataMember]
         public List<Group> Units {
             get;
             set;
         }
+        [DataMember]
         public int wood {
             get;
             set;
         }
+        [DataMember]
         public int iron {
             get;
             set;
