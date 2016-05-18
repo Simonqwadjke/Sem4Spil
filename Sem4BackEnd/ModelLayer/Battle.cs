@@ -9,12 +9,12 @@ namespace ModelLayer {
     [DataContract]
     public class Battle {
         [DataMember]
-        public int InvatedID {
+        public int DefenderID {
             get;
             set;
         }
         [DataMember]
-        public int InvaterID {
+        public int AttackerID {
             get;
             set;
         }

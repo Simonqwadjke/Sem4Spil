@@ -1,7 +1,8 @@
-Pathfinding
-Unit interaction
-Tilføjet Units
-Tilføjet Building
-Resource
-Database indexing
-User Abilities
+Pathfinding - 0%
+Unit interaction - 0%
+Tilføjet Units - 0%
+Tilføjet Building - 10%
+Resource- 0%
+Database design - 100%
+Database indexing - 20%
+User Abilities - 0%
