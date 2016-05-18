@@ -1,39 +1,48 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class CameraDrag : MonoBehaviour {
 
-    new Camera camera;
-    int scale = 0;
+    public Camera camera;
+    public GameObject world;
     Vector3 hit_position = Vector3.zero;
     Vector3 current_position = Vector3.zero;
     Vector3 camera_position = Vector3.zero;
-    float z = 0.0f;
+    bool mouseDown;
+    public Text text;
+
+    //float z = 0.0f;
 
     // Use this for initialization
     void Start() {
-        camera = GetComponent<Camera>();
+        //camera = GetComponent<Camera>();
     }
+
+    public void OnMouseDown() {
+        mouseDown = true;
+    }
+    public void OnMouseUp() {
+        mouseDown = false;
+    }
+
 
     void Update() {
         if(Input.GetMouseButtonDown(0)) {
-            hit_position = Input.mousePosition;
-            camera_position = transform.position;
-
-        }
-        if(Input.GetMouseButton(0)) {
-            current_position = Input.mousePosition;
-            LeftMouseDrag();
+            if(Input.touchCount == 1) text.text = "CLICK";
+            else text.text = "noclick";
         }
 
-        if(Input.GetAxis("Mouse ScrollWheel") > 0 && scale > 0) {
-            camera.orthographicSize -= scale;
-            scale--;
-        }
+        if(mouseDown) {
+            if(Input.GetMouseButtonDown(0)) {
+                hit_position = Input.mousePosition;
+                camera_position = transform.position;
 
-        if(Input.GetAxis("Mouse ScrollWheel") < 0) {
-            scale++;
-            camera.orthographicSize += scale;
+            }
+            if(Input.GetMouseButton(0)) {
+                current_position = Input.mousePosition;
+                LeftMouseDrag();
+            }
         }
     }
 
@@ -47,12 +56,10 @@ public class CameraDrag : MonoBehaviour {
         Vector3 direction = Camera.main.ScreenToWorldPoint(current_position) - Camera.main.ScreenToWorldPoint(hit_position);
 
         // Invert direction to that terrain appears to move with the mouse.
-        direction = direction * -1;
+        direction = direction * 1;
 
         Vector3 position = camera_position + direction;
 
-        transform.position = position;
+        world.transform.position = position;
     }
-
-
 }

@@ -41,7 +41,7 @@ namespace ModelLayer.Buildings {
         }
 
         public bool checkLocation(Point location) {
-            if(location.X >= this.Location.X && location.X <= this.Location.X + Size.Width && 
+            if(location.X >= this.Location.X && location.X <= this.Location.X + Size.Width &&
                location.Y >= this.Location.Y && location.Y <= this.Location.Y + Size.Height) {
                 return true;
             }

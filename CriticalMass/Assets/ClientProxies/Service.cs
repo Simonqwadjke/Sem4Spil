@@ -8,762 +8,1080 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ModelLayer {
+namespace ModelLayer
+{
     using System.Runtime.Serialization;
-
-
+    
+    
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name = "User", Namespace = "http://schemas.datacontract.org/2004/07/ModelLayer")]
-    public partial class User : object, System.Runtime.Serialization.IExtensibleDataObject {
-
+    [System.Runtime.Serialization.DataContractAttribute(Name="Map", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
+    public partial class Map : object, System.Runtime.Serialization.IExtensibleDataObject
+    {
+        
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-
-        private ModelLayer.Battle[] BattlesField;
-
-        private System.DateTime BirthDateField;
-
-        private string CountryField;
-
-        private string EmailField;
-
-        private ModelLayer.Units.Group[] GarisonField;
-
-        private ModelLayer.User[] InvadersField;
-
-        private int LevelField;
-
-        private ModelLayer.Map MapField;
-
-        private string NameField;
-
-        private string PasswordField;
-
-        private int RankingField;
-
-        private string SessionField;
-
-        private ModelLayer.Upgrades UpgradesField;
-
-        private int UserIDField;
-
-        private string UsernameField;
-
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ModelLayer.Battle[] Battles {
-            get {
-                return this.BattlesField;
-            }
-            set {
-                this.BattlesField = value;
-            }
-        }
-
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime BirthDate {
-            get {
-                return this.BirthDateField;
-            }
-            set {
-                this.BirthDateField = value;
-            }
-        }
-
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Country {
-            get {
-                return this.CountryField;
-            }
-            set {
-                this.CountryField = value;
-            }
-        }
-
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Email {
-            get {
-                return this.EmailField;
-            }
-            set {
-                this.EmailField = value;
-            }
-        }
-
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ModelLayer.Units.Group[] Garison {
-            get {
-                return this.GarisonField;
-            }
-            set {
-                this.GarisonField = value;
-            }
-        }
-
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ModelLayer.User[] Invaders {
-            get {
-                return this.InvadersField;
-            }
-            set {
-                this.InvadersField = value;
-            }
-        }
-
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Level {
-            get {
-                return this.LevelField;
-            }
-            set {
-                this.LevelField = value;
-            }
-        }
-
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ModelLayer.Map Map {
-            get {
-                return this.MapField;
-            }
-            set {
-                this.MapField = value;
-            }
-        }
-
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Name {
-            get {
-                return this.NameField;
-            }
-            set {
-                this.NameField = value;
-            }
-        }
-
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Password {
-            get {
-                return this.PasswordField;
-            }
-            set {
-                this.PasswordField = value;
-            }
-        }
-
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Ranking {
-            get {
-                return this.RankingField;
-            }
-            set {
-                this.RankingField = value;
-            }
-        }
-
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Session {
-            get {
-                return this.SessionField;
-            }
-            set {
-                this.SessionField = value;
-            }
-        }
-
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ModelLayer.Upgrades Upgrades {
-            get {
-                return this.UpgradesField;
-            }
-            set {
-                this.UpgradesField = value;
-            }
-        }
-
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int UserID {
-            get {
-                return this.UserIDField;
-            }
-            set {
-                this.UserIDField = value;
-            }
-        }
-
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Username {
-            get {
-                return this.UsernameField;
-            }
-            set {
-                this.UsernameField = value;
-            }
-        }
-    }
-
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name = "Map", Namespace = "http://schemas.datacontract.org/2004/07/ModelLayer")]
-    public partial class Map : object, System.Runtime.Serialization.IExtensibleDataObject {
-
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-
+        
         private ModelLayer.Buildings.Building[] BuildindsField;
-
+        
         private ModelLayer.User OwnerField;
-
+        
         private ModelLayer.Units.Group[] UnitsField;
-
+        
         private int ironField;
-
+        
         private int woodField;
-
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
+        {
+            get
+            {
                 return this.extensionDataField;
             }
-            set {
+            set
+            {
                 this.extensionDataField = value;
             }
         }
-
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ModelLayer.Buildings.Building[] Buildinds {
-            get {
+        public ModelLayer.Buildings.Building[] Buildinds
+        {
+            get
+            {
                 return this.BuildindsField;
             }
-            set {
+            set
+            {
                 this.BuildindsField = value;
             }
         }
-
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ModelLayer.User Owner {
-            get {
+        public ModelLayer.User Owner
+        {
+            get
+            {
                 return this.OwnerField;
             }
-            set {
+            set
+            {
                 this.OwnerField = value;
             }
         }
-
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ModelLayer.Units.Group[] Units {
-            get {
+        public ModelLayer.Units.Group[] Units
+        {
+            get
+            {
                 return this.UnitsField;
             }
-            set {
+            set
+            {
                 this.UnitsField = value;
             }
         }
-
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int iron {
-            get {
+        public int iron
+        {
+            get
+            {
                 return this.ironField;
             }
-            set {
+            set
+            {
                 this.ironField = value;
             }
         }
-
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int wood {
-            get {
+        public int wood
+        {
+            get
+            {
                 return this.woodField;
             }
-            set {
+            set
+            {
                 this.woodField = value;
             }
         }
     }
-
+    
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name = "Upgrades", Namespace = "http://schemas.datacontract.org/2004/07/ModelLayer")]
-    public partial class Upgrades : object, System.Runtime.Serialization.IExtensibleDataObject {
-
+    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
+    public partial class User : object, System.Runtime.Serialization.IExtensibleDataObject
+    {
+        
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
+        
+        private ModelLayer.Battle[] BattlesField;
+        
+        private System.DateTime BirthDateField;
+        
+        private string CountryField;
+        
+        private string EmailField;
+        
+        private ModelLayer.Units.Group[] GarisonField;
+        
+        private ModelLayer.User[] InvadersField;
+        
+        private System.DateTime LastLoginField;
+        
+        private int LevelField;
+        
+        private ModelLayer.Map MapField;
+        
+        private string NameField;
+        
+        private string PasswordField;
+        
+        private int RankingField;
+        
+        private string SessionField;
+        
+        private ModelLayer.Upgrades UpgradesField;
+        
+        private int UserIDField;
+        
+        private string UsernameField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
+        {
+            get
+            {
                 return this.extensionDataField;
             }
-            set {
+            set
+            {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ModelLayer.Battle[] Battles
+        {
+            get
+            {
+                return this.BattlesField;
+            }
+            set
+            {
+                this.BattlesField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime BirthDate
+        {
+            get
+            {
+                return this.BirthDateField;
+            }
+            set
+            {
+                this.BirthDateField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Country
+        {
+            get
+            {
+                return this.CountryField;
+            }
+            set
+            {
+                this.CountryField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email
+        {
+            get
+            {
+                return this.EmailField;
+            }
+            set
+            {
+                this.EmailField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ModelLayer.Units.Group[] Garison
+        {
+            get
+            {
+                return this.GarisonField;
+            }
+            set
+            {
+                this.GarisonField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ModelLayer.User[] Invaders
+        {
+            get
+            {
+                return this.InvadersField;
+            }
+            set
+            {
+                this.InvadersField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime LastLogin
+        {
+            get
+            {
+                return this.LastLoginField;
+            }
+            set
+            {
+                this.LastLoginField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Level
+        {
+            get
+            {
+                return this.LevelField;
+            }
+            set
+            {
+                this.LevelField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ModelLayer.Map Map
+        {
+            get
+            {
+                return this.MapField;
+            }
+            set
+            {
+                this.MapField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name
+        {
+            get
+            {
+                return this.NameField;
+            }
+            set
+            {
+                this.NameField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Password
+        {
+            get
+            {
+                return this.PasswordField;
+            }
+            set
+            {
+                this.PasswordField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Ranking
+        {
+            get
+            {
+                return this.RankingField;
+            }
+            set
+            {
+                this.RankingField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Session
+        {
+            get
+            {
+                return this.SessionField;
+            }
+            set
+            {
+                this.SessionField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ModelLayer.Upgrades Upgrades
+        {
+            get
+            {
+                return this.UpgradesField;
+            }
+            set
+            {
+                this.UpgradesField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int UserID
+        {
+            get
+            {
+                return this.UserIDField;
+            }
+            set
+            {
+                this.UserIDField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Username
+        {
+            get
+            {
+                return this.UsernameField;
+            }
+            set
+            {
+                this.UsernameField = value;
             }
         }
     }
-
+    
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name = "Battle", Namespace = "http://schemas.datacontract.org/2004/07/ModelLayer")]
-    public partial class Battle : object, System.Runtime.Serialization.IExtensibleDataObject {
-
+    [System.Runtime.Serialization.DataContractAttribute(Name="Upgrades", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
+    public partial class Upgrades : object, System.Runtime.Serialization.IExtensibleDataObject
+    {
+        
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-
-        private int InvatedIDField;
-
-        private int InvaterIDField;
-
-        private string OutcomeField;
-
-        private int PlunderedIronField;
-
-        private int PlunderedWoodField;
-
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
+        
+        private int ArmorLevelField;
+        
+        private int DamageLevelField;
+        
+        private int RecourseLevelField;
+        
+        private int RiflemanLevelField;
+        
+        private int TankLevelField;
+        
+        private int armorGrowthField;
+        
+        private int damageGrowthField;
+        
+        private int recourseGrowthField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
+        {
+            get
+            {
                 return this.extensionDataField;
             }
-            set {
+            set
+            {
                 this.extensionDataField = value;
             }
         }
-
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int InvatedID {
-            get {
+        public int ArmorLevel
+        {
+            get
+            {
+                return this.ArmorLevelField;
+            }
+            set
+            {
+                this.ArmorLevelField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int DamageLevel
+        {
+            get
+            {
+                return this.DamageLevelField;
+            }
+            set
+            {
+                this.DamageLevelField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int RecourseLevel
+        {
+            get
+            {
+                return this.RecourseLevelField;
+            }
+            set
+            {
+                this.RecourseLevelField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int RiflemanLevel
+        {
+            get
+            {
+                return this.RiflemanLevelField;
+            }
+            set
+            {
+                this.RiflemanLevelField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TankLevel
+        {
+            get
+            {
+                return this.TankLevelField;
+            }
+            set
+            {
+                this.TankLevelField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int armorGrowth
+        {
+            get
+            {
+                return this.armorGrowthField;
+            }
+            set
+            {
+                this.armorGrowthField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int damageGrowth
+        {
+            get
+            {
+                return this.damageGrowthField;
+            }
+            set
+            {
+                this.damageGrowthField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int recourseGrowth
+        {
+            get
+            {
+                return this.recourseGrowthField;
+            }
+            set
+            {
+                this.recourseGrowthField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Battle", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
+    public partial class Battle : object, System.Runtime.Serialization.IExtensibleDataObject
+    {
+        
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int InvatedIDField;
+        
+        private int InvaterIDField;
+        
+        private string OutcomeField;
+        
+        private int PlunderedIronField;
+        
+        private int PlunderedWoodField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
+        {
+            get
+            {
+                return this.extensionDataField;
+            }
+            set
+            {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int InvatedID
+        {
+            get
+            {
                 return this.InvatedIDField;
             }
-            set {
+            set
+            {
                 this.InvatedIDField = value;
             }
         }
-
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int InvaterID {
-            get {
+        public int InvaterID
+        {
+            get
+            {
                 return this.InvaterIDField;
             }
-            set {
+            set
+            {
                 this.InvaterIDField = value;
             }
         }
-
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Outcome {
-            get {
+        public string Outcome
+        {
+            get
+            {
                 return this.OutcomeField;
             }
-            set {
+            set
+            {
                 this.OutcomeField = value;
             }
         }
-
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int PlunderedIron {
-            get {
+        public int PlunderedIron
+        {
+            get
+            {
                 return this.PlunderedIronField;
             }
-            set {
+            set
+            {
                 this.PlunderedIronField = value;
             }
         }
-
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int PlunderedWood {
-            get {
+        public int PlunderedWood
+        {
+            get
+            {
                 return this.PlunderedWoodField;
             }
-            set {
+            set
+            {
                 this.PlunderedWoodField = value;
             }
         }
     }
 }
-namespace ModelLayer.Units {
+namespace ModelLayer.Buildings
+{
     using System.Runtime.Serialization;
-
-
+    
+    
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name = "Group", Namespace = "http://schemas.datacontract.org/2004/07/ModelLayer.Units")]
-    public partial class Group : object, System.Runtime.Serialization.IExtensibleDataObject {
-
+    [System.Runtime.Serialization.DataContractAttribute(Name="Building", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer.Buildings")]
+    public partial class Building : object, System.Runtime.Serialization.IExtensibleDataObject
+    {
+        
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-
-        private int unitCapField;
-
-        private ModelLayer.Units.Unit[] unitsField;
-
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int unitCap {
-            get {
-                return this.unitCapField;
-            }
-            set {
-                this.unitCapField = value;
-            }
-        }
-
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ModelLayer.Units.Unit[] units {
-            get {
-                return this.unitsField;
-            }
-            set {
-                this.unitsField = value;
-            }
-        }
-    }
-
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name = "Unit", Namespace = "http://schemas.datacontract.org/2004/07/ModelLayer.Units")]
-    public partial class Unit : object, System.Runtime.Serialization.IExtensibleDataObject {
-
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-
+        
         private int ArmorField;
-
-        private int AttackSpeedField;
-
-        private int DamageField;
-
+        
         private int HitPointsField;
-
-        private System.Drawing.Point LoactionField;
-
-        private double RangeField;
-
-        private double SpeedField;
-
+        
+        private int LevelField;
+        
+        private System.Drawing.Point LocationField;
+        
+        private System.Drawing.Size SizeField;
+        
         private int UnitSizeField;
-
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
+        {
+            get
+            {
                 return this.extensionDataField;
             }
-            set {
+            set
+            {
                 this.extensionDataField = value;
             }
         }
-
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Armor {
-            get {
+        public int Armor
+        {
+            get
+            {
                 return this.ArmorField;
             }
-            set {
+            set
+            {
                 this.ArmorField = value;
             }
         }
-
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int AttackSpeed {
-            get {
-                return this.AttackSpeedField;
-            }
-            set {
-                this.AttackSpeedField = value;
-            }
-        }
-
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Damage {
-            get {
-                return this.DamageField;
-            }
-            set {
-                this.DamageField = value;
-            }
-        }
-
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int HitPoints {
-            get {
+        public int HitPoints
+        {
+            get
+            {
                 return this.HitPointsField;
             }
-            set {
+            set
+            {
                 this.HitPointsField = value;
             }
         }
-
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Drawing.Point Loaction {
-            get {
-                return this.LoactionField;
+        public int Level
+        {
+            get
+            {
+                return this.LevelField;
             }
-            set {
-                this.LoactionField = value;
+            set
+            {
+                this.LevelField = value;
             }
         }
-
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public double Range {
-            get {
-                return this.RangeField;
+        public System.Drawing.Point Location
+        {
+            get
+            {
+                return this.LocationField;
             }
-            set {
-                this.RangeField = value;
+            set
+            {
+                this.LocationField = value;
             }
         }
-
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public double Speed {
-            get {
-                return this.SpeedField;
+        public System.Drawing.Size Size
+        {
+            get
+            {
+                return this.SizeField;
             }
-            set {
-                this.SpeedField = value;
+            set
+            {
+                this.SizeField = value;
             }
         }
-
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int UnitSize {
-            get {
+        public int UnitSize
+        {
+            get
+            {
                 return this.UnitSizeField;
             }
-            set {
+            set
+            {
                 this.UnitSizeField = value;
             }
         }
     }
 }
-namespace System.Drawing {
+namespace ModelLayer.Units
+{
     using System.Runtime.Serialization;
-
-
+    
+    
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name = "Point", Namespace = "http://schemas.datacontract.org/2004/07/System.Drawing")]
-    public partial struct Point : System.Runtime.Serialization.IExtensibleDataObject {
-
+    [System.Runtime.Serialization.DataContractAttribute(Name="Group", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer.Units")]
+    public partial class Group : object, System.Runtime.Serialization.IExtensibleDataObject
+    {
+        
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-
-        private int xField;
-
-        private int yField;
-
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
+        
+        private int unitCapField;
+        
+        private ModelLayer.Units.Unit[] unitsField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
+        {
+            get
+            {
                 return this.extensionDataField;
             }
-            set {
+            set
+            {
                 this.extensionDataField = value;
             }
         }
-
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired = true)]
-        public int x {
-            get {
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int unitCap
+        {
+            get
+            {
+                return this.unitCapField;
+            }
+            set
+            {
+                this.unitCapField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ModelLayer.Units.Unit[] units
+        {
+            get
+            {
+                return this.unitsField;
+            }
+            set
+            {
+                this.unitsField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Unit", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer.Units")]
+    public partial class Unit : object, System.Runtime.Serialization.IExtensibleDataObject
+    {
+        
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int ArmorField;
+        
+        private int AttackSpeedField;
+        
+        private int DamageField;
+        
+        private int HitPointsField;
+        
+        private System.Drawing.Point LoactionField;
+        
+        private double RangeField;
+        
+        private double SpeedField;
+        
+        private int UnitSizeField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
+        {
+            get
+            {
+                return this.extensionDataField;
+            }
+            set
+            {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Armor
+        {
+            get
+            {
+                return this.ArmorField;
+            }
+            set
+            {
+                this.ArmorField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int AttackSpeed
+        {
+            get
+            {
+                return this.AttackSpeedField;
+            }
+            set
+            {
+                this.AttackSpeedField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Damage
+        {
+            get
+            {
+                return this.DamageField;
+            }
+            set
+            {
+                this.DamageField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int HitPoints
+        {
+            get
+            {
+                return this.HitPointsField;
+            }
+            set
+            {
+                this.HitPointsField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Drawing.Point Loaction
+        {
+            get
+            {
+                return this.LoactionField;
+            }
+            set
+            {
+                this.LoactionField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Range
+        {
+            get
+            {
+                return this.RangeField;
+            }
+            set
+            {
+                this.RangeField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Speed
+        {
+            get
+            {
+                return this.SpeedField;
+            }
+            set
+            {
+                this.SpeedField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int UnitSize
+        {
+            get
+            {
+                return this.UnitSizeField;
+            }
+            set
+            {
+                this.UnitSizeField = value;
+            }
+        }
+    }
+}
+namespace System.Drawing
+{
+    using System.Runtime.Serialization;
+    
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Point", Namespace="http://schemas.datacontract.org/2004/07/System.Drawing")]
+    public partial struct Point : System.Runtime.Serialization.IExtensibleDataObject
+    {
+        
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int xField;
+        
+        private int yField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
+        {
+            get
+            {
+                return this.extensionDataField;
+            }
+            set
+            {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int x
+        {
+            get
+            {
                 return this.xField;
             }
-            set {
+            set
+            {
                 this.xField = value;
             }
         }
-
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired = true)]
-        public int y {
-            get {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int y
+        {
+            get
+            {
                 return this.yField;
             }
-            set {
+            set
+            {
                 this.yField = value;
             }
         }
     }
-
+    
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name = "Size", Namespace = "http://schemas.datacontract.org/2004/07/System.Drawing")]
-    public partial struct Size : System.Runtime.Serialization.IExtensibleDataObject {
-
+    [System.Runtime.Serialization.DataContractAttribute(Name="Size", Namespace="http://schemas.datacontract.org/2004/07/System.Drawing")]
+    public partial struct Size : System.Runtime.Serialization.IExtensibleDataObject
+    {
+        
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-
+        
         private int heightField;
-
+        
         private int widthField;
-
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
+        {
+            get
+            {
                 return this.extensionDataField;
             }
-            set {
+            set
+            {
                 this.extensionDataField = value;
             }
         }
-
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired = true)]
-        public int height {
-            get {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int height
+        {
+            get
+            {
                 return this.heightField;
             }
-            set {
+            set
+            {
                 this.heightField = value;
             }
         }
-
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired = true)]
-        public int width {
-            get {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int width
+        {
+            get
+            {
                 return this.widthField;
             }
-            set {
+            set
+            {
                 this.widthField = value;
             }
         }
     }
 }
-namespace ModelLayer.Buildings {
-    using System.Runtime.Serialization;
-
-
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name = "Building", Namespace = "http://schemas.datacontract.org/2004/07/ModelLayer.Buildings")]
-    public partial class Building : object, System.Runtime.Serialization.IExtensibleDataObject {
-
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-
-        private int ArmorField;
-
-        private int HitPointsField;
-
-        private int LevelField;
-
-        private System.Drawing.Point LocationField;
-
-        private System.Drawing.Size SizeField;
-
-        private int UnitSizeField;
-
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Armor {
-            get {
-                return this.ArmorField;
-            }
-            set {
-                this.ArmorField = value;
-            }
-        }
-
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int HitPoints {
-            get {
-                return this.HitPointsField;
-            }
-            set {
-                this.HitPointsField = value;
-            }
-        }
-
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Level {
-            get {
-                return this.LevelField;
-            }
-            set {
-                this.LevelField = value;
-            }
-        }
-
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Drawing.Point Location {
-            get {
-                return this.LocationField;
-            }
-            set {
-                this.LocationField = value;
-            }
-        }
-
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Drawing.Size Size {
-            get {
-                return this.SizeField;
-            }
-            set {
-                this.SizeField = value;
-            }
-        }
-
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int UnitSize {
-            get {
-                return this.UnitSizeField;
-            }
-            set {
-                this.UnitSizeField = value;
-            }
-        }
-    }
-}
 
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-[System.ServiceModel.ServiceContractAttribute(ConfigurationName = "IServerService")]
-public interface IServerService {
-
-    [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IServerService/ReturnNumber", ReplyAction = "http://tempuri.org/IServerService/ReturnNumberResponse")]
-    ModelLayer.User ReturnNumber();
-
-
-    [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IServerService/Login", ReplyAction = "http://tempuri.org/IServerService/LoginResponse")]
+[System.ServiceModel.ServiceContractAttribute(ConfigurationName="IServerService")]
+public interface IServerService
+{
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerService/Update", ReplyAction="http://tempuri.org/IServerService/UpdateResponse")]
+    ModelLayer.Map Update();
+       
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerService/Login", ReplyAction="http://tempuri.org/IServerService/LoginResponse")]
     ModelLayer.User Login(ModelLayer.User user);
 }
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-public interface IServerServiceChannel : IServerService, System.ServiceModel.IClientChannel {
+public interface IServerServiceChannel : IServerService, System.ServiceModel.IClientChannel
+{
 }
 
 [System.Diagnostics.DebuggerStepThroughAttribute()]
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-public partial class ServerServiceClient : System.ServiceModel.ClientBase<IServerService>, IServerService {
-
-    public ServerServiceClient() {
+public partial class ServerServiceClient : System.ServiceModel.ClientBase<IServerService>, IServerService
+{
+    
+    public ServerServiceClient()
+    {
     }
-
-    public ServerServiceClient(string endpointConfigurationName) :
-            base(endpointConfigurationName) {
+    
+    public ServerServiceClient(string endpointConfigurationName) : 
+            base(endpointConfigurationName)
+    {
     }
-
-    public ServerServiceClient(string endpointConfigurationName, string remoteAddress) :
-            base(endpointConfigurationName, remoteAddress) {
+    
+    public ServerServiceClient(string endpointConfigurationName, string remoteAddress) : 
+            base(endpointConfigurationName, remoteAddress)
+    {
     }
-
-    public ServerServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) :
-            base(endpointConfigurationName, remoteAddress) {
+    
+    public ServerServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+            base(endpointConfigurationName, remoteAddress)
+    {
     }
-
-    public ServerServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) :
-            base(binding, remoteAddress) {
+    
+    public ServerServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+            base(binding, remoteAddress)
+    {
     }
-
-    public ModelLayer.User ReturnNumber() {
-        return base.Channel.ReturnNumber();
+    
+    public ModelLayer.Map Update()
+    {
+        return base.Channel.Update();
     }
-
-
-    public ModelLayer.User Login(ModelLayer.User user) {
+    
+    public ModelLayer.User Login(ModelLayer.User user)
+    {
         return base.Channel.Login(user);
     }
 }
