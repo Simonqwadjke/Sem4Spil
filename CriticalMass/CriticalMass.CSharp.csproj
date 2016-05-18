@@ -84,6 +84,7 @@
     <Compile Include="Assets\Scripts\Map.cs" />
     <Compile Include="Assets\Scripts\PlayerControler.cs" />
     <Compile Include="Assets\Scripts\TestRayCasy.cs" />
+    <Compile Include="Assets\testMouse.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\ClientProxies\commands.txt" />
