@@ -49,7 +49,6 @@
     <Compile Include="Buildings\Defense\GatlingTurret.cs" />
     <Compile Include="Buildings\Defense\Wall.cs" />
     <Compile Include="Buildings\Passive\Resouce.cs" />
-    <Compile Include="Language.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Buildings\Passive\HeadQuarters.cs" />
     <Compile Include="Buildings\Passive\IronMine.cs" />

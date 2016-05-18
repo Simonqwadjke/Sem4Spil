@@ -6,110 +6,91 @@ using System.Threading.Tasks;
 using System.Runtime.Serialization;
 using ModelLayer.Units;
 
-namespace ModelLayer
-{
+namespace ModelLayer {
     [DataContract]
-    public class User
-    {
+    public class User {
         [DataMember]
-        public Map Map
-        {
+        public Map Map {
             get;
             set;
         }
         [DataMember]
-        public Upgrades Upgrades
-        {
+        public Upgrades Upgrades {
             get;
             set;
         }
         [DataMember]
-        public List<Group> Garison
-        {
+        public List<Group> Garison {
             get;
             set;
         }
         [DataMember]
-        public List<Battle> Battles
-        {
+        public List<Battle> Battles {
             get;
             set;
         }
         [DataMember]
-        public List<User> Invaders
-        {
+        public List<User> Invaders {
             get;
             set;
         }
         [DataMember]
-        public int UserID
-        {
+        public int UserID {
             get;
             set;
         }
         [DataMember]
-        public String Name
-        {
+        public String Name {
             get;
             set;
         }
         [DataMember]
-        public String Username
-        {
+        public String Username {
             get;
             set;
         }
         [DataMember]
-        public String Password
-        {
+        public String Password {
             get;
             set;
         }
         [DataMember]
-        public String Email
-        {
+        public String Email {
             get;
             set;
         }
         [DataMember]
-        public DateTime BirthDate
-        {
+        public DateTime BirthDate {
             get;
             set;
         }
         [DataMember]
-        public String Country
-        {
+        public String Country {
             get;
             set;
         }
         [DataMember]
-        public int Ranking
-        {
+        public int Ranking {
             get;
             set;
         }
         [DataMember]
-        public int Level
-        {
+        public int Level {
             get;
             set;
         }
         [DataMember]
-        public DateTime LastLogin
-        {
+        public DateTime LastLogin {
             get;
             set;
         }
         [DataMember]
-        public String Session
-        {
+        public String Session {
             get;
             private set;
 
         }
-        public User(String session)
-        {
+        public User(String session) {
             this.Session = session;
         }
     }

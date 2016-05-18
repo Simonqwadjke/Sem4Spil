@@ -32,5 +32,13 @@ public class LoadMap : MonoBehaviour {
                 map.CreateComponent(list[i], new Vector3(x, y), "tile_ " + i + "(" + x + "," + y + ")", transform, "GroundMap");
             }
         }
+        BoxCollider2D bc = gameObject.AddComponent<BoxCollider2D>();
+
+        bc.isTrigger = true;
+        bc.size = new Vector3(width, height) / 10;
+        bc.offset = bc.size / 2;
+        //bc.size = new Vector3(width, height)/10;
+        
+        //bc.bounds.center = bc.size/2;
     }
 }

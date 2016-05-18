@@ -7,6 +7,7 @@ using System.Runtime.Serialization;
 
 namespace ModelLayer.Units {
     [DataContract]
+    [KnownType(typeof(Unit))]
     class Tank : Unit {
         [DataMember]
         public int SplashDamage {

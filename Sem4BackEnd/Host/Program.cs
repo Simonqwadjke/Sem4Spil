@@ -43,7 +43,7 @@ namespace Host
 
         private static string testHashing(string input)
         {
-            string outputstring = "";
+            //string outputstring = "";
             //if (input.Length > 0)
             //{
             //    Random r = new Random();

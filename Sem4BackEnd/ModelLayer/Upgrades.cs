@@ -8,25 +8,33 @@ using System.Runtime.Serialization;
 namespace ModelLayer {
     [DataContract]
     public class Upgrades {
+        [DataMember]
         readonly int damageGrowth = 0;
+        [DataMember]
         readonly int armorGrowth = 0;
+        [DataMember]
         readonly int recourseGrowth = 0;
+        [DataMember]
         public int DamageLevel {
             get;
             set;
         }
+        [DataMember]
         public int ArmorLevel {
             get;
             set;
         }
+        [DataMember]
         public int RecourseLevel {
             get;
             set;
         }
+        [DataMember]
         public int RiflemanLevel {
             get;
             set;
         }
+        [DataMember]
         public int TankLevel {
             get;
             set;

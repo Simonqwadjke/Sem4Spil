@@ -1,11 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-using ModelLayer;
 
-public class GattlingTurretBehavior : MonoBehaviour {
-
-
-    public Sprite[] sprites;
+public class TestRayCasy : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
