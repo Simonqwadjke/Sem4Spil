@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ModelLayer {
     public class Battle {
-        public int InvatedID {
+        public int DefenderID {
             get;
             set;
         }
-        public int InvaterID {
+        public int AttackerID {
             get;
             set;
         }

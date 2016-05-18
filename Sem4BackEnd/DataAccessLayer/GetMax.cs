@@ -18,6 +18,10 @@ namespace DataAccessLayer
             {
                 query += "Data";
             }
+            else
+            {
+                query += "s";
+            }
 
             using (SqlCommand command = DataConnection.GetDbCommand(query))
             {

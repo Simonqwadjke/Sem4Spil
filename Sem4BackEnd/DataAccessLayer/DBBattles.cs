@@ -43,7 +43,27 @@ namespace DataAccessLayer
         public bool SaveBattle(Battle battle)
         {
             //TODO: Implement
-            throw new NotImplementedException();
+            bool success = false;
+            int battleid = GetMax.GetMaxID("Battle");
+            string query = "INSERT INTO Battles(BattleID, DefenderID, AttackerID, BattleOutcome, PlunderedWood, PlunderedIron)"
+                         + " VALUES(@BATTLEID, @DEFENDERID, @ATTACKERID, @BATTLEOUTCOME, @PLUNDEREDWOOD, @PLUNDEREDIRON)";
+
+            using (SqlCommand command = DataConnection.GetDbCommand(query))
+            {
+                command.Parameters.AddWithValue("@BATTLEID", battleid);
+                command.Parameters.AddWithValue("@DEFENDERID", battle.DefenderID);
+                command.Parameters.AddWithValue("@ATTACkerID", battle.AttackerID);
+                command.Parameters.AddWithValue("@BATTLEOUTCOME", battle.Outcome);
+                command.Parameters.AddWithValue("@PLUNDEREDWOOD", battle.PlunderedWood);
+                command.Parameters.AddWithValue("@PLUNDEREDIRON", battle.PlunderedIron);
+
+                if (command.ExecuteNonQuery() > 0)
+                {
+                    success = true;
+                }
+            }
+
+            return success;
         }
 
         private List<Battle> CreateBattlesObj(IDataReader reader)
