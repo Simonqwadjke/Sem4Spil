@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ModelLayer.Units {
     [DataContract]
     [KnownType(typeof(Unit))]
-    class Rifleman : Unit {
+    public class Rifleman : Unit {
         [DataMember]
         public int Accuricy {
             get;
