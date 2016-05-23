@@ -15,10 +15,19 @@ namespace ApplicationServer
         private SessionManager sessionmgr = new SessionManager();
         public User Login(User user)
         {
+            User rtnUser = null;
             MD5 md5 = MD5.Create();
-            IDBUser dbuser = new DBUser();
+            IDBUser dbUser = new DBUser();
+            IDBBuilding dbBuilding = new DBBuilding();
+            IDBUnit dbUnit = new DBUnit();
+            IDBUpgrade dbUpgrade= new DBUpgrade();
+
             user.Password = PasswordHashing(user.Password);
-            return dbuser.Login(user, sessionmgr.createSession());
+            rtnUser = dbUser.Login(user, sessionmgr.createSession());
+            rtnUser.Map = new Map();
+            dbBuilding.GetUserBuildings(rtnUser);
+            
+            return rtnUser;
         }
 
         private string PasswordHashing(string password)
