@@ -1,0 +1,4 @@
+Test 1: Smooth zoom
+	Changes in script CameraZoom on Main Camera in scene Map on line 47 & 54.
+	Added scale by dividing cam size with the new values.
+

@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;
 
 public class CameraDrag : MonoBehaviour {
 
@@ -10,7 +9,6 @@ public class CameraDrag : MonoBehaviour {
     Vector3 current_position = Vector3.zero;
     Vector3 camera_position = Vector3.zero;
     bool mouseDown;
-    public Text text;
 
     //float z = 0.0f;
 
@@ -28,10 +26,7 @@ public class CameraDrag : MonoBehaviour {
 
 
     void Update() {
-        if(Input.GetMouseButtonDown(0)) {
-            if(Input.touchCount == 1) text.text = "CLICK";
-            else text.text = "noclick";
-        }
+
 
         if(mouseDown) {
             if(Input.GetMouseButtonDown(0)) {

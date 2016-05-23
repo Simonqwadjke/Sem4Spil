@@ -44,17 +44,17 @@ public class CameraZoom : MonoBehaviour {
 
             if(camera.orthographic) {
                 // ... change the orthographic size based on the change in distance between the touches.
-                camera.orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed;
+                camera.orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed / camera.orthographicSize;
 
                 // Make sure the orthographic size never drops below zero.
-                camera.orthographicSize = Mathf.Max(camera.orthographicSize, 0.1f);
+                camera.orthographicSize = Mathf.Max(camera.orthographicSize, 1f);
             }
             else {
                 // Otherwise change the field of view based on the change in distance between the touches.
-                camera.fieldOfView += deltaMagnitudeDiff * perspectiveZoomSpeed;
+                camera.fieldOfView += deltaMagnitudeDiff * perspectiveZoomSpeed / camera.fieldOfView;
 
                 // Clamp the field of view to make sure it's between 0 and 180.
-                camera.fieldOfView = Mathf.Clamp(camera.fieldOfView, 0.1f, 179.9f);
+                camera.fieldOfView = Mathf.Clamp(camera.fieldOfView, 1f, 179.9f);
             }
         }
     }
