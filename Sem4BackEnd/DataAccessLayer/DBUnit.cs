@@ -24,7 +24,7 @@ namespace DataAccessLayer
 
                 for (int i = 0; i < GroupNo.Count; i++)
                 {
-                    query += " SELECT * FROM Unit, Group"
+                    query += " SELECT  FROM Unit"
                            + " WHERE GroupID = " + GroupNo[i];
                 }
 
@@ -67,13 +67,26 @@ namespace DataAccessLayer
                 do
                 {
                     List<Unit> list = new List<Unit>();
-                    while (reader.Read())
+                    do
                     {
                         //TODO: make Units and add to List
                         Unit unit = null;
+                        switch (reader["Type"].ToString())
+                        {
+                            case "Rifleman":
+                                unit = new Rifleman();
+                                
+                                break;
+                            case "Tank":
+                                unit = new Tank();
+                                break;
+                            default:
+                                Console.WriteLine("Error: UnitDB found an unknown unit type");
+                                break;
+                        }
 
                         list.Add(unit);
-                    }
+                    } while (reader.Read());
                     groups.Add(list);
                 } while (reader.NextResult());
             }
@@ -89,8 +102,8 @@ namespace DataAccessLayer
         private List<int> GetGroupNo(User user)
         {
             List<int> GroupNo = new List<int>();
-            string query = "SELECT GroupID FROM Group, UserData"
-                         + " WHERE Group.UserID = UserData.UserID AND UserData.UserID = @USERID";
+            string query = "SELECT GroupID FROM Group"
+                         + " WHERE UserID = @USERID";
 
             try
             {
