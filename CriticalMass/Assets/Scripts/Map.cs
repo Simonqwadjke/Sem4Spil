@@ -2,9 +2,17 @@
 using System.Collections;
 using System;
 
-public class Map : MonoBehaviour {
+public class Map{
 
-    public GameObject CreateComponent(Sprite sp, Vector3 v3, String objectName, Transform parrent, string layer = "Default") {
+	public Vector3 pos(int x, int y) {
+		return new Vector3(x + 2, y);
+	}
+
+	public Vector3 pos(ModelLayer.Location location) {
+		return new Vector3(location.X + 2, location.Y);
+	}
+
+	public GameObject CreateComponent(Sprite sp, Vector3 v3, String objectName, Transform parrent, string layer = "Default") {
 
         GameObject gObj = new GameObject(objectName);
 

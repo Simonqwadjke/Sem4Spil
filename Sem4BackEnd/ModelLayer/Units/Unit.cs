@@ -35,7 +35,7 @@ namespace ModelLayer.Units {
             get;
             set;
         }
-        public Point Loaction {
+        public Location Loaction {
             get;
             set;
         }

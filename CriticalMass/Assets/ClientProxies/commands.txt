@@ -1,5 +1,6 @@
 CD:
 C:\Users\Simonqwadjke\Documents\GitHub\Sem4Spil\CriticalMass\Assets\ClientProxies
+C:\Users\Simonqwadjke\Desktop\GitHub\Sem4Spil\CriticalMass\Assets\ClientProxies
 
 Command:
-svcutil -out:Service.cs http://localhost:8081/ServiceLibrary?wsdl
+svcutil -syncOnly -out:Service.cs http://localhost:8081/ServiceLibrary?wsdl

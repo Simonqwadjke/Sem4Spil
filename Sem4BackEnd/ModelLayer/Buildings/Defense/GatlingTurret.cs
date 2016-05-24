@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace ModelLayer.Buildings.Defense {
     [DataContract]
-    [KnownType(typeof(Defensive))]
     public class GatlingTurret : Defensive {
         [DataMember]
         public double Accuracy {

@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Drawing;
 using System.Runtime.Serialization;
 
 namespace ModelLayer.Buildings {
     [DataContract]
+    [KnownType(typeof(Defense.Defensive))]
+    [KnownType(typeof(Passive.Resouce))]
+    [KnownType(typeof(Passive.Labratory))]
+    [KnownType(typeof(Passive.HeadQuarters))]
     public abstract class Building {
         [DataMember]
         public int HitPoints {
@@ -30,7 +33,7 @@ namespace ModelLayer.Buildings {
             set;
         }
         [DataMember]
-        public Point Location {
+        public Location Location {
             get;
             set;
         }
@@ -40,9 +43,10 @@ namespace ModelLayer.Buildings {
             set;
         }
 
-        public bool checkLocation(Point location) {
+        public bool checkLocation(Location location) {
             if(location.X >= this.Location.X && location.X <= this.Location.X + Size.Width &&
-               location.Y >= this.Location.Y && location.Y <= this.Location.Y + Size.Height) {
+               location.Y >= this.Location.Y && location.Y <= this.Location.Y + Size.Height) 
+            {
                 return true;
             }
             return false;

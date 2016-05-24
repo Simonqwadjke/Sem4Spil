@@ -1,38 +1,53 @@
 ﻿using UnityEngine;
 using System.Collections;
+using ModelLayer.Buildings.Defense;
 
 public class GattlingTurretBehavior : MonoBehaviour {
-    public Sprite[] sprites;
-    int currentSprite = 0;
+	public Sprite[] sprites;
+	public GatlingTurret source;
+	Map map = new Map();
+	int currentSprite = 0;
 
-    // Use this for initialization
-    void Start() {
-        updateTurretSprite();
-    }
+	// Use this for initialization
+	void Start() {
+		demo();
 
-    void updateTurretSprite() {
-        SpriteRenderer sp = GetComponent<SpriteRenderer>();
-        sp.sprite = sprites[currentSprite];
-    }
+		transform.position = map.pos(source.Location);
 
-    // Update is called once per frame
-    void Update() {
+		updateTurretSprite();
+	}
 
-    }
+	void updateTurretSprite() {
+		SpriteRenderer sp = GetComponent<SpriteRenderer>();
+		sp.sprite = sprites[currentSprite];
+	}
+
+	// Update is called once per frame
+	void Update() {
+
+	}
 
 
 
+	void demo() {
+		if (source == null) {
+			source = new GatlingTurret();
+		}
+		source.Range = 5;
+		source.Location = new ModelLayer.Location() { X = 3, Y = 3 };
 
+	}
 
-    int a = 200;
-    int b = 0;
-    void demoTurretSprites() {
-        b++;
-        if(b == a) {
-            b = 0;
-            currentSprite++;
-            if(currentSprite == sprites.Length) currentSprite = 0;
-            updateTurretSprite();
-        }
-    }
+	int a = 200;
+	int b = 0;
+	void demoTurretSprites() {
+		b++;
+		if (b == a) {
+			b = 0;
+			currentSprite++;
+			if (currentSprite == sprites.Length)
+				currentSprite = 0;
+			updateTurretSprite();
+		}
+	}
 }

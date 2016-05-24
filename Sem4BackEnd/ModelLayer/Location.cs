@@ -5,16 +5,20 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ModelLayer.Buildings.Defense {
+namespace ModelLayer
+{
     [DataContract]
-    public class FlameThrower : Defensive {
+    public class Location
+    {
         [DataMember]
-        public int BurnTime {
+        public float X
+        {
             get;
             set;
         }
         [DataMember]
-        public int BurnDamage {
+        public float Y
+        {
             get;
             set;
         }

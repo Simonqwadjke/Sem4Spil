@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace ModelLayer.Buildings.Defense {
     [DataContract]
-    [KnownType(typeof(Defensive))]
     public class Cannon : Defensive {
         [DataMember]
         public int SplashDamage {
