@@ -34,7 +34,7 @@ namespace Host
                     Console.WriteLine("BaseAddress: " + host.BaseAddresses[0].ToString());
                     if (Console.ReadLine().Equals("exit"))
                     {
-                        host.Abort();
+                        host.Close();
                     }
                 }
             }

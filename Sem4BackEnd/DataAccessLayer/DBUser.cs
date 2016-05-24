@@ -68,7 +68,7 @@ namespace DataAccessLayer
                 }
             }
 
-            
+            UpdateLastLogin(user);
 
             return user;
         }
@@ -111,7 +111,19 @@ namespace DataAccessLayer
 
         private bool UpdateLastLogin(User user)
         {
-            return false;
+            bool success = false;
+            string query = "UPDATE UserData SET LastLogin = @TIME";
+
+            using (SqlCommand command = DataConnection.GetDbCommand(query))
+            {
+                command.Parameters.AddWithValue("@TIME", DateTime.Now);
+
+                if (command.ExecuteNonQuery() > 0)
+                {
+                    success = true;
+                }
+            }
+            return success;
         }
 
         private User CreateUserObject(IDataReader reader, string sessionString)
