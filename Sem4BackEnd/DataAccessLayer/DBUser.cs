@@ -111,7 +111,7 @@ namespace DataAccessLayer
 
         private bool UpdateLastLogin(User user)
         {
-            return true;
+            return false;
         }
 
         private User CreateUserObject(IDataReader reader, string sessionString)
@@ -126,7 +126,10 @@ namespace DataAccessLayer
                 user.Country = reader["Country"].ToString();
                 user.Ranking = Convert.ToInt32(reader["Ranking"]);
                 user.Level = Convert.ToInt32(reader["Level"]);
-                user.LastLogin = Convert.ToDateTime(reader["LastLogin"]);
+                if (!(reader["LastLogin"] is DBNull))
+                {
+                    user.LastLogin = Convert.ToDateTime(reader["LastLogin"]);
+                }
             }
             catch (Exception e)
             {

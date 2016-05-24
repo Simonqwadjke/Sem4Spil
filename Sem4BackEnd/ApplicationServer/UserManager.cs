@@ -24,9 +24,12 @@ namespace ApplicationServer
 
             user.Password = PasswordHashing(user.Password);
             rtnUser = dbUser.Login(user, sessionmgr.createSession());
+
             rtnUser.Map = new Map();
             dbBuilding.GetUserBuildings(rtnUser);
-            
+            dbUnit.GetUserUnits(rtnUser);
+            dbUpgrade.GetUserUpgrades(user);
+
             return rtnUser;
         }
 

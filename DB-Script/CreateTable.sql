@@ -54,7 +54,7 @@ create table Buildings
 BuildingID	int NOT NULL,
 UserID		int NOT NULL,
 Xlocation	int NOT NULL,
-Yloaction	int NOT NULL,
+Ylocation	int NOT NULL,
 type		varchar(20),
 level		int NOT NULL,
 primary key (BuildingID),

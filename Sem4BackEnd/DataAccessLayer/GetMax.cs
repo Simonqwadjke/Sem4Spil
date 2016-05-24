@@ -12,7 +12,8 @@ namespace DataAccessLayer
     {
         public static int GetMaxID(string tableName)
         {
-            int maxID = 0;
+            int maxID = 1;
+
             string query = "SELECT MAX(" + tableName + "ID)  FROM " + tableName;
             if (tableName.Equals("User"))
             {
