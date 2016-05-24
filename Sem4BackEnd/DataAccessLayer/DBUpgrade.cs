@@ -15,7 +15,7 @@ namespace DataAccessLayer
         public bool GetUserUpgrades(User user)
         {
             bool success = false;
-            string query = "SELECT Damage, Armor, Resource, Rilfeman, Tank FROM Upgrades"
+            string query = "SELECT Damage, Armor, Resource, Rifleman, Tank FROM Upgrades"
                          + " WHERE UserID = @USERID";
 
             try
@@ -73,7 +73,7 @@ namespace DataAccessLayer
                     }
                 }
             }
-                //TODO: Add more Exceptions
+            //TODO: Add more Exceptions
             catch (Exception e)
             {
                 Console.WriteLine("Unknown error in SaveUserUpgrades: " + e.Message);
@@ -85,27 +85,23 @@ namespace DataAccessLayer
         private bool FillUpgradesObj(User user, IDataReader reader)
         {
             bool success = false;
-            Upgrades upgrades = user.Upgrades;
-            if (upgrades != null)
+            if (user.Upgrades == null)
             {
-                try
-                {
-                    upgrades.ArmorLevel = Convert.ToInt32(reader["Armor"]);
-                    upgrades.DamageLevel = Convert.ToInt32(reader["Damage"]);
-                    upgrades.RecourseLevel = Convert.ToInt32(reader["Resource"]);
-                    upgrades.RiflemanLevel = Convert.ToInt32(reader["Rifleman"]);
-                    upgrades.TankLevel = Convert.ToInt32(reader["Tank"]); 
-                    success = true;
-                }
-                //TODO: Add more Exceptions
-                catch (Exception e)
-                {
-                    Console.WriteLine("Unknown error in FillUpgradesObj: " + e.Message);
-                }
+                user.Upgrades = new Upgrades(0, 0, 0); //TODO: Correct values
             }
-            else
+            try
             {
-                throw new Exception("UserUpgrades null in FillUpgradesObj");
+                user.Upgrades.ArmorLevel = Convert.ToInt32(reader["Armor"]);
+                user.Upgrades.DamageLevel = Convert.ToInt32(reader["Damage"]);
+                user.Upgrades.RecourseLevel = Convert.ToInt32(reader["Resource"]);
+                user.Upgrades.RiflemanLevel = Convert.ToInt32(reader["Rifleman"]);
+                user.Upgrades.TankLevel = Convert.ToInt32(reader["Tank"]);
+                success = true;
+            }
+            //TODO: Add more Exceptions
+            catch (Exception e)
+            {
+                Console.WriteLine("Unknown error in FillUpgradesObj: " + e.Message);
             }
 
             return success;

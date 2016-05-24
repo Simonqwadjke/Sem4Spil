@@ -65,59 +65,60 @@ namespace DataAccessLayer
         private bool FillUserBuildings(User user, IDataReader reader)
         {
             bool success = false;
-            if (user.Map != null)
+            if (user.Map == null)
             {
-                List<Building> list = new List<Building>();
-                do
-                {
-                    Building building = null;
-                    int x = Convert.ToInt32(reader["Xlocation"]);
-                    int y = Convert.ToInt32(reader["Ylocation"]);
-                    Location location = new Location(x, y);
-                    switch (reader["type"].ToString())
-                    {
-                        case "Cannon":
-                            building = new Cannon();
-                            building.Location = location;
-                            break;
-                        case "FlameThrower":
-                            building = new FlameThrower();
-                            building.Location = location;
-                            break;
-                        case "GattlingTurret":
-                            building = new GatlingTurret();
-                            building.Location = location;
-                            break;
-                        case "Wall":
-                            building = new Wall();
-                            building.Location = location;
-                            break;
-                        case "HeadQuaters":
-                            building = new HeadQuarters();
-                            building.Location = location;
-                            break;
-                        case "Labratory":
-                            building = new Labratory();
-                            building.Location = location;
-                            break;
-                        case "SawMill":
-                            building = new SawMill();
-                            building.Location = location;
-                            break;
-                        case "IronMine":
-                            building = new IronMine();
-                            building.Location = location;
-                            break;
-                        default:
-                            Console.WriteLine("Error: found unknown building type");
-                            break;
-                    }
-                    list.Add(building);
-                } while (reader.Read());
-
-                user.Map.Buildinds = list;
-                success = true;
+                user.Map = new Map();
             }
+            List<Building> list = new List<Building>();
+            do
+            {
+                Building building = null;
+                int x = Convert.ToInt32(reader["Xlocation"]);
+                int y = Convert.ToInt32(reader["Ylocation"]);
+                Location location = new Location(x, y);
+                switch (reader["type"].ToString())
+                {
+                    case "Cannon":
+                        building = new Cannon();
+                        building.Location = location;
+                        break;
+                    case "FlameThrower":
+                        building = new FlameThrower();
+                        building.Location = location;
+                        break;
+                    case "GattlingTurret":
+                        building = new GatlingTurret();
+                        building.Location = location;
+                        break;
+                    case "Wall":
+                        building = new Wall();
+                        building.Location = location;
+                        break;
+                    case "HeadQuaters":
+                        building = new HeadQuarters();
+                        building.Location = location;
+                        break;
+                    case "Labratory":
+                        building = new Labratory();
+                        building.Location = location;
+                        break;
+                    case "SawMill":
+                        building = new SawMill();
+                        building.Location = location;
+                        break;
+                    case "IronMine":
+                        building = new IronMine();
+                        building.Location = location;
+                        break;
+                    default:
+                        Console.WriteLine("Error: found unknown building type");
+                        break;
+                }
+                list.Add(building);
+            } while (reader.Read());
+
+            user.Map.Buildinds = list;
+            success = true;
 
             return success;
         }

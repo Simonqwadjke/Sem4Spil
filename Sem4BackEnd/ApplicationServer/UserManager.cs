@@ -27,8 +27,6 @@ namespace ApplicationServer
             user.Password = PasswordHashing(user.Password);
             rtnUser = dbUser.Login(user, sessionmgr.createSession());
 
-            rtnUser.Map = new Map();
-            rtnUser.Upgrades = new Upgrades(0,0,0); //TODO: Correct values
             dbUnit.GetUserUnits(rtnUser);
             dbBattle.GetUserBattles(rtnUser);
             dbUpgrade.GetUserUpgrades(rtnUser);

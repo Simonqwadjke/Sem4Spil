@@ -62,6 +62,10 @@ namespace DataAccessLayer
         private bool FillUserUnitGroups(User user, IDataReader reader)
         {
             bool success = false;
+            if (user.Garison == null)
+            {
+                user.Garison = new List<Group>();
+            }
             try
             {
                 do

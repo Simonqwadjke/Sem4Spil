@@ -18,5 +18,9 @@ namespace ModelLayer.Units {
             get;
             set;
         }
+        public Group()
+        {
+            units = new List<Unit>();
+        }
     }
 }
