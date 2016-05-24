@@ -22,6 +22,9 @@ namespace UnitTestProject1
             Assert.IsNotNull(user.Map.Buildinds[0], "Knud had no Building");
             Assert.IsNotNull(user.Garison, "Knud had no Garison");
             Assert.IsNotNull(user.Garison[0], "Knud had no Unit");
+            Assert.IsNotNull(user.Battles, "No Battles found");
+            Assert.IsNotNull(user.Upgrades, "No Upgrades found");
+            Assert.IsNotNull(user.Invaders, "No Invaders found");
         }
 
         private string PasswordHashing(string password)
