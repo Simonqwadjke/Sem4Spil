@@ -50,22 +50,30 @@ namespace DataAccessLayer
             string username = user.Username;
             string password = user.Password;
 
-            using (SqlCommand command = DataConnection.GetDbCommand(query))
+            try
             {
-                command.Parameters.AddWithValue("@USERNAME", username);
-                command.Parameters.AddWithValue("@PASSWORD", password);
-                using (IDataReader reader = command.ExecuteReader())
+                using (SqlCommand command = DataConnection.GetDbCommand(query))
                 {
-                    if (reader.Read())
+                    command.Parameters.AddWithValue("@USERNAME", username);
+                    command.Parameters.AddWithValue("@PASSWORD", password);
+                    using (IDataReader reader = command.ExecuteReader())
                     {
-                        user = CreateUserObject(reader, sessionString);
-                        user.Username = username;
-                    }
-                    else
-                    {
-                        user = null;
+                        if (reader.Read())
+                        {
+                            user = CreateUserObject(reader, sessionString);
+                            user.Username = username;
+                        }
+                        else
+                        {
+                            user = null;
+                        }
                     }
                 }
+            }
+            //TODO: Add more Exceptions
+            catch (Exception e)
+            {
+                Console.WriteLine("Unknown Error in Login: " + e.Message);
             }
 
             UpdateLastLogin(user);

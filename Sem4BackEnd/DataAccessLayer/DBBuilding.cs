@@ -22,17 +22,28 @@ namespace DataAccessLayer
             string query = "SELECT XLocation, YLocation, type, Level FROM Buildings"
                          + " WHERE UserID = @USERID";
 
-            using (SqlCommand command = DataConnection.GetDbCommand(query))
+            try
             {
-                command.Parameters.AddWithValue("@USERID", user.UserID);
-
-                using (IDataReader reader = command.ExecuteReader())
+                using (SqlCommand command = DataConnection.GetDbCommand(query))
                 {
-                    if (reader.Read())
+                    command.Parameters.AddWithValue("@USERID", user.UserID);
+
+                    using (IDataReader reader = command.ExecuteReader())
                     {
-                        FillUserBuildings(user, reader);
+                        if (reader.Read())
+                        {
+                            if (FillUserBuildings(user, reader))
+                            {
+                                success = true;
+                            }
+                        }
                     }
                 }
+            }
+            //TODO: Add more Exceptions
+            catch (Exception e)
+            {
+                Console.WriteLine("Unknown Error in GetUserBuildings: " + e.Message);
             }
 
 
@@ -62,7 +73,7 @@ namespace DataAccessLayer
                     Building building = null;
                     int x = Convert.ToInt32(reader["Xlocation"]);
                     int y = Convert.ToInt32(reader["Ylocation"]);
-                    Point location = new Point(x, y);
+                    Location location = new Location(x, y);
                     switch (reader["type"].ToString())
                     {
                         case "Cannon":

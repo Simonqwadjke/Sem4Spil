@@ -24,7 +24,7 @@ namespace DataAccessLayer
 
                 for (int i = 0; i < GroupNo.Count; i++)
                 {
-                    query += " SELECT  FROM Unit"
+                    query += " SELECT Type FROM Units"
                            + " WHERE GroupID = " + GroupNo[i];
                 }
 
@@ -32,13 +32,14 @@ namespace DataAccessLayer
                 {
                     using (SqlCommand command = DataConnection.GetDbCommand(query))
                     {
-                        command.Parameters.AddWithValue("@USERID", user.UserID);
-
                         using (IDataReader reader = command.ExecuteReader())
                         {
                             if (reader.Read())
                             {
-                                FillUserUnitGroups(user, reader);
+                                if (FillUserUnitGroups(user, reader))
+                                {
+                                    success = true;
+                                }
                             }
                         }
                     }
@@ -61,12 +62,11 @@ namespace DataAccessLayer
         private bool FillUserUnitGroups(User user, IDataReader reader)
         {
             bool success = false;
-            List<List<Unit>> groups = new List<List<Unit>>();
             try
             {
                 do
                 {
-                    List<Unit> list = new List<Unit>();
+                    Group group = new Group();
                     do
                     {
                         //TODO: make Units and add to List
@@ -75,7 +75,6 @@ namespace DataAccessLayer
                         {
                             case "Rifleman":
                                 unit = new Rifleman();
-                                
                                 break;
                             case "Tank":
                                 unit = new Tank();
@@ -85,9 +84,10 @@ namespace DataAccessLayer
                                 break;
                         }
 
-                        list.Add(unit);
+                        group.units.Add(unit);
                     } while (reader.Read());
-                    groups.Add(list);
+                    user.Garison.Add(group);
+                    success = true;
                 } while (reader.NextResult());
             }
             //TODO: Add more exceptions
@@ -102,7 +102,7 @@ namespace DataAccessLayer
         private List<int> GetGroupNo(User user)
         {
             List<int> GroupNo = new List<int>();
-            string query = "SELECT GroupID FROM Group"
+            string query = "SELECT GroupID FROM Groups"
                          + " WHERE UserID = @USERID";
 
             try

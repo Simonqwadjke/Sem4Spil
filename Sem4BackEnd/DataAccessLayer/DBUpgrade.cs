@@ -28,8 +28,10 @@ namespace DataAccessLayer
                     {
                         if (reader.Read())
                         {
-                            FillUpgradesObj(user.Upgrades, reader);
-                            success = true;
+                            if (FillUpgradesObj(user, reader))
+                            {
+                                success = true;
+                            }
                         }
                     }
                 }
@@ -59,15 +61,16 @@ namespace DataAccessLayer
             {
                 using (SqlCommand command = DataConnection.GetDbCommand(query))
                 {
-                    //TODO: Add tank to upgrades and remove comments here
                     command.Parameters.AddWithValue("@DAMAGE", upgrades.DamageLevel);
                     command.Parameters.AddWithValue("@ARMOR", upgrades.ArmorLevel);
                     command.Parameters.AddWithValue("@RESOURCE", upgrades.RecourseLevel);
                     command.Parameters.AddWithValue("@RIFLEMAN", upgrades.RiflemanLevel);
-                    //command.Parameters.AddWithValue("@TANK", upgrades.Tank);
+                    command.Parameters.AddWithValue("@TANK", upgrades.TankLevel);
 
-                    command.ExecuteNonQuery();
-                    success = true;
+                    if (command.ExecuteNonQuery() > 0)
+                    {
+                        success = true;
+                    }
                 }
             }
                 //TODO: Add more Exceptions
@@ -79,8 +82,10 @@ namespace DataAccessLayer
             return success;
         }
 
-        private Upgrades FillUpgradesObj(Upgrades upgrades, IDataReader reader)
+        private bool FillUpgradesObj(User user, IDataReader reader)
         {
+            bool success = false;
+            Upgrades upgrades = user.Upgrades;
             if (upgrades != null)
             {
                 try
@@ -89,8 +94,8 @@ namespace DataAccessLayer
                     upgrades.DamageLevel = Convert.ToInt32(reader["Damage"]);
                     upgrades.RecourseLevel = Convert.ToInt32(reader["Resource"]);
                     upgrades.RiflemanLevel = Convert.ToInt32(reader["Rifleman"]);
-                    //upgrades.TankLevel = Convert.ToInt32(reader["Tank"]); 
-                    //TODO: Add tank to upgrades and remove comment here
+                    upgrades.TankLevel = Convert.ToInt32(reader["Tank"]); 
+                    success = true;
                 }
                 //TODO: Add more Exceptions
                 catch (Exception e)
@@ -103,7 +108,7 @@ namespace DataAccessLayer
                 throw new Exception("UserUpgrades null in FillUpgradesObj");
             }
 
-            return upgrades;
+            return success;
         }
     }
 }

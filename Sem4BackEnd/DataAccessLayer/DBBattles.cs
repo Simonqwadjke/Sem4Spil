@@ -11,24 +11,32 @@ namespace DataAccessLayer
 {
     public class DBBattles : IDBBattles
     {
-        public bool GetBattles(User user)
+        public bool GetUserBattles(User user)
         {
             //TODO: Implement
             bool success = false;
             string query = "SELECT BattleOutcome, PlunderedWood, PlunderedIron FROM Battles"
                          + " WHERE AttackerID = @USERID OR DefenderID = @USERID";
 
-            using (SqlCommand command = DataConnection.GetDbCommand(query))
+            try
             {
-                command.Parameters.AddWithValue("@USERID", user.UserID);
-
-                using (IDataReader reader = command.ExecuteReader())
+                using (SqlCommand command = DataConnection.GetDbCommand(query))
                 {
-                    if (reader.Read())
+                    command.Parameters.AddWithValue("@USERID", user.UserID);
+
+                    using (IDataReader reader = command.ExecuteReader())
                     {
-                        user.Battles = CreateBattlesObj(reader);
+                        if (reader.Read())
+                        {
+                            user.Battles = CreateBattlesObj(reader);
+                        }
                     }
                 }
+            }
+            //TODO: Add more Exceptions
+            catch (Exception e)
+            {
+                Console.WriteLine("Unknown Error in GetUserBattles: " + e.Message);
             }
 
             return success;

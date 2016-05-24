@@ -19,6 +19,7 @@ namespace ModelLayer {
             get;
             set;
         }
+        //TODO: Fix name, spelled: Garrison
         [DataMember]
         public List<Group> Garison {
             get;

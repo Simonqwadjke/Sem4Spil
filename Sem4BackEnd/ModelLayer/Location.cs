@@ -10,6 +10,12 @@ namespace ModelLayer
     [DataContract]
     public class Location
     {
+        public Location(float x, float y)
+        {
+            X = x;
+            Y = y;
+        }
+
         [DataMember]
         public float X
         {

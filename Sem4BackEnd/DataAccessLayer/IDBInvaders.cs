@@ -7,9 +7,9 @@ using ModelLayer;
 
 namespace DataAccessLayer
 {
-    public interface IDBBattles
+    public interface IDBInvaders
     {
-        bool GetUserBattles(User user);
-        bool SaveBattle(Battle battle);
+        bool GetUserInvaders(User user);
+        bool SaveUserInvaders(User user);
     }
 }

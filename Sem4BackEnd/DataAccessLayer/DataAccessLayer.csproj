@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBInvaders.cs" />
     <Compile Include="GetMax.cs" />
+    <Compile Include="IDBInvaders.cs" />
     <Compile Include="IDBUpgrade.cs" />
     <Compile Include="DBBattles.cs" />
     <Compile Include="DBBuilding.cs" />

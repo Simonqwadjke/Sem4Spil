@@ -18,17 +18,23 @@ namespace ApplicationServer
             User rtnUser = null;
             MD5 md5 = MD5.Create();
             IDBUser dbUser = new DBUser();
-            IDBBuilding dbBuilding = new DBBuilding();
             IDBUnit dbUnit = new DBUnit();
-            IDBUpgrade dbUpgrade= new DBUpgrade();
+            IDBBattles dbBattle = new DBBattles();
+            IDBUpgrade dbUpgrade = new DBUpgrade();
+            IDBInvaders dbInvader = new DBInvaders();
+            IDBBuilding dbBuilding = new DBBuilding();
 
             user.Password = PasswordHashing(user.Password);
             rtnUser = dbUser.Login(user, sessionmgr.createSession());
 
             rtnUser.Map = new Map();
-            dbBuilding.GetUserBuildings(rtnUser);
+            rtnUser.Upgrades = new Upgrades(0,0,0); //TODO: Correct values
             dbUnit.GetUserUnits(rtnUser);
-            dbUpgrade.GetUserUpgrades(user);
+            dbBattle.GetUserBattles(rtnUser);
+            dbUpgrade.GetUserUpgrades(rtnUser);
+            dbInvader.GetUserInvaders(rtnUser);
+            dbBuilding.GetUserBuildings(rtnUser);
+
 
             return rtnUser;
         }
