@@ -16,5 +16,7 @@ namespace ServiceLibrary {
         Map Update();
         [OperationContract]
         User Login(User user);
+        [OperationContract]
+        bool SaveData(User user);
     }
 }

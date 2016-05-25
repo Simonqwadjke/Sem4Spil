@@ -26,12 +26,15 @@ namespace Host
             using (ServiceHost host = new ServiceHost(typeof(ServiceLibrary.ServerService)))
             {
                 host.Open();
+                SessionManager mgr = SessionManager.getInstance();
+
                 while (host.State.ToString().Equals("Opened"))
                 {
                     Console.Clear();
                     Console.WriteLine("Service is open");
                     Console.WriteLine("Number of ChannelDispatchers: " + host.ChannelDispatchers.Count);
                     Console.WriteLine("BaseAddress: " + host.BaseAddresses[0].ToString());
+                    Console.WriteLine("last refresh: " + DateTime.Now);
                     if (Console.ReadLine().Equals("exit"))
                     {
                         host.Close();
@@ -43,6 +46,16 @@ namespace Host
 
         private static string testHashing(string input)
         {
+            MD5 md5 = MD5.Create();
+            Byte[] hash = md5.ComputeHash(Encoding.ASCII.GetBytes(input));
+
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < hash.Length; i++)
+            {
+                sb.Append(hash[i].ToString("X2"));
+            }
+            return sb.ToString();
+            #region Other way of doing it
             //string outputstring = "";
             //if (input.Length > 0)
             //{
@@ -57,15 +70,7 @@ namespace Host
             //{
             //    outputstring = input;
             //}
-            MD5 md5 = MD5.Create();
-            Byte[] hash = md5.ComputeHash(Encoding.ASCII.GetBytes(input));
-
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < hash.Length; i++)
-            {
-                sb.Append(hash[i].ToString("X2"));
-            }
-            return sb.ToString();
+            #endregion
         }
 
         private Program()
@@ -119,7 +124,7 @@ namespace Host
 
         private void createUser()
         {
-            User user = new User(new SessionManager().createSession());
+            User user = new User(SessionManager.getInstance().createSession());
             user.UserID = 1;
             bool running = true;
             do

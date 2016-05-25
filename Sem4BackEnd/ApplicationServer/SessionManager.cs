@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Threading;
 using ModelLayer;
 
 
@@ -14,15 +14,29 @@ namespace ApplicationServer
         List<Session> sessions;
         Timer cleaner;
         Random r;
+        static SessionManager instance;
 
-        public SessionManager()
+        SessionManager()
         {
             sessions = new List<Session>();
             r = new Random();
-            cleaner = new Timer();
-            cleaner.Tick += new EventHandler(cleanUp);
-            cleaner.Interval = (int)TimeSpan.FromHours(1).TotalMilliseconds;
-            cleaner.Start();
+            cleaner = new Timer(new TimerCallback(cleanUp));
+            cleaner.Change(10000, (int)TimeSpan.FromHours(1).TotalMilliseconds);
+
+            #region WinForms Timer
+            //Timer cleaner = Timer(10000);
+            //cleaner.Tick += new EventHandler(cleanUp);
+            //cleaner.Interval = 10000;//(int)TimeSpan.FromHours(1).TotalMilliseconds;
+            //cleaner.Start();
+            #endregion
+        }
+        public static SessionManager getInstance()
+        {
+            if (instance == null)
+            {
+                instance = new SessionManager();
+            }
+            return instance;
         }
         public String createSession()
         {
@@ -71,15 +85,34 @@ namespace ApplicationServer
             }
             return result;
         }
-        public void cleanUp(object sender, EventArgs args)
+        public void cleanUp(object state)//(object sender, EventArgs args)
         {
+            int removedSessions = 0;
             DateTime now = DateTime.Now;
             for (int i = 0; i < sessions.Count; i++)
             {
                 if (sessions[1].Expired - now > TimeSpan.FromMinutes(15))
                 {
                     sessions.RemoveAt(i);
+                    removedSessions++;
                 }
+            }
+            Console.WriteLine("\nCleanup run at: " + now);
+            if (removedSessions > 1)
+            {
+                Console.WriteLine("    " + removedSessions + " Sessions were removed");
+            }
+            else if (removedSessions == 1)
+            {
+                Console.WriteLine("    1 Session was removed");
+            }
+            else if (removedSessions == 0)
+            {
+                Console.WriteLine("    No Sessions revomed");
+            }
+            else
+            {
+                Console.WriteLine("    Potential Error: " + removedSessions + " Sessions were removed");
             }
         }
     }

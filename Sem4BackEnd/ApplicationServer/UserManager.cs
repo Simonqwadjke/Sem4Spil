@@ -12,7 +12,8 @@ namespace ApplicationServer
     public class UserManager
     {
         private MD5 md5 = MD5.Create();
-        private SessionManager sessionmgr = new SessionManager();
+        private SessionManager sessionmgr = SessionManager.getInstance();
+
         public User Login(User user)
         {
             User rtnUser = null;
