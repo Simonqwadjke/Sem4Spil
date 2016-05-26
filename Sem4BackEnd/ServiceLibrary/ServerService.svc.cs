@@ -26,8 +26,7 @@ namespace ServiceLibrary {
 
         public bool SaveData(User user)
         {
-            //TODO: Implement
-            return false;
+            return usermgr.SaveData(user);
         }
     }
 }

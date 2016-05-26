@@ -38,6 +38,13 @@ namespace ApplicationServer
             return rtnUser;
         }
 
+        public bool SaveData(User user)
+        {
+            bool success = false;
+            //TODO: Implement
+            return success;
+        }
+
         private string PasswordHashing(string password)
         {
             Byte[] input = Encoding.ASCII.GetBytes(password);
