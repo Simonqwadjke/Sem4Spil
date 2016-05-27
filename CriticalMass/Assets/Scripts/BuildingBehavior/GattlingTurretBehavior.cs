@@ -12,7 +12,10 @@ public class GattlingTurretBehavior : MonoBehaviour {
 	void Start() {
 		demo();
 
-		transform.position = map.pos(source.Location);
+		GetComponent<BuildingBehavior>().source = source;
+		GetComponent<BuildingBehavior>().init();
+
+		//transform.position = map.pos(source.Location);
 
 		updateTurretSprite();
 	}
@@ -31,7 +34,7 @@ public class GattlingTurretBehavior : MonoBehaviour {
 
 	void demo() {
 		if (source == null) {
-			source = new GatlingTurret();
+			source = new ModelLayer.Buildings.Defense.GatlingTurret();
 		}
 		source.Range = 5;
 		source.Location = new ModelLayer.Location() { X = 3, Y = 3 };
