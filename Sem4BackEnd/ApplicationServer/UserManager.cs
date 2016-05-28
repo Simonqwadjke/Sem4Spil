@@ -34,22 +34,35 @@ namespace ApplicationServer
 
         public bool SaveData(User user)
         {
-            bool success = false;
+            bool success = false, partSuccess = true;
             //TODO: Implement
 
             if (new DBUser().GetUser(user.Username) != null)
             {
                 if (user.Garison != null)
                 {
-                    new DBUnit().SaveUserUnits(user);
+                    if (!new DBUnit().SaveUserUnits(user))
+                    {
+                        partSuccess = false;
+                    }
                 }
                 if (user.Map != null)
                 {
-                    new DBBuilding().SaveUserBuildings(user);
+                    if (!new DBBuilding().SaveUserBuildings(user))
+                    {
+                        partSuccess = false;
+                    }
                 }
                 if (user.Upgrades != null)
                 {
-                    new DBUpgrade().SaveUserUpgrades(user);
+                    if (!new DBUpgrade().SaveUserUpgrades(user))
+                    {
+                        partSuccess = false;
+                    }
+                }
+                if (partSuccess)
+                {
+                    success = true;
                 }
             }
 

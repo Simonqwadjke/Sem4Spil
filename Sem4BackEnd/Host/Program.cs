@@ -9,6 +9,7 @@ using ServiceLibrary;
 
 #region Temp
 using ModelLayer;
+using ModelLayer.Units;
 using System.Threading;
 using System.Windows.Forms;
 using System.Security.Cryptography;
@@ -27,13 +28,17 @@ namespace Host
             {
                 host.Open();
                 SessionManager mgr = SessionManager.getInstance();
+                User user = new User("");
+                user.Garison = new List<Group>();
+                user.Garison.Add(new Group());
+                user.Garison[0].units.Add(new Rifleman());
                 while (host.State.ToString().Equals("Opened"))
                 {
                     Console.Clear();
                     Console.WriteLine("Service is open");
                     Console.WriteLine("Number of ChannelDispatchers: " + host.ChannelDispatchers.Count);
                     Console.WriteLine("BaseAddress: " + host.BaseAddresses[0].ToString());
-                    Console.WriteLine("last refresh: " + DateTime.Now);
+                    Console.WriteLine("Press enter to refresh: last refresh at " + DateTime.Now);
                     if (Console.ReadLine().Equals("exit"))
                     {
                         host.Close();

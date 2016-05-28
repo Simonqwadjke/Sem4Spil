@@ -29,6 +29,7 @@ namespace DataAccessLayer
                         if (reader.Read())
                         {
                             user = CreateUserObject(reader, "");
+                            user.Username = username;
                         }
                     }
                 }

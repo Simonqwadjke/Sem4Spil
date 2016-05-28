@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Text;
+using System.Collections.Generic;
 using System.Security.Cryptography;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ApplicationServer;
 using ModelLayer;
+using ModelLayer.Units;
+using DataAccessLayer;
 
 namespace UnitTestProject1
 {
@@ -25,6 +28,21 @@ namespace UnitTestProject1
             Assert.IsNotNull(user.Battles, "No Battles found");
             Assert.IsNotNull(user.Upgrades, "No Upgrades found");
             Assert.IsNotNull(user.Invaders, "No Invaders found");
+        }
+
+        [TestMethod]
+        public void SaveUnitsTest()
+        {
+            User user = new DBUser().GetUser("kanut");
+            user.Garison = new List<Group>();
+            user.Garison.Add(new Group());
+            user.Garison.Add(new Group());
+            user.Garison[0].units.Add(new Rifleman());
+            user.Garison[0].units.Add(new Rifleman());
+            user.Garison[1].units.Add(new Rifleman());
+            user.Garison[1].units.Add(new Rifleman());
+
+            Assert.IsTrue(new UserManager().SaveData(user), "Nope");
         }
 
         private string PasswordHashing(string password)

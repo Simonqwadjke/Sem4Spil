@@ -54,7 +54,7 @@ namespace DataAccessLayer
 
         public bool SaveUserUnits(User user)
         {
-            bool success = true;
+            bool success = false;
             int maxGroupID = 0, maxUnitID = 0;
             string query = "";
 
@@ -69,17 +69,29 @@ namespace DataAccessLayer
             {
                 maxGroupID = GetMax.GetMaxID("Group");
                 maxUnitID = GetMax.GetMaxID("Unit");
-                query += " INSERT INTO Groups(UserID, GroupID)";
+                query += " INSERT INTO Groups(UserID, GroupID) VALUES";
                 for (int i = 0; i < user.Garison.Count; i++)
                 {
-                    query += " VALUES(@GROUPVALUES" + i + ")";
-                }
-                query += " INSERT INTO Units(UnitID, GroupID, Type)";
-                for (int i = 0; i < user.Garison.Count; i++)
-                {
-                    for (int j = 0; j < user.Garison[i].units.Count; i++)
+                    query += "(@USERID, @NEWGROUPID" + i + ")";
+                    if (i < user.Garison.Count - 1)
                     {
-                        query += " VALUES(@UNITVALUES" + i + j + ")";
+                        query += ", ";
+                    }
+                }
+                query += " INSERT INTO Units(UnitID, GroupID, Type) VALUES";
+                for (int i = 0; i < user.Garison.Count; i++)
+                {
+                    for (int j = 0; j < user.Garison[i].units.Count; j++)
+                    {
+                        query += "(@UNITID" + i + j + ", @NEWGROUPID" + i + ", @TYPE" + i + j + ")";
+                        if (j < user.Garison[i].units.Count - 1)
+                        {
+                            query += ", ";
+                        }
+                    }
+                    if (i < user.Garison.Count - 1)
+                    {
+                        query += ", ";
                     }
                 }
             }
@@ -92,13 +104,15 @@ namespace DataAccessLayer
                 }
                 if (user.Garison.Count > 0)
                 {
+                    command.Parameters.AddWithValue("@USERID", user.UserID);
                     for (int i = 0; i < user.Garison.Count; i++)
                     {
-                        command.Parameters.AddWithValue("@GROUPVALUES" + i, user.UserID + ", " + maxGroupID++);
-
+                        command.Parameters.AddWithValue("@NEWGROUPID" + i, maxGroupID++);
                         for (int j = 0; j < user.Garison[i].units.Count; j++)
                         {
-                            command.Parameters.AddWithValue("@UNITVALUES" + i + j + ")", maxUnitID++ + ", " );
+                            command.Parameters.AddWithValue("@UNITID" + i + j, maxUnitID++);
+                            command.Parameters.AddWithValue("@TYPE" + i + j,
+                                user.Garison[i].units[j].GetType().ToString().Split('.').Last());
                         }
                     }
                 }
