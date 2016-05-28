@@ -65,7 +65,7 @@ create table Groups
 (
 UserID		int NOT NULL,
 GroupID		int Unique NOT NULL,
-Primary key (UserID),
+Primary key (GroupID),
 Foreign key (UserID) references UserData(UserID)
 );
 

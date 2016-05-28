@@ -16,32 +16,43 @@ namespace ApplicationServer
 
         public User Login(User user)
         {
-            User rtnUser = null;
             MD5 md5 = MD5.Create();
-            IDBUser dbUser = new DBUser();
-            IDBUnit dbUnit = new DBUnit();
-            IDBBattles dbBattle = new DBBattles();
-            IDBUpgrade dbUpgrade = new DBUpgrade();
-            IDBInvaders dbInvader = new DBInvaders();
-            IDBBuilding dbBuilding = new DBBuilding();
 
             user.Password = PasswordHashing(user.Password);
-            rtnUser = dbUser.Login(user, sessionmgr.createSession());
+            user = new DBUser().Login(user, sessionmgr.createSession());
+            if (user != null)
+            {
+                new DBUnit().GetUserUnits(user);
+                new DBBattles().GetUserBattles(user);
+                new DBUpgrade().GetUserUpgrades(user);
+                new DBInvaders().GetUserInvaders(user);
+                new DBBuilding().GetUserBuildings(user);
+            }
 
-            dbUnit.GetUserUnits(rtnUser);
-            dbBattle.GetUserBattles(rtnUser);
-            dbUpgrade.GetUserUpgrades(rtnUser);
-            dbInvader.GetUserInvaders(rtnUser);
-            dbBuilding.GetUserBuildings(rtnUser);
-
-
-            return rtnUser;
+            return user;
         }
 
         public bool SaveData(User user)
         {
             bool success = false;
             //TODO: Implement
+
+            if (new DBUser().GetUser(user.Username) != null)
+            {
+                if (user.Garison != null)
+                {
+                    new DBUnit().SaveUserUnits(user);
+                }
+                if (user.Map != null)
+                {
+                    new DBBuilding().SaveUserBuildings(user);
+                }
+                if (user.Upgrades != null)
+                {
+                    new DBUpgrade().SaveUserUpgrades(user);
+                }
+            }
+
             return success;
         }
 

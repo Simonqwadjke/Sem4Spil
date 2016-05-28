@@ -19,10 +19,9 @@ namespace DataAccessLayer
 
             if (GroupNo.Count > 0)
             {
-                //TODO: fix SELECT
                 string query = "";
 
-                for (int i = 0; i < GroupNo.Count; i++)
+                for (int i = 0; i < GroupNo.Count; i++)// "Select in" kan bruges her
                 {
                     query += " SELECT Type FROM Units"
                            + " WHERE GroupID = " + GroupNo[i];
@@ -55,8 +54,62 @@ namespace DataAccessLayer
 
         public bool SaveUserUnits(User user)
         {
-            //TODO: Implement
-            throw new NotImplementedException();
+            bool success = true;
+            int maxGroupID = 0, maxUnitID = 0;
+            string query = "";
+
+            List<int> groupNo = GetGroupNo(user);
+
+            for (int i = 0; i < groupNo.Count; i++)
+            {
+                query += " DELETE FROM Units WHERE GroupID = @GROUPID" + i
+                       + " DELETE FROM Groups WHERE GroupID = @GROUPID" + i;
+            }
+            if (user.Garison.Count > 0)
+            {
+                maxGroupID = GetMax.GetMaxID("Group");
+                maxUnitID = GetMax.GetMaxID("Unit");
+                query += " INSERT INTO Groups(UserID, GroupID)";
+                for (int i = 0; i < user.Garison.Count; i++)
+                {
+                    query += " VALUES(@GROUPVALUES" + i + ")";
+                }
+                query += " INSERT INTO Units(UnitID, GroupID, Type)";
+                for (int i = 0; i < user.Garison.Count; i++)
+                {
+                    for (int j = 0; j < user.Garison[i].units.Count; i++)
+                    {
+                        query += " VALUES(@UNITVALUES" + i + j + ")";
+                    }
+                }
+            }
+
+            using (SqlCommand command = DataConnection.GetDbCommand(query))
+            {
+                for (int i = 0; i < groupNo.Count; i++)
+                {
+                    command.Parameters.AddWithValue("@GROUPID" + i, groupNo[i]);
+                }
+                if (user.Garison.Count > 0)
+                {
+                    for (int i = 0; i < user.Garison.Count; i++)
+                    {
+                        command.Parameters.AddWithValue("@GROUPVALUES" + i, user.UserID + ", " + maxGroupID++);
+
+                        for (int j = 0; j < user.Garison[i].units.Count; j++)
+                        {
+                            command.Parameters.AddWithValue("@UNITVALUES" + i + j + ")", maxUnitID++ + ", " );
+                        }
+                    }
+                }
+
+                if (command.ExecuteNonQuery() > 0)
+                {
+                    success = true;
+                }
+            }
+
+            return success;
         }
 
         private bool FillUserUnitGroups(User user, IDataReader reader)
@@ -84,7 +137,7 @@ namespace DataAccessLayer
                                 unit = new Tank();
                                 break;
                             default:
-                                Console.WriteLine("Error: UnitDB found an unknown unit type");
+                                Console.WriteLine("Error: DBUnit found an unknown unit type");
                                 break;
                         }
 

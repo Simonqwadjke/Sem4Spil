@@ -42,12 +42,6 @@ namespace DataAccessLayer
             return success;
         }
 
-        public bool SaveBattle()
-        {
-            //TODO: Implement
-            throw new NotImplementedException();
-        }
-
         public bool SaveBattle(Battle battle)
         {
             //TODO: Implement

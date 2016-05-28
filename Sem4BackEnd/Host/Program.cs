@@ -27,7 +27,6 @@ namespace Host
             {
                 host.Open();
                 SessionManager mgr = SessionManager.getInstance();
-
                 while (host.State.ToString().Equals("Opened"))
                 {
                     Console.Clear();
