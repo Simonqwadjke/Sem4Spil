@@ -28,10 +28,6 @@ namespace Host
             {
                 host.Open();
                 SessionManager mgr = SessionManager.getInstance();
-                User user = new User("");
-                user.Garison = new List<Group>();
-                user.Garison.Add(new Group());
-                user.Garison[0].units.Add(new Rifleman());
                 while (host.State.ToString().Equals("Opened"))
                 {
                     Console.Clear();
