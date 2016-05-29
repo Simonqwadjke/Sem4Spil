@@ -13,7 +13,9 @@ namespace ServiceLibrary {
     public interface IServerService {
 
         [OperationContract]
-        Map Update();
+        Map FetchMap(User user);
+        [OperationContract]
+        bool SaveBattle(Battle battle);
         [OperationContract]
         User Login(User user);
         [OperationContract]

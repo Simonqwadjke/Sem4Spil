@@ -14,9 +14,14 @@ namespace ServiceLibrary {
     public class ServerService : IServerService {
         UserManager usermgr = new UserManager();
 
-        public Map Update()
+        public Map FetchMap(User user)
         {
             return new Map();
+        }
+
+        public bool SaveBattle(Battle battle)
+        {
+            return false;
         }
 
         public User Login(User user)
