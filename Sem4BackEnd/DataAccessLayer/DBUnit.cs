@@ -112,7 +112,7 @@ namespace DataAccessLayer
                         {
                             command.Parameters.AddWithValue("@UNITID" + i + j, maxUnitID++);
                             command.Parameters.AddWithValue("@TYPE" + i + j,
-                                user.Garison[i].units[j].GetType().ToString().Split('.').Last());
+                                user.Garison[i].units[j].GetType().Name);
                         }
                     }
                 }
@@ -159,7 +159,7 @@ namespace DataAccessLayer
                     } while (reader.Read());
                     user.Garison.Add(group);
                     success = true;
-                } while (reader.NextResult());
+                } while (reader.NextResult() && reader.Read());
             }
             //TODO: Add more exceptions
             catch (Exception e)

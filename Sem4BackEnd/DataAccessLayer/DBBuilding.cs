@@ -52,14 +52,44 @@ namespace DataAccessLayer
 
         public bool SaveUserBuildings(User user)
         {
-            //TODO: Implement
-            throw new NotImplementedException();
-        }
+            bool success = false;
+            if (user.Map.Buildinds.Count > 0)
+            {
+                int maxID = GetMax.GetMaxID("Building");
+                string query = " DELETE FROM Buildings WHERE UserID = @USERID"
+                             + " INSERT INTO Buildings(BuildingID, UserID, Xlocation, Ylocation, Type, Level)"
+                             + " VALUES";
 
-        public bool DeleteBuildings(int id)
-        {
-            //TODO: Implement
-            throw new NotImplementedException();
+                for (int i = 0; i < user.Map.Buildinds.Count; i++)
+                {
+                    query += "(@BUILDINGID" + i + ", @USERID, @X" + i + ", @Y" + i + ", @TYPE" + i + ", @LEVEL" + i + ")";
+                    if (i < user.Map.Buildinds.Count - 1)
+                    {
+                        query += ", ";
+                    }
+                }
+
+                using (SqlCommand command = DataConnection.GetDbCommand(query))
+                {
+                    command.Parameters.AddWithValue("@USERID", user.UserID);
+                    for (int i = 0; i < user.Map.Buildinds.Count; i++)
+                    {
+                        command.Parameters.AddWithValue("@BUILDINGID" + i, maxID++);
+                        command.Parameters.AddWithValue("@X" + i, user.Map.Buildinds[i].Location.X);
+                        command.Parameters.AddWithValue("@Y" + i, user.Map.Buildinds[i].Location.Y);
+                        command.Parameters.AddWithValue("@TYPE" + i, user.Map.Buildinds[i].GetType().Name);
+                        command.Parameters.AddWithValue("@LEVEL" + i, user.Map.Buildinds[i].Level);
+                    }
+
+
+                    if (command.ExecuteNonQuery() > 0)
+                    {
+                        success = true;
+                    }
+                }
+            }
+
+            return success;
         }
 
         private bool FillUserBuildings(User user, IDataReader reader)

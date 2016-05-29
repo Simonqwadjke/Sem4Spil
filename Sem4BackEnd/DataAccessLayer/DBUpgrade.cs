@@ -51,11 +51,12 @@ namespace DataAccessLayer
             bool success = false;
             Upgrades upgrades = user.Upgrades;
             string query = "UPDATE Upgrades SET"
-                         + " Damage = @DAMAGE"
-                         + " Armor = @ARMOR"
-                         + " Resource = @RESOURCE"
-                         + " Rifleman = @RIFLEMAN"
-                         + " Tank = @TANK";
+                         + " Damage = @DAMAGE, "
+                         + " Armor = @ARMOR, "
+                         + " Resource = @RESOURCE, "
+                         + " Rifleman = @RIFLEMAN, "
+                         + " Tank = @TANK"
+                         + " WHERE UserID = @USERID";
 
             try
             {
@@ -66,6 +67,7 @@ namespace DataAccessLayer
                     command.Parameters.AddWithValue("@RESOURCE", upgrades.RecourseLevel);
                     command.Parameters.AddWithValue("@RIFLEMAN", upgrades.RiflemanLevel);
                     command.Parameters.AddWithValue("@TANK", upgrades.TankLevel);
+                    command.Parameters.AddWithValue("@USERID", user.UserID);
 
                     if (command.ExecuteNonQuery() > 0)
                     {

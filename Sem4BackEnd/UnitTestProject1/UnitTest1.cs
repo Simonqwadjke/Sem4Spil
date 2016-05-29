@@ -6,6 +6,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ApplicationServer;
 using ModelLayer;
 using ModelLayer.Units;
+using ModelLayer.Buildings;
+using ModelLayer.Buildings.Passive;
 using DataAccessLayer;
 
 namespace UnitTestProject1
@@ -24,7 +26,9 @@ namespace UnitTestProject1
             Assert.IsNotNull(user.Map, "Knud had no map");
             Assert.IsNotNull(user.Map.Buildinds[0], "Knud had no Building");
             Assert.IsNotNull(user.Garison, "Knud had no Garison");
-            Assert.IsNotNull(user.Garison[0], "Knud had no Unit");
+            Assert.IsNotNull(user.Garison[0], "Knud had no Group");
+            Assert.IsNotNull(user.Garison[0].units[0], "Knud had no Unit");
+            Assert.IsNotNull(user.Garison[1], "Second Group missing");
             Assert.IsNotNull(user.Battles, "No Battles found");
             Assert.IsNotNull(user.Upgrades, "No Upgrades found");
             Assert.IsNotNull(user.Invaders, "No Invaders found");
@@ -41,6 +45,14 @@ namespace UnitTestProject1
             user.Garison[0].units.Add(new Rifleman());
             user.Garison[1].units.Add(new Rifleman());
             user.Garison[1].units.Add(new Rifleman());
+            user.Upgrades = new Upgrades(0,0,0);
+            user.Upgrades.ArmorLevel = 2;
+            user.Map = new Map();
+            user.Map.Buildinds = new List<Building>();
+            user.Map.Buildinds.Add(new HeadQuarters());
+            user.Map.Buildinds[0].Location = new Location(0, 0);
+            user.Map.Buildinds.Add(new IronMine());
+            user.Map.Buildinds[1].Location = new Location(5, 5);
 
             Assert.IsTrue(new UserManager().SaveData(user), "Nope");
         }

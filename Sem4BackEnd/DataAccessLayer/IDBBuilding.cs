@@ -11,6 +11,5 @@ namespace DataAccessLayer
     {
         bool GetUserBuildings(User user);
         bool SaveUserBuildings(User user);
-        bool DeleteBuildings(int id);
     }
 }

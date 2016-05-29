@@ -29,6 +29,7 @@ namespace DataAccessLayer
                         if (reader.Read())
                         {
                             user.Battles = CreateBattlesObj(reader);
+                            success = true;
                         }
                     }
                 }
@@ -80,6 +81,7 @@ namespace DataAccessLayer
                     battle.Outcome = reader["BattleOutcome"].ToString();
                     battle.PlunderedWood = Convert.ToInt32(reader["PlunderedWood"]);
                     battle.PlunderedIron = Convert.ToInt32(reader["plunderedIron"]);
+                    list.Add(battle);
                 } while (reader.Read());
                 
             }

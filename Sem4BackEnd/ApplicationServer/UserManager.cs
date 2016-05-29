@@ -17,7 +17,7 @@ namespace ApplicationServer
         public User Login(User user)
         {
             MD5 md5 = MD5.Create();
-
+            Console.WriteLine("Login Attempt for " + user.Username);
             user.Password = PasswordHashing(user.Password);
             user = new DBUser().Login(user, sessionmgr.createSession());
             if (user != null)
