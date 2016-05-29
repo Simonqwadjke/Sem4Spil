@@ -69,6 +69,30 @@ namespace ApplicationServer
             return success;
         }
 
+        public bool SaveBattle(Battle battle)
+        {
+            bool success = false;
+
+            if (new DBBattles().SaveBattle(battle))
+            {
+                success = true;
+            }
+
+            return success;
+        }
+
+        public Map FetchMap(User user)
+        {
+            Map map = null;
+
+            if (new DBBuilding().GetUserBuildings(user))
+            {
+                map = user.Map;
+            }
+
+            return map;
+        }
+
         private string PasswordHashing(string password)
         {
             Byte[] input = Encoding.ASCII.GetBytes(password);

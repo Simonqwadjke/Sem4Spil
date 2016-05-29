@@ -12,26 +12,26 @@ namespace ServiceLibrary {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in code, svc and config file together.
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class ServerService : IServerService {
-        Manager usermgr = new Manager();
+        Manager mgr = new Manager();
 
         public Map FetchMap(User user)
         {
-            return new Map();
+            return mgr.FetchMap(user);
         }
 
         public bool SaveBattle(Battle battle)
         {
-            return false;
+            return mgr.SaveBattle(battle);
         }
 
         public User Login(User user)
         {
-            return usermgr.Login(user);
+            return mgr.Login(user);
         }
 
         public bool SaveData(User user)
         {
-            return usermgr.SaveData(user);
+            return mgr.SaveData(user);
         }
     }
 }
