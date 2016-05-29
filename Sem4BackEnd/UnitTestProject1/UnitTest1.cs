@@ -21,7 +21,7 @@ namespace UnitTestProject1
             User user = new User("");
             user.Password = PasswordHashing("pass");
             user.Username = "kanut";
-            user = new UserManager().Login(user);
+            user = new Manager().Login(user);
             Assert.IsNotNull(user, "No user returned");
             Assert.IsNotNull(user.Map, "Knud had no map");
             Assert.IsNotNull(user.Map.Buildinds[0], "Knud had no Building");
@@ -54,7 +54,7 @@ namespace UnitTestProject1
             user.Map.Buildinds.Add(new IronMine());
             user.Map.Buildinds[1].Location = new Location(5, 5);
 
-            Assert.IsTrue(new UserManager().SaveData(user), "Nope");
+            Assert.IsTrue(new Manager().SaveData(user), "Nope");
         }
 
         private string PasswordHashing(string password)

@@ -9,7 +9,7 @@ using ModelLayer;
 
 namespace ApplicationServer
 {
-    public class UserManager
+    public class Manager
     {
         private MD5 md5 = MD5.Create();
         private SessionManager sessionmgr = SessionManager.getInstance();
