@@ -124,7 +124,7 @@ namespace DataAccessLayer
                         building = new Wall();
                         building.Location = location;
                         break;
-                    case "HeadQuaters":
+                    case "HeadQuarters":
                         building = new HeadQuarters();
                         building.Location = location;
                         break;
@@ -141,7 +141,7 @@ namespace DataAccessLayer
                         building.Location = location;
                         break;
                     default:
-                        Console.WriteLine("Error: found unknown building type");
+                        Console.WriteLine("Error: found unknown building type: " + reader["type"].ToString());
                         break;
                 }
                 list.Add(building);
