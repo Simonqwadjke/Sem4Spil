@@ -5,7 +5,6 @@ using ModelLayer.Buildings.Defense;
 public class GattlingTurretBehavior : MonoBehaviour {
 	public Sprite[] sprites;
 	public GatlingTurret source;
-	Map map = new Map();
 	int currentSprite = 0;
 
 	// Use this for initialization
@@ -14,8 +13,6 @@ public class GattlingTurretBehavior : MonoBehaviour {
 
 		GetComponent<BuildingBehavior>().source = source;
 		GetComponent<BuildingBehavior>().init();
-
-		//transform.position = map.pos(source.Location);
 
 		updateTurretSprite();
 	}
@@ -38,6 +35,10 @@ public class GattlingTurretBehavior : MonoBehaviour {
 		}
 		source.Range = 5;
 		source.Location = new ModelLayer.Location() { X = 3, Y = 3 };
+		source.Size = new ModelLayer.Size() {
+			Height = 3,
+			Width = 3
+		};
 
 	}
 

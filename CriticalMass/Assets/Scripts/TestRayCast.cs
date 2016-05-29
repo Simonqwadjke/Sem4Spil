@@ -20,7 +20,7 @@ public class TestRayCast : MonoBehaviour {
 				Vector3 v3 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 				
 				//go.GetComponent<BuildingBehavior>()
-				go.GetComponent<BuildingBehavior>().move(map.pos(v3.x, v3.y));
+				go.GetComponent<BuildingBehavior>().move(map.posV3(v3.x, v3.y));
 			}
 		}
 
@@ -35,14 +35,14 @@ public class TestRayCast : MonoBehaviour {
 					if (hit.collider.tag == "Building") {
 						go = hit.collider.gameObject;
 						//go.transform.position = new Vector3(go.transform.position.x + 1f, go.transform.position.y);
-						go.GetComponent<BuildingBehavior>().selected = true;
+						go.GetComponent<BuildingBehavior>().Select();
 						select = true;
 						break;
 					}
 					else {
 						select = false;
 						if (go != null) {
-							go.GetComponent<BuildingBehavior>().selected = false;
+							go.GetComponent<BuildingBehavior>().Deselect();
 							select = true;
 						}
 					}
@@ -55,7 +55,7 @@ public class TestRayCast : MonoBehaviour {
 			v3 = v3 - gameMap.transform.position;
 			s += "\nInput.mouse = " + Input.mousePosition;
 			s += "\nScreen to world point" + v3;
-			s += "\nMapPos = " + map.pos(v3.x, v3.y);
+			s += "\nMapPos = " + map.posV3(v3.x, v3.y);
 			s += "\nSelect = " + select.ToString();
 			text.text = s;
 		}

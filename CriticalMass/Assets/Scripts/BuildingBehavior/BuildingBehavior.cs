@@ -3,12 +3,12 @@ using System.Collections;
 
 public class BuildingBehavior : MonoBehaviour {
 
-	public ModelLayer.Buildings.Defense.Defensive source;
+	public ModelLayer.Buildings.Building source;
 	Vector3 originScale;
 	Vector3 originPos;
 	float animMax = 20;
 	float animSize;
-	public bool selected;
+	bool selected;
 	bool status = true;
 	Map map = new Map();
 
@@ -18,7 +18,7 @@ public class BuildingBehavior : MonoBehaviour {
 		originPos = transform.localPosition;
 		selected = false;
 		animSize = 0;
-		transform.position = map.pos(source.Location);
+		transform.position = map.posV3(source.Location);
 	}
 
 	// Update is called once per frame
@@ -28,14 +28,28 @@ public class BuildingBehavior : MonoBehaviour {
 		}
 	}
 
+	public void Select() {
+		originScale = transform.localScale;
+		originPos = transform.localPosition;
+		selected = true;
+	}
+
+	public void Deselect() {
+		transform.localScale = originScale;
+		transform.localPosition = originPos;
+		selected = false;
+	}
+	public bool isSelected() {
+		return selected;
+	}
+
 	public void move(Vector3 v3) {
 		selected = false;
 		transform.localScale = originScale;
 		transform.localPosition = originPos;
 
-		source.Location.X = v3.x;
-		source.Location.Y = v3.y;
-		transform.position = map.pos(source.Location);
+		source.Location = map.posLoc(v3);
+		transform.localPosition = map.posV3(source.Location) / 10;
 
 		originScale = transform.localScale;
 		originPos = transform.localPosition;

@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using ModelLayer;
+using ModelLayer.Buildings;
 
 public class PlayerInput : MonoBehaviour {
 
@@ -22,7 +24,7 @@ public class PlayerInput : MonoBehaviour {
 	public GameObject world;
 	Vector3 hit_position = Vector3.zero;
 	Vector3 current_position = Vector3.zero;
-	Vector3 camera_position = Vector3.zero;
+	Vector3 World_position = Vector3.zero;
 	#endregion
 
 
@@ -38,51 +40,34 @@ public class PlayerInput : MonoBehaviour {
 	void Update() {
 		Zoom();
 
+		// If there are one touche on the device...
 		if (Input.touchCount == 1 || Input.GetMouseButton(0)) {
-			singleInput();
-		}
-		// If there are two touches on the device...
-		if (Input.touchCount == 2) {
-			// Store both touches.
-			Touch touchZero = Input.GetTouch(0);
-			Touch touchOne = Input.GetTouch(1);
-
-			// Find the position in the previous frame of each touch.
-			Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
-			Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
-
-			// Find the magnitude of the vector (the distance) between the touches in each frame.
-			float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
-			float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
-
-			// Find the difference in the distances between each frame.
-			float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
-
-			// ... change the orthographic size based on the change in distance between the touches.
-			Camera.main.orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed / Camera.main.orthographicSize;
-
-			// Make sure the orthographic size never drops below zero.
-			Camera.main.orthographicSize = Mathf.Max(Camera.main.orthographicSize, 1f);
+			SingleInput();
 		}
 	}
-	void singleInput() {
+
+	void SingleInput() {
 		if (Input.GetMouseButtonDown(0)) {
 			firstTouch = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			time = DateTime.Now; //Get the exact time the player presses the screen
 			drag = false;
+			hit_position = Input.mousePosition;
+			World_position = world.transform.position;
 		}
 
-		if (!select && Vector3.Distance(firstTouch, Camera.main.ScreenToWorldPoint(Input.mousePosition)) > 1f){
+		if (!select && Vector3.Distance(firstTouch, Camera.main.ScreenToWorldPoint(Input.mousePosition)) > 1f) {
 			drag = true;
 		}
 
-		if (Input.GetMouseButton(0) && !drag) {
+		if (Input.GetMouseButton(0) && !drag && !select) {
 			TimeSpan t = DateTime.Now - time;
 			if (t.TotalMilliseconds > milliSecSelect) { //Compare first press untill now and check if it should try to rayCast
-				rayCast();
-				float f = Vector3.Distance(firstTouch, Camera.main.ScreenToWorldPoint(Input.mousePosition));
-				String s = "";
+				RayCast();
 			}
+		}
+
+		if (Input.GetMouseButtonUp(0)) {
+			Deselect();
 		}
 
 		if (drag) {
@@ -91,24 +76,40 @@ public class PlayerInput : MonoBehaviour {
 
 		if (select) {
 			if (Input.GetMouseButtonDown(0)) {
-				rayCast();
+				RayCast();
 			}
 			else if (Input.GetMouseButton(0)) {
-				Vector3 v3 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+				Building source = selectedObject.GetComponent<BuildingBehavior>().source;
+				Vector3 v3 = Camera.main.ScreenToWorldPoint(Input.mousePosition) - world.transform.position;
+				v3 = map.posV3(v3.x, v3.y);
+				Vector3 center = new Vector3((float)Math.Truncate((double)source.Size.Width / 2), (float)Math.Truncate((double)source.Size.Height / 2));
+				v3 = v3 - center;
+								Location loc = map.posLoc(v3);
+				if (loc.X >= 0 && loc.X <= world.GetComponentInChildren<LoadMap>().mapWidth - source.Size.Width) {
 
-				//go.GetComponent<BuildingBehavior>()
-				selectedObject.GetComponent<BuildingBehavior>().move(map.pos(v3.x, v3.y));
+				}
 
+				if (loc.Y >= 0 && loc.Y <= world.GetComponentInChildren<LoadMap>().mapHeight - source.Size.Height) {
+
+				}
+
+				if (source.Location.X != loc.X || source.Location.Y != loc.Y) {
+					selectedObject.GetComponent<BuildingBehavior>().move(v3);
+				}
 			}
 		}
 	}
 
-	void rayCast() {
+	void Deselect() {
+		select = false;
+		selectedObject.GetComponent<BuildingBehavior>().Deselect();
+		selectedObject = null;
+	}
+
+	void RayCast() {
 		//Flush before casting a ray
 		if (selectedObject != null) {
-			select = false;
-			selectedObject.GetComponent<BuildingBehavior>().selected = false;
-			selectedObject = null;
+			Deselect();
 		}
 
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); //create the Ray from mouse possition.
@@ -120,7 +121,7 @@ public class PlayerInput : MonoBehaviour {
 			foreach (RaycastHit2D hit in hits) {
 				if (hit.collider.tag == "Building") {
 					selectedObject = hit.collider.gameObject;
-					selectedObject.GetComponent<BuildingBehavior>().selected = true;
+					selectedObject.GetComponent<BuildingBehavior>().Select();
 					select = true;
 				}
 			}
@@ -175,16 +176,15 @@ public class PlayerInput : MonoBehaviour {
 	}
 
 	void Drag() {
-		if (Input.GetMouseButtonDown(0)) {
+		/*if (Input.GetMouseButtonDown(0)) {
 			hit_position = Input.mousePosition;
-			camera_position = world.transform.position;
-
-		}
+			World_position = world.transform.position;
+		}*/
 		if (Input.GetMouseButton(0)) {
 			current_position = Input.mousePosition;
 			// From the Unity3D docs: "The z position is in world units from the camera."  In my case I'm using the y-axis as height
 			// with my camera facing back down the y-axis.  You can ignore this when the camera is orthograhic.
-			current_position.z = hit_position.z = camera_position.y;
+			current_position.z = hit_position.z = World_position.y;
 
 			// Get direction of movement.  (Note: Don't normalize, the magnitude of change is going to be Vector3.Distance(current_position-hit_position)
 			// anyways.  
@@ -193,7 +193,7 @@ public class PlayerInput : MonoBehaviour {
 			// Invert direction to that terrain appears to move with the mouse.
 			direction = direction * 1;
 
-			Vector3 position = camera_position + direction;
+			Vector3 position = World_position + direction;
 
 			world.transform.position = position;
 		}

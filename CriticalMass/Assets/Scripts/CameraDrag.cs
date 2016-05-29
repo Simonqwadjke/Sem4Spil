@@ -35,7 +35,7 @@ public class CameraDrag : MonoBehaviour {
 			}
 			if (Input.GetMouseButton(0)) {
 				current_position = Input.mousePosition;
-				Drag();
+				//Drag();
 			}
 		}
 	}
