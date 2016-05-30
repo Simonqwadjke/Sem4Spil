@@ -19,6 +19,7 @@ namespace ModelLayer {
         }
         public Session(String sessionString, DateTime expired) {
             this.sessionString = sessionString;
+            this.Expired = expired;
         }
     }
 }
