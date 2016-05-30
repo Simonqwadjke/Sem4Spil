@@ -34,6 +34,11 @@
 *.modelproj merge=binary
 *.sqlproj   merge=binary
 *.wwaproj   merge=binary
+*.dll       merge=binary
+*.unity     merge=binary
+*.dlwt      merge=binary
+*mdb        merge=binary
+
 
 ###############################################################################
 # behavior for image files
