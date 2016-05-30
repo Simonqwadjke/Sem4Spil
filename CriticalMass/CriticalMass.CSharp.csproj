@@ -78,8 +78,9 @@
     <Compile Include="Assets\ClientProxies\Service.cs" />
     <Compile Include="Assets\Scripts\BuildingBehavior\BuildingBehavior.cs" />
     <Compile Include="Assets\Scripts\BuildingBehavior\GattlingTurretBehavior.cs" />
-    <Compile Include="Assets\Scripts\CameraDrag.cs" />
-    <Compile Include="Assets\Scripts\CameraZoom.cs" />
+    <Compile Include="Assets\Scripts\Deprecated\CameraDrag.cs" />
+    <Compile Include="Assets\Scripts\Deprecated\CameraZoom.cs" />
+    <Compile Include="Assets\Scripts\Deprecated\TestRayCast.cs" />
     <Compile Include="Assets\Scripts\ExitScript.cs" />
     <Compile Include="Assets\Scripts\LoadMap.cs" />
     <Compile Include="Assets\Scripts\LogOn.cs" />
@@ -87,7 +88,6 @@
     <Compile Include="Assets\Scripts\Map.cs" />
     <Compile Include="Assets\Scripts\PlayerControler.cs" />
     <Compile Include="Assets\Scripts\PlayerInput.cs" />
-    <Compile Include="Assets\Scripts\TestRayCast.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\ClientProxies\commands.txt" />

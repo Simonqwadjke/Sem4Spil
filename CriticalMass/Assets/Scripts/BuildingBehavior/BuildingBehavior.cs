@@ -9,7 +9,8 @@ public class BuildingBehavior : MonoBehaviour {
 	float animMax = 20;
 	float animSize;
 	bool selected;
-	bool status = true;
+    bool status;
+    bool alive;
 	Map map = new Map();
 
 	// Use this for initialization
@@ -17,6 +18,8 @@ public class BuildingBehavior : MonoBehaviour {
 		originScale = transform.localScale;
 		originPos = transform.localPosition;
 		selected = false;
+        status = true;
+        alive = true;
 		animSize = 0;
 		transform.position = map.posV3(source.Location);
 	}
