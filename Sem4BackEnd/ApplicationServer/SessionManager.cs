@@ -91,7 +91,7 @@ namespace ApplicationServer
             DateTime now = DateTime.Now;
             for (int i = 0; i < sessions.Count; i++)
             {
-                if (sessions[i].Expired - now > TimeSpan.FromMinutes(15))
+                if (now - sessions[i].Expired > TimeSpan.FromMinutes(15))
                 {
                     sessions.RemoveAt(i);
                     removedSessions++;
