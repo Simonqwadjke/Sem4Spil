@@ -55,6 +55,7 @@ public class LoginScript : MonoBehaviour
         user = client.Login(user);
         if (user != null)
         {
+            GameControl.control.user = user;
             success = true;
         }
         return success;

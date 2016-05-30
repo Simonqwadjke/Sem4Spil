@@ -85,6 +85,7 @@
     <Compile Include="Assets\Scripts\Deprecated\CameraZoom.cs" />
     <Compile Include="Assets\Scripts\Deprecated\TestRayCast.cs" />
     <Compile Include="Assets\Scripts\ExitScript.cs" />
+    <Compile Include="Assets\Scripts\GameControl.cs" />
     <Compile Include="Assets\Scripts\LoadMap.cs" />
     <Compile Include="Assets\Scripts\LogOn.cs" />
     <Compile Include="Assets\Scripts\LoginScript.cs" />
