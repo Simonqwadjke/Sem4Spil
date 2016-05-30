@@ -11,23 +11,15 @@ public class GattlingTurretBehavior : MonoBehaviour {
 	void Start() {
 		demo();
 
-		GetComponent<BuildingBehavior>().source = source;
-		GetComponent<BuildingBehavior>().init();
+		GetComponent<DefensiveBuildingBehavior>().source = source;
+		GetComponent<DefensiveBuildingBehavior>().init();
 
-		updateTurretSprite();
-	}
-
-	void updateTurretSprite() {
-		SpriteRenderer sp = GetComponent<SpriteRenderer>();
-		sp.sprite = sprites[currentSprite];
 	}
 
 	// Update is called once per frame
 	void Update() {
 
 	}
-
-
 
 	void demo() {
 		if (source == null) {
@@ -42,16 +34,5 @@ public class GattlingTurretBehavior : MonoBehaviour {
 
 	}
 
-	int a = 200;
-	int b = 0;
-	void demoTurretSprites() {
-		b++;
-		if (b == a) {
-			b = 0;
-			currentSprite++;
-			if (currentSprite == sprites.Length)
-				currentSprite = 0;
-			updateTurretSprite();
-		}
-	}
+
 }
