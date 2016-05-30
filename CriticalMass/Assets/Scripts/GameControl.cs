@@ -10,7 +10,7 @@ public class GameControl : MonoBehaviour {
 
     void Awake()
     {
-        if(control = null)
+        if(control == null)
         {
             DontDestroyOnLoad(gameObject);
             control = this;
