@@ -38,7 +38,7 @@ public class LoginScript : MonoBehaviour
                 outputText.text = "Wrong Username or Password";
             }
         }
-        catch(System.Exception soe)
+        catch (System.Exception soe)
         {
             //skriv Exception info til log-fil
             outputText.text = "Failed to connect";

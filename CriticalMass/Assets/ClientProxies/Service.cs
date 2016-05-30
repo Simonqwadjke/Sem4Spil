@@ -15,102 +15,6 @@ namespace ModelLayer
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Map", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
-    public partial class Map : object, System.Runtime.Serialization.IExtensibleDataObject
-    {
-        
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private ModelLayer.Buildings.Building[] BuildindsField;
-        
-        private ModelLayer.User OwnerField;
-        
-        private ModelLayer.Units.Group[] UnitsField;
-        
-        private int ironField;
-        
-        private int woodField;
-        
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
-        {
-            get
-            {
-                return this.extensionDataField;
-            }
-            set
-            {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ModelLayer.Buildings.Building[] Buildinds
-        {
-            get
-            {
-                return this.BuildindsField;
-            }
-            set
-            {
-                this.BuildindsField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ModelLayer.User Owner
-        {
-            get
-            {
-                return this.OwnerField;
-            }
-            set
-            {
-                this.OwnerField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ModelLayer.Units.Group[] Units
-        {
-            get
-            {
-                return this.UnitsField;
-            }
-            set
-            {
-                this.UnitsField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int iron
-        {
-            get
-            {
-                return this.ironField;
-            }
-            set
-            {
-                this.ironField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int wood
-        {
-            get
-            {
-                return this.woodField;
-            }
-            set
-            {
-                this.woodField = value;
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
     public partial class User : object, System.Runtime.Serialization.IExtensibleDataObject
     {
@@ -372,15 +276,21 @@ namespace ModelLayer
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Location", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
-    public partial class Location : object, System.Runtime.Serialization.IExtensibleDataObject
+    [System.Runtime.Serialization.DataContractAttribute(Name="Map", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
+    public partial class Map : object, System.Runtime.Serialization.IExtensibleDataObject
     {
         
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        private float XField;
+        private ModelLayer.Buildings.Building[] BuildindsField;
         
-        private float YField;
+        private ModelLayer.User OwnerField;
+        
+        private ModelLayer.Units.Group[] UnitsField;
+        
+        private int ironField;
+        
+        private int woodField;
         
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData
         {
@@ -395,79 +305,67 @@ namespace ModelLayer
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public float X
+        public ModelLayer.Buildings.Building[] Buildinds
         {
             get
             {
-                return this.XField;
+                return this.BuildindsField;
             }
             set
             {
-                this.XField = value;
+                this.BuildindsField = value;
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public float Y
+        public ModelLayer.User Owner
         {
             get
             {
-                return this.YField;
+                return this.OwnerField;
             }
             set
             {
-                this.YField = value;
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Size", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
-    public partial class Size : object, System.Runtime.Serialization.IExtensibleDataObject
-    {
-        
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private float HeightField;
-        
-        private float WidthField;
-        
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
-        {
-            get
-            {
-                return this.extensionDataField;
-            }
-            set
-            {
-                this.extensionDataField = value;
+                this.OwnerField = value;
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public float Height
+        public ModelLayer.Units.Group[] Units
         {
             get
             {
-                return this.HeightField;
+                return this.UnitsField;
             }
             set
             {
-                this.HeightField = value;
+                this.UnitsField = value;
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public float Width
+        public int iron
         {
             get
             {
-                return this.WidthField;
+                return this.ironField;
             }
             set
             {
-                this.WidthField = value;
+                this.ironField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int wood
+        {
+            get
+            {
+                return this.woodField;
+            }
+            set
+            {
+                this.woodField = value;
             }
         }
     }
@@ -708,40 +606,18 @@ namespace ModelLayer
             }
         }
     }
-}
-namespace ModelLayer.Buildings
-{
-    using System.Runtime.Serialization;
-    
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Building", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer.Buildings")]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Passive.HeadQuarters))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Passive.Labratory))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Passive.Resouce))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Passive.IronMine))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Passive.SawMill))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Defense.Defensive))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Defense.FlameThrower))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Defense.Cannon))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Defense.GatlingTurret))]
-    public partial class Building : object, System.Runtime.Serialization.IExtensibleDataObject
+    [System.Runtime.Serialization.DataContractAttribute(Name="Location", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
+    public partial class Location : object, System.Runtime.Serialization.IExtensibleDataObject
     {
         
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        private int ArmorField;
+        private float XField;
         
-        private int HitPointsField;
-        
-        private int LevelField;
-        
-        private ModelLayer.Location LocationField;
-        
-        private ModelLayer.Size SizeField;
-        
-        private int UnitSizeField;
+        private float YField;
         
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData
         {
@@ -756,80 +632,79 @@ namespace ModelLayer.Buildings
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Armor
+        public float X
         {
             get
             {
-                return this.ArmorField;
+                return this.XField;
             }
             set
             {
-                this.ArmorField = value;
+                this.XField = value;
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int HitPoints
+        public float Y
         {
             get
             {
-                return this.HitPointsField;
+                return this.YField;
             }
             set
             {
-                this.HitPointsField = value;
+                this.YField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Size", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer")]
+    public partial class Size : object, System.Runtime.Serialization.IExtensibleDataObject
+    {
+        
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private float HeightField;
+        
+        private float WidthField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
+        {
+            get
+            {
+                return this.extensionDataField;
+            }
+            set
+            {
+                this.extensionDataField = value;
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Level
+        public float Height
         {
             get
             {
-                return this.LevelField;
+                return this.HeightField;
             }
             set
             {
-                this.LevelField = value;
+                this.HeightField = value;
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ModelLayer.Location Location
+        public float Width
         {
             get
             {
-                return this.LocationField;
+                return this.WidthField;
             }
             set
             {
-                this.LocationField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public ModelLayer.Size Size
-        {
-            get
-            {
-                return this.SizeField;
-            }
-            set
-            {
-                this.SizeField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int UnitSize
-        {
-            get
-            {
-                return this.UnitSizeField;
-            }
-            set
-            {
-                this.UnitSizeField = value;
+                this.WidthField = value;
             }
         }
     }
@@ -893,6 +768,8 @@ namespace ModelLayer.Units
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Unit", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer.Units")]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Units.Tank))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Units.Rifleman))]
     public partial class Unit : object, System.Runtime.Serialization.IExtensibleDataObject
     {
         
@@ -1030,6 +907,190 @@ namespace ModelLayer.Units
             }
         }
     }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Tank", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer.Units")]
+    public partial class Tank : ModelLayer.Units.Unit
+    {
+        
+        private int SplashDamageField;
+        
+        private double SplashRadiusField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SplashDamage
+        {
+            get
+            {
+                return this.SplashDamageField;
+            }
+            set
+            {
+                this.SplashDamageField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double SplashRadius
+        {
+            get
+            {
+                return this.SplashRadiusField;
+            }
+            set
+            {
+                this.SplashRadiusField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Rifleman", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer.Units")]
+    public partial class Rifleman : ModelLayer.Units.Unit
+    {
+        
+        private int AccuricyField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Accuricy
+        {
+            get
+            {
+                return this.AccuricyField;
+            }
+            set
+            {
+                this.AccuricyField = value;
+            }
+        }
+    }
+}
+namespace ModelLayer.Buildings
+{
+    using System.Runtime.Serialization;
+    
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Building", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer.Buildings")]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Passive.HeadQuarters))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Passive.Labratory))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Passive.Resouce))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Passive.IronMine))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Passive.SawMill))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Defense.Defensive))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Defense.FlameThrower))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Defense.GatlingTurret))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Defense.Cannon))]
+    public partial class Building : object, System.Runtime.Serialization.IExtensibleDataObject
+    {
+        
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int ArmorField;
+        
+        private int HitPointsField;
+        
+        private int LevelField;
+        
+        private ModelLayer.Location LocationField;
+        
+        private ModelLayer.Size SizeField;
+        
+        private int UnitSizeField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
+        {
+            get
+            {
+                return this.extensionDataField;
+            }
+            set
+            {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Armor
+        {
+            get
+            {
+                return this.ArmorField;
+            }
+            set
+            {
+                this.ArmorField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int HitPoints
+        {
+            get
+            {
+                return this.HitPointsField;
+            }
+            set
+            {
+                this.HitPointsField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Level
+        {
+            get
+            {
+                return this.LevelField;
+            }
+            set
+            {
+                this.LevelField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ModelLayer.Location Location
+        {
+            get
+            {
+                return this.LocationField;
+            }
+            set
+            {
+                this.LocationField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ModelLayer.Size Size
+        {
+            get
+            {
+                return this.SizeField;
+            }
+            set
+            {
+                this.SizeField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int UnitSize
+        {
+            get
+            {
+                return this.UnitSizeField;
+            }
+            set
+            {
+                this.UnitSizeField = value;
+            }
+        }
+    }
 }
 namespace ModelLayer.Buildings.Passive
 {
@@ -1097,8 +1158,8 @@ namespace ModelLayer.Buildings.Defense
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Defensive", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer.Buildings.Defense")]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Defense.FlameThrower))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Defense.Cannon))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Defense.GatlingTurret))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Defense.Cannon))]
     public partial class Defensive : ModelLayer.Buildings.Building
     {
         
@@ -1187,6 +1248,28 @@ namespace ModelLayer.Buildings.Defense
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GatlingTurret", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer.Buildings.Defense")]
+    public partial class GatlingTurret : ModelLayer.Buildings.Defense.Defensive
+    {
+        
+        private double AccuracyField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Accuracy
+        {
+            get
+            {
+                return this.AccuracyField;
+            }
+            set
+            {
+                this.AccuracyField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Cannon", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer.Buildings.Defense")]
     public partial class Cannon : ModelLayer.Buildings.Defense.Defensive
     {
@@ -1221,28 +1304,6 @@ namespace ModelLayer.Buildings.Defense
             }
         }
     }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="GatlingTurret", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer.Buildings.Defense")]
-    public partial class GatlingTurret : ModelLayer.Buildings.Defense.Defensive
-    {
-        
-        private double AccuracyField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double Accuracy
-        {
-            get
-            {
-                return this.AccuracyField;
-            }
-            set
-            {
-                this.AccuracyField = value;
-            }
-        }
-    }
 }
 
 
@@ -1251,11 +1312,17 @@ namespace ModelLayer.Buildings.Defense
 public interface IServerService
 {
     
-    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerService/Update", ReplyAction="http://tempuri.org/IServerService/UpdateResponse")]
-    ModelLayer.Map Update();
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerService/FetchMap", ReplyAction="http://tempuri.org/IServerService/FetchMapResponse")]
+    ModelLayer.Map FetchMap(ModelLayer.User user);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerService/SaveBattle", ReplyAction="http://tempuri.org/IServerService/SaveBattleResponse")]
+    bool SaveBattle(ModelLayer.Battle battle);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerService/Login", ReplyAction="http://tempuri.org/IServerService/LoginResponse")]
     ModelLayer.User Login(ModelLayer.User user);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerService/SaveData", ReplyAction="http://tempuri.org/IServerService/SaveDataResponse")]
+    bool SaveData(ModelLayer.User user);
 }
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1292,13 +1359,23 @@ public partial class ServerServiceClient : System.ServiceModel.ClientBase<IServe
     {
     }
     
-    public ModelLayer.Map Update()
+    public ModelLayer.Map FetchMap(ModelLayer.User user)
     {
-        return base.Channel.Update();
+        return base.Channel.FetchMap(user);
+    }
+    
+    public bool SaveBattle(ModelLayer.Battle battle)
+    {
+        return base.Channel.SaveBattle(battle);
     }
     
     public ModelLayer.User Login(ModelLayer.User user)
     {
         return base.Channel.Login(user);
+    }
+    
+    public bool SaveData(ModelLayer.User user)
+    {
+        return base.Channel.SaveData(user);
     }
 }
