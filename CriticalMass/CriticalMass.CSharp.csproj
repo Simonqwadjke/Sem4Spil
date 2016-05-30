@@ -80,6 +80,7 @@
   <ItemGroup>
     <Compile Include="Assets\ClientProxies\Service.cs" />
     <Compile Include="Assets\Scripts\BuildingBehavior\BuildingBehavior.cs" />
+    <Compile Include="Assets\Scripts\BuildingBehavior\DefensiveBuildingBehavior.cs" />
     <Compile Include="Assets\Scripts\BuildingBehavior\GattlingTurretBehavior.cs" />
     <Compile Include="Assets\Scripts\Deprecated\CameraDrag.cs" />
     <Compile Include="Assets\Scripts\Deprecated\CameraZoom.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Assets\Scripts\Map.cs" />
     <Compile Include="Assets\Scripts\PlayerControler.cs" />
     <Compile Include="Assets\Scripts\PlayerInput.cs" />
+    <Compile Include="Assets\Scripts\UnitBehavior\NewBehaviourScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\ClientProxies\commands.txt" />
