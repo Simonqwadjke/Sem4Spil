@@ -37,7 +37,7 @@ namespace UnitTestProject1
         }
 
         [TestMethod]
-        public void SaveUnitsTest()
+        private void SaveUnitsTest()
         {
             User user = new DBUser().GetUser("kanut");
             user.Garison = new List<Group>();
