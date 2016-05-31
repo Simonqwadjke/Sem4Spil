@@ -15,13 +15,15 @@ namespace UnitTestProject1
     [TestClass]
     public class UnitTest1
     {
+        Manager mgr = new Manager();
+
         [TestMethod]
         public void LoginTest()
         {
             User user = new User("");
             user.Password = PasswordHashing("pass");
             user.Username = "kanut";
-            user = new Manager().Login(user);
+            user = mgr.Login(user);
             Assert.IsNotNull(user, "No user returned");
             Assert.IsNotNull(user.Map, "Knud had no map");
             Assert.IsNotNull(user.Map.Buildinds[0], "Knud had no Building");
@@ -54,7 +56,32 @@ namespace UnitTestProject1
             user.Map.Buildinds.Add(new IronMine());
             user.Map.Buildinds[1].Location = new Location(5, 5);
 
-            Assert.IsTrue(new Manager().SaveData(user), "Nope");
+            Assert.IsTrue(mgr.SaveData(user), "Nope");
+        }
+
+        [TestMethod]
+        public void CreateUserTest()
+        {
+            User user = new User("");
+            user.BirthDate = new DateTime(2011, 1, 1);
+            user.Country = "Andet sted";
+            user.Email = "nææh";
+            user.Name = "ib";
+            user.Password = PasswordHashing("ib");
+            user.UserID = GetMax.GetMaxID("User");
+            user.Username = "ib";
+
+            Assert.IsNotNull(mgr.CreateUser(user), "no user returned");
+        }
+
+        [TestMethod]
+        public void SaveUpgradesTest()
+        {
+            User user = new User("");
+            user.UserID = 0;
+            user.Upgrades = new Upgrades(0, 0, 0);
+
+            new DBUpgrade().SaveUserUpgrades(user);
         }
 
         private string PasswordHashing(string password)

@@ -13,6 +13,8 @@ namespace ServiceLibrary {
     public interface IServerService {
 
         [OperationContract]
+        User CreateUser(User user);
+        [OperationContract]
         Map FetchMap(User user);
         [OperationContract]
         bool SaveBattle(Battle battle);

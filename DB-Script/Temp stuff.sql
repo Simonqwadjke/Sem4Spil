@@ -16,6 +16,12 @@ select type from Units where groupid in (select groupid from groups where userid
 --insert into invaders(userid, invaderid) values(0,0)
 --insert into battles(battleid, defenderid, attackerid, battleoutcome, plunderediron, plunderedwood) values(0, 0, 0, 'nope', 0, 0)
 
+--delete from units where groupid = 16
+--delete from groups where userid = 1
+--delete from buildings where userid = 1
+--delete from upgrades where userid = 1
+--delete from userdata where userid = 1
+
 select * from userdata
 select * from Buildings
 select * from groups

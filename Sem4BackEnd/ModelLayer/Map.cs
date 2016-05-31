@@ -36,6 +36,11 @@ namespace ModelLayer {
             get;
             set;
         }
+
+        public Map()
+        {
+            Buildinds = new List<Building>();
+        }
         /*
         public bool placeUnit(Group group, Point location) {
             return true; //if placement is valid;

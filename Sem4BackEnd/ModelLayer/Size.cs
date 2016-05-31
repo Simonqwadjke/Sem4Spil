@@ -22,5 +22,11 @@ namespace ModelLayer
             get;
             set;
         }
+
+        public Size(float height, float width)
+        {
+            Height = height;
+            Width = width;
+        }
     }
 }

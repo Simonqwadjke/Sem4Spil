@@ -30,7 +30,7 @@ namespace DataAccessLayer
                 {
                     if (reader.Read())
                     {
-                        maxID = reader.GetInt32(0);
+                        maxID = reader.GetInt32(0) + 1;
                     }
                 }
             }

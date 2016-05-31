@@ -50,13 +50,22 @@ namespace DataAccessLayer
         {
             bool success = false;
             Upgrades upgrades = user.Upgrades;
-            string query = "UPDATE Upgrades SET"
+            string query = "";
+            if (GetUserUpgrades(user))
+            {
+                query = "UPDATE Upgrades SET"
                          + " Damage = @DAMAGE, "
                          + " Armor = @ARMOR, "
                          + " Resource = @RESOURCE, "
                          + " Rifleman = @RIFLEMAN, "
                          + " Tank = @TANK"
                          + " WHERE UserID = @USERID";
+            }
+            else
+            {
+                query = "INSERT INTO Upgrades(userid, damage, armor, resource, rifleman, tank)"
+                      + " VALUES(@USERID, @DAMAGE, @ARMOR, @RESOURCE, @RIFLEMAN, @TANK)";
+            }
 
             try
             {
