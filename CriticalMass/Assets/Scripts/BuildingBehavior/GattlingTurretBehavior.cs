@@ -3,9 +3,7 @@ using System.Collections;
 using ModelLayer.Buildings.Defense;
 
 public class GattlingTurretBehavior : MonoBehaviour {
-	public Sprite[] sprites;
 	public GatlingTurret source;
-	int currentSprite = 0;
 
 	// Use this for initialization
 	void Start() {
