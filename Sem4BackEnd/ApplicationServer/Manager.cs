@@ -35,7 +35,7 @@ namespace ApplicationServer
                     success = true;
                 }
             }
-            if (success)
+            if (!success)
             {
                 user = null;
             }
