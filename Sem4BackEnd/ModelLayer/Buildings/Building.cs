@@ -23,11 +23,6 @@ namespace ModelLayer.Buildings {
             set;
         }
         [DataMember]
-        public int UnitSize {
-            get;
-            set;
-        }
-        [DataMember]
         public int Level {
             get;
             set;
