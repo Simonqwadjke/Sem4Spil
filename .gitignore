@@ -12,7 +12,8 @@ Sem4BackEnd/UnitTestProject1/obj/
 Sem4BackEnd/UnitTestProject1/bin/
 Critical Mass/Library/
 Critical Mass/Temp/
-CriticalMass/Library/
+CriticalMass/Library/metadata/
+CriticalMass/Library/ShaderCache/
 CriticalMass/Temp/
 *.exe
 *.bin
