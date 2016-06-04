@@ -3,8 +3,8 @@ using System.Collections;
 using ModelLayer.Buildings.Defense;
 
 public class DefensiveBuildingBehavior : MonoBehaviour {
-    public Sprite[] sprites;
     public Defensive source;
+    public Sprite[] sprites;
     int currentSprite = 0;
 
     // Use this for initialization

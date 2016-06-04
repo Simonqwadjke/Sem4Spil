@@ -41,19 +41,40 @@ public class Map : MonoBehaviour {
     }
 
     void Start() {
-        GameObject obj = prefabByName("GattlingTurret");
-        if (obj != null) {
-            Debug.Log("Created gattling turret");
-        }
-        else {
-            Debug.Log("Something went wrong");
-        }
+        ModelLayer.Buildings.Defense.GatlingTurret source = demo();
+
+        GameObject gObj = createBuilding("GattlingTurret");
+        gObj.GetComponent<GattlingTurretBehavior>().source = source;
+        gObj.GetComponent<GattlingTurretBehavior>().Init();
     }
 
-    public GameObject createBuilding(string prefabName, Vector3 position) {
+    ModelLayer.Buildings.Defense.GatlingTurret demo() {
+
+        ModelLayer.Buildings.Defense.GatlingTurret source = new ModelLayer.Buildings.Defense.GatlingTurret();
+
+        source.Range = 5;
+        source.Location = new ModelLayer.Location() {
+            X = 0,
+            Y = 0
+        };
+        source.Size = new ModelLayer.Size() {
+            Height = 3,
+            Width = 3
+        };
+        return source;
+    }
+
+    public GameObject createBuilding(string prefabName) {
         GameObject prefab = prefabByName(prefabName);
-        Instantiate(prefab);
-        return null;
+        GameObject gObj = Instantiate(prefab);
+        
+
+        gObj.transform.localScale = new Vector3(10, 10);
+        gObj.transform.parent = Buildings.transform;
+        gObj.tag = "Building";
+        gObj.name = prefabName;
+
+        return gObj;
     }
 
     GameObject prefabByName(string name) {

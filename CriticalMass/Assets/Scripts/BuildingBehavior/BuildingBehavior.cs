@@ -2,9 +2,10 @@
 using System.Collections;
 using ModelLayer.Buildings;
 
+
 public class BuildingBehavior : MonoBehaviour {
 
-	public Building source;
+    public Building source;
 	Vector3 originScale;
 	Vector3 originPos;
 	float animMax = 20;
@@ -14,7 +15,7 @@ public class BuildingBehavior : MonoBehaviour {
     bool alive;
 	MapUtil map = new MapUtil();
     void Start() {
-        source = new ModelLayer.Buildings.Defense.Defensive();
+        
     }
 
 	// Use this for initialization
@@ -30,6 +31,7 @@ public class BuildingBehavior : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update() {
+        float x = source.Location.X;
 		if (selected) {
 			cycleSelect();
 		}
