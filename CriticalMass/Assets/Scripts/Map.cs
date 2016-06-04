@@ -1,89 +1,69 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System;
-using ModelLayer;
+using System.Collections.Generic;
 
-public class Map {
+public class Map : MonoBehaviour {
 
-	/// <summary>
-	/// Used to convert ModelLayer.Location into map space.
-	/// </summary>
-	/// <param name="location"></param>
-	/// <returns>>Returns a vector3 with the position indicated by Location</returns>
-	public Vector3 posV3(ModelLayer.Location location) {
-		return new Vector3(location.X + 2, location.Y);
-	}
+    public List<Sprite> tileSprites = new List<Sprite>();
+    public int mapHeight;
+    public int mapWidth;
+    public GameObject Units;
+    public GameObject Buildings;
+    public GameObject Tiles;
+    public GameObject[] prefabs;
+    MapUtil map = new MapUtil();
+    System.Random r;
 
-	/// <summary>
-	/// Used for mouse possition to exact tile position
-	/// </summary>
-	/// <param name="x"></param>
-	/// <param name="y"></param>
-	/// <returns>Returns a vector3 with the exact position</returns>
-	public Vector3 posV3(float x, float y) {
-		x = (float)Math.Round(x - 0.5f, 0);
-		y = (float)Math.Round(y - 0.5f, 0);
-		return new Vector3(x, y);
-	}
+    void OnLevelWasLoaded(int level) {
 
-	/// <summary>
-	/// Used to convert map space into ModelLayer.Location
-	/// </summary>
-	/// <param name="v3"></param>
-	/// <returns>Returns the Location converted from a Vector3</returns>
-	public Location posLoc(Vector3 v3) {
-		return new Location() {
-			X = v3.x -2,
-			Y = v3.y
-		};
-	}
+        int randomPick;
+        int height = mapHeight + 2;
+        int width = mapWidth + 4;
+        r = new System.Random();
 
-	/// <summary>
-	/// Used to skip posV3 and convert by using posLoc
-	/// </summary>
-	/// <param name="x"></param>
-	/// <param name="y"></param>
-	/// <returns>Returns a Location with exact position</returns>
-	public Location posLoc(float x, float y) {
-		Vector3 v3 = posV3(x, y);
-		return new Location() {
-			X = v3.x,
-			Y = v3.y
-		};
-	}
+        for (float y = 0; y < height; y++) {
+            for (float x = 0; x < width; x++) {
+                randomPick = r.Next(0, tileSprites.Count - 1);
+                if ((x == 1 || x == width - 2) && !(y >= height - 2)) {
+                    map.CreateComponent(tileSprites[8], new Vector3(x, y), "Wall (" + x + "," + y + ")", Tiles.transform, "EdgeMap").AddComponent<BoxCollider2D>();
+                }
+                else if ((y == height - 2) && !(x == 0 || x == width - 1)) {
+                    map.CreateComponent(tileSprites[8], new Vector3(x, y), "Wall (" + x + "," + y + ")", Tiles.transform, "EdgeMap").AddComponent<BoxCollider2D>();
+                }
+                map.CreateComponent(tileSprites[randomPick], new Vector3(x, y), "tile_ " + randomPick + "(" + x + "," + y + ")", transform, "GroundMap");
+            }
+        }
 
-	public Location Convert(Vector3 v3) {
-		return new Location() {
-			X = v3.x,
-			Y = v3.y
-		};
-	}
+        BoxCollider2D bc = gameObject.AddComponent<BoxCollider2D>();
+        bc.isTrigger = true;
+        bc.size = new Vector3(width, height) / 10;
+        bc.offset = bc.size / 2;
+    }
 
-	public Vector3 Convert(Location location) {
-		return new Vector3(location.X, location.Y);
-	}
+    void Start() {
+        GameObject obj = prefabByName("GattlingTurret");
+        if (obj != null) {
+            Debug.Log("Created gattling turret");
+        }
+        else {
+            Debug.Log("Something went wrong");
+        }
+    }
 
-	/// <summary>
-	/// Creates a new GameObject
-	/// </summary>
-	/// <param name="sp">The sprite being assigned to the GameObject</param>
-	/// <param name="v3">The location of the GameObject</param>
-	/// <param name="objectName">The name of the GameObject</param>
-	/// <param name="parrent">The parrent of the GameObject</param>
-	/// <param name="layer">The layer of the GameObject</param>
-	/// <returns>Returns a new GameObject</returns>
-	public GameObject CreateComponent(Sprite sp, Vector3 v3, String objectName, Transform parrent = null, string layer = "Default", string tag = "Untagged") {
-		GameObject gObj = new GameObject(objectName);
+    public GameObject createBuilding(string prefabName, Vector3 position) {
+        GameObject prefab = prefabByName(prefabName);
+        Instantiate(prefab);
+        return null;
+    }
 
-		SpriteRenderer render = gObj.AddComponent<SpriteRenderer>();
-		render.sprite = sp;
-		render.sortingLayerName = layer;
-
-		gObj.tag = tag;
-		gObj.transform.position = v3;
-		gObj.transform.localScale = new Vector3(10, 10);
-		gObj.transform.parent = parrent;
-
-		return gObj;
-	}
+    GameObject prefabByName(string name) {
+        GameObject result = null;
+        foreach (GameObject obj in prefabs) {
+            if (obj.name == name) {
+                result = obj;
+                break;
+            }
+        }
+        return result;
+    }
 }

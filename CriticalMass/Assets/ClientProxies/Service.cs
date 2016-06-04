@@ -978,8 +978,8 @@ namespace ModelLayer.Buildings
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Passive.HeadQuarters))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Passive.Labratory))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Passive.Resouce))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Passive.IronMine))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Passive.SawMill))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Passive.IronMine))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Defense.Defensive))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Defense.FlameThrower))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Defense.GatlingTurret))]
@@ -998,8 +998,6 @@ namespace ModelLayer.Buildings
         private ModelLayer.Location LocationField;
         
         private ModelLayer.Size SizeField;
-        
-        private int UnitSizeField;
         
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData
         {
@@ -1077,19 +1075,6 @@ namespace ModelLayer.Buildings
                 this.SizeField = value;
             }
         }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int UnitSize
-        {
-            get
-            {
-                return this.UnitSizeField;
-            }
-            set
-            {
-                this.UnitSizeField = value;
-            }
-        }
     }
 }
 namespace ModelLayer.Buildings.Passive
@@ -1114,8 +1099,8 @@ namespace ModelLayer.Buildings.Passive
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Resouce", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer.Buildings.Passive")]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Passive.IronMine))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Passive.SawMill))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Passive.IronMine))]
     public partial class Resouce : ModelLayer.Buildings.Building
     {
         
@@ -1137,15 +1122,15 @@ namespace ModelLayer.Buildings.Passive
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="IronMine", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer.Buildings.Passive")]
-    public partial class IronMine : ModelLayer.Buildings.Passive.Resouce
+    [System.Runtime.Serialization.DataContractAttribute(Name="SawMill", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer.Buildings.Passive")]
+    public partial class SawMill : ModelLayer.Buildings.Passive.Resouce
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="SawMill", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer.Buildings.Passive")]
-    public partial class SawMill : ModelLayer.Buildings.Passive.Resouce
+    [System.Runtime.Serialization.DataContractAttribute(Name="IronMine", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer.Buildings.Passive")]
+    public partial class IronMine : ModelLayer.Buildings.Passive.Resouce
     {
     }
 }
@@ -1312,6 +1297,9 @@ namespace ModelLayer.Buildings.Defense
 public interface IServerService
 {
     
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerService/CreateUser", ReplyAction="http://tempuri.org/IServerService/CreateUserResponse")]
+    ModelLayer.User CreateUser(ModelLayer.User user);
+    
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServerService/FetchMap", ReplyAction="http://tempuri.org/IServerService/FetchMapResponse")]
     ModelLayer.Map FetchMap(ModelLayer.User user);
     
@@ -1357,6 +1345,11 @@ public partial class ServerServiceClient : System.ServiceModel.ClientBase<IServe
     public ServerServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
             base(binding, remoteAddress)
     {
+    }
+    
+    public ModelLayer.User CreateUser(ModelLayer.User user)
+    {
+        return base.Channel.CreateUser(user);
     }
     
     public ModelLayer.Map FetchMap(ModelLayer.User user)

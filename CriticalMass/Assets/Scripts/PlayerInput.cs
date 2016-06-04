@@ -10,7 +10,7 @@ public class PlayerInput : MonoBehaviour {
 	GameObject selectedObject;
 	Vector3 firstTouch;
 	DateTime time;
-	Map map;
+	MapUtil map;
 	bool select;
 	bool drag;
 
@@ -32,7 +32,7 @@ public class PlayerInput : MonoBehaviour {
 
 	void Start() {
 		time = new DateTime();
-		map = new Map();
+		map = new MapUtil();
 		select = false;
 		drag = false;
 	}
@@ -85,11 +85,11 @@ public class PlayerInput : MonoBehaviour {
 				Vector3 center = new Vector3((float)Math.Truncate((double)source.Size.Width / 2), (float)Math.Truncate((double)source.Size.Height / 2));
 				v3 = v3 - center;
 								Location loc = map.posLoc(v3);
-				if (loc.X >= 0 && loc.X <= world.GetComponentInChildren<LoadMap>().mapWidth - source.Size.Width) {
+				if (loc.X >= 0 && loc.X <= world.GetComponentInChildren<Map>().mapWidth - source.Size.Width) {
 
 				}
 
-				if (loc.Y >= 0 && loc.Y <= world.GetComponentInChildren<LoadMap>().mapHeight - source.Size.Height) {
+				if (loc.Y >= 0 && loc.Y <= world.GetComponentInChildren<Map>().mapHeight - source.Size.Height) {
 
 				}
 

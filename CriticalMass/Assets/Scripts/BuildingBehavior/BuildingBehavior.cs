@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using ModelLayer.Buildings;
 
 public class BuildingBehavior : MonoBehaviour {
 
-	public ModelLayer.Buildings.Building source;
+	public Building source;
 	Vector3 originScale;
 	Vector3 originPos;
 	float animMax = 20;
@@ -11,7 +12,10 @@ public class BuildingBehavior : MonoBehaviour {
 	bool selected;
     bool status;
     bool alive;
-	Map map = new Map();
+	MapUtil map = new MapUtil();
+    void Start() {
+        source = new ModelLayer.Buildings.Defense.Defensive();
+    }
 
 	// Use this for initialization
 	public void init() {

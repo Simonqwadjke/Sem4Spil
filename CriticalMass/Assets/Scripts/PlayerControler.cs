@@ -7,8 +7,7 @@ public class PlayerControler : MonoBehaviour {
     public float speed;
 
     void Start() {
-        rb2d = GetComponent< Rigidbody2D > ();
-
+        rb2d = GetComponent<Rigidbody2D>();
     }
 
     void FixedUpdate() {

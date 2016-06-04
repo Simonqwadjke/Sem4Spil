@@ -4,12 +4,12 @@ using ModelLayer.Buildings.Defense;
 
 public class DefensiveBuildingBehavior : MonoBehaviour {
     public Sprite[] sprites;
-    public GatlingTurret source;
+    public Defensive source;
     int currentSprite = 0;
 
     // Use this for initialization
     public void init() {
-
+        
         GetComponent<BuildingBehavior>().source = source;
         GetComponent<BuildingBehavior>().init();
 
@@ -23,7 +23,7 @@ public class DefensiveBuildingBehavior : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
- 
+
     }
 
 
@@ -31,10 +31,10 @@ public class DefensiveBuildingBehavior : MonoBehaviour {
     int b = 0;
     void demoTurretSprites() {
         b++;
-        if(b == a) {
+        if (b == a) {
             b = 0;
             currentSprite++;
-            if(currentSprite == sprites.Length)
+            if (currentSprite == sprites.Length)
                 currentSprite = 0;
             updateTurretSprite();
         }

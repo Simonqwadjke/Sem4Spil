@@ -7,7 +7,7 @@ public class TestRayCast : MonoBehaviour {
 	bool select = false;
 	
 	public Text text;
-	Map map = new Map();
+	MapUtil map = new MapUtil();
 	public GameObject gameMap;
 	GameObject go;
 
