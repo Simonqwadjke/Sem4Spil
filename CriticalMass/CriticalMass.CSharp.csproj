@@ -84,12 +84,12 @@
     <Compile Include="Assets\Scripts\Deprecated\TestRayCast.cs" />
     <Compile Include="Assets\Scripts\ExitScript.cs" />
     <Compile Include="Assets\Scripts\GameControl.cs" />
-    <Compile Include="Assets\Scripts\LogOn.cs" />
-    <Compile Include="Assets\Scripts\LoginScript.cs" />
     <Compile Include="Assets\Scripts\Map.cs" />
     <Compile Include="Assets\Scripts\MapUtil.cs" />
     <Compile Include="Assets\Scripts\PlayerControler.cs" />
     <Compile Include="Assets\Scripts\PlayerInput.cs" />
+    <Compile Include="Assets\Scripts\SignUp and SignIn\LoginScript.cs" />
+    <Compile Include="Assets\Scripts\SignUp and SignIn\demoLogOn.cs" />
     <Compile Include="Assets\Scripts\UnitBehavior\NewBehaviourScript.cs" />
   </ItemGroup>
   <ItemGroup>

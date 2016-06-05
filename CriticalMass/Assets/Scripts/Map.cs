@@ -30,7 +30,7 @@ public class Map : MonoBehaviour {
                 else if ((y == height - 2) && !(x == 0 || x == width - 1)) {
                     map.CreateComponent(tileSprites[8], new Vector3(x, y), "Wall (" + x + "," + y + ")", Tiles.transform, "EdgeMap").AddComponent<BoxCollider2D>();
                 }
-                map.CreateComponent(tileSprites[randomPick], new Vector3(x, y), "tile_ " + randomPick + "(" + x + "," + y + ")", transform, "GroundMap");
+                map.CreateComponent(tileSprites[randomPick], new Vector3(x, y), "tile_" + randomPick + "(" + x + "," + y + ")", transform, "GroundMap");
             }
         }
 
