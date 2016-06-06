@@ -85,7 +85,10 @@
     <Compile Include="Assets\Scripts\MapUtil.cs" />
     <Compile Include="Assets\Scripts\PlayerControler.cs" />
     <Compile Include="Assets\Scripts\PlayerInput.cs" />
+    <Compile Include="Assets\Scripts\Service.cs" />
     <Compile Include="Assets\Scripts\SignUp and SignIn\LoginScript.cs" />
+    <Compile Include="Assets\Scripts\SignUp and SignIn\SetDateInputFields.cs" />
+    <Compile Include="Assets\Scripts\SignUp and SignIn\SignUp.cs" />
     <Compile Include="Assets\Scripts\SignUp and SignIn\demoLogOn.cs" />
     <Compile Include="Assets\Scripts\UnitBehavior\NewBehaviourScript.cs" />
   </ItemGroup>
