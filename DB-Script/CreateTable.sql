@@ -77,3 +77,19 @@ type		varchar(20) NOT NULL,
 primary key (UnitID),
 foreign key (GroupID) references Groups(GroupID)
 );
+
+create index BuidlingIndex on Buildings(UserID);
+
+create index BattleIndex on Battles(DefenderID, AttackerID);
+
+create index GroupsIndex on Groups(UserID);
+
+create index InvaderIndex on Invaders(UserID);
+
+create index UnitIndex on Units(GroupID);
+
+create index UpgradeIndex on Upgrades(UserID);
+
+create index LoginIndex on UserData(Username, Password);
+
+create index UserIndex on UserData(Username);

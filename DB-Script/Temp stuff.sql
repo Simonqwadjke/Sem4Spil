@@ -3,6 +3,8 @@ SELECT Name, Email, Age, Country, Ranking, Level, Lastlogin FROM UserData WHERE 
 
 SELECT XLocation, YLocation, type, Level FROM Buildings WHERE UserID = 0
 
+select top(50) buildingid from buildings 
+
 select type from Units where groupid in (select groupid from groups where userid = 0)
 
 --update units set groupid = 1 where unitid = 1

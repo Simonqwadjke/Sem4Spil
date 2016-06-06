@@ -116,7 +116,7 @@ namespace DataAccessLayer
                         building = new FlameThrower();
                         building.Location = location;
                         break;
-                    case "GattlingTurret":
+                    case "GatlingTurret":
                         building = new GatlingTurret();
                         building.Location = location;
                         break;
