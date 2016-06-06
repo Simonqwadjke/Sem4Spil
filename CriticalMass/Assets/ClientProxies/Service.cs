@@ -768,8 +768,8 @@ namespace ModelLayer.Units
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Unit", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer.Units")]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Units.Tank))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Units.Rifleman))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Units.Tank))]
     public partial class Unit : object, System.Runtime.Serialization.IExtensibleDataObject
     {
         
@@ -910,6 +910,28 @@ namespace ModelLayer.Units
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Rifleman", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer.Units")]
+    public partial class Rifleman : ModelLayer.Units.Unit
+    {
+        
+        private int AccuricyField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Accuricy
+        {
+            get
+            {
+                return this.AccuricyField;
+            }
+            set
+            {
+                this.AccuricyField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Tank", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer.Units")]
     public partial class Tank : ModelLayer.Units.Unit
     {
@@ -944,28 +966,6 @@ namespace ModelLayer.Units
             }
         }
     }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Rifleman", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer.Units")]
-    public partial class Rifleman : ModelLayer.Units.Unit
-    {
-        
-        private int AccuricyField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Accuricy
-        {
-            get
-            {
-                return this.AccuricyField;
-            }
-            set
-            {
-                this.AccuricyField = value;
-            }
-        }
-    }
 }
 namespace ModelLayer.Buildings
 {
@@ -976,14 +976,15 @@ namespace ModelLayer.Buildings
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Building", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer.Buildings")]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Passive.HeadQuarters))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Passive.Labratory))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Passive.Resouce))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Passive.SawMill))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Passive.IronMine))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Passive.Labratory))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Defense.Defensive))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Defense.FlameThrower))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Defense.GatlingTurret))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Defense.Wall))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Defense.Cannon))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Defense.GatlingTurret))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Defense.FlameThrower))]
     public partial class Building : object, System.Runtime.Serialization.IExtensibleDataObject
     {
         
@@ -1091,13 +1092,6 @@ namespace ModelLayer.Buildings.Passive
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Labratory", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer.Buildings.Passive")]
-    public partial class Labratory : ModelLayer.Buildings.Building
-    {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Resouce", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer.Buildings.Passive")]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Passive.SawMill))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Passive.IronMine))]
@@ -1133,6 +1127,13 @@ namespace ModelLayer.Buildings.Passive
     public partial class IronMine : ModelLayer.Buildings.Passive.Resouce
     {
     }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Labratory", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer.Buildings.Passive")]
+    public partial class Labratory : ModelLayer.Buildings.Building
+    {
+    }
 }
 namespace ModelLayer.Buildings.Defense
 {
@@ -1142,9 +1143,10 @@ namespace ModelLayer.Buildings.Defense
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Defensive", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer.Buildings.Defense")]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Defense.FlameThrower))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Defense.GatlingTurret))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Defense.Wall))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Defense.Cannon))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Defense.GatlingTurret))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(ModelLayer.Buildings.Defense.FlameThrower))]
     public partial class Defensive : ModelLayer.Buildings.Building
     {
         
@@ -1196,59 +1198,22 @@ namespace ModelLayer.Buildings.Defense
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="FlameThrower", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer.Buildings.Defense")]
-    public partial class FlameThrower : ModelLayer.Buildings.Defense.Defensive
+    [System.Runtime.Serialization.DataContractAttribute(Name="Wall", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer.Buildings.Defense")]
+    public partial class Wall : ModelLayer.Buildings.Defense.Defensive
     {
         
-        private int BurnDamageField;
-        
-        private int BurnTimeField;
+        private int DefensiveFactorField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int BurnDamage
+        public int DefensiveFactor
         {
             get
             {
-                return this.BurnDamageField;
+                return this.DefensiveFactorField;
             }
             set
             {
-                this.BurnDamageField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int BurnTime
-        {
-            get
-            {
-                return this.BurnTimeField;
-            }
-            set
-            {
-                this.BurnTimeField = value;
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="GatlingTurret", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer.Buildings.Defense")]
-    public partial class GatlingTurret : ModelLayer.Buildings.Defense.Defensive
-    {
-        
-        private double AccuracyField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double Accuracy
-        {
-            get
-            {
-                return this.AccuracyField;
-            }
-            set
-            {
-                this.AccuracyField = value;
+                this.DefensiveFactorField = value;
             }
         }
     }
@@ -1286,6 +1251,65 @@ namespace ModelLayer.Buildings.Defense
             set
             {
                 this.SplashRadiusField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="GatlingTurret", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer.Buildings.Defense")]
+    public partial class GatlingTurret : ModelLayer.Buildings.Defense.Defensive
+    {
+        
+        private double AccuracyField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Accuracy
+        {
+            get
+            {
+                return this.AccuracyField;
+            }
+            set
+            {
+                this.AccuracyField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="FlameThrower", Namespace="http://schemas.datacontract.org/2004/07/ModelLayer.Buildings.Defense")]
+    public partial class FlameThrower : ModelLayer.Buildings.Defense.Defensive
+    {
+        
+        private int BurnDamageField;
+        
+        private int BurnTimeField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int BurnDamage
+        {
+            get
+            {
+                return this.BurnDamageField;
+            }
+            set
+            {
+                this.BurnDamageField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int BurnTime
+        {
+            get
+            {
+                return this.BurnTimeField;
+            }
+            set
+            {
+                this.BurnTimeField = value;
             }
         }
     }
