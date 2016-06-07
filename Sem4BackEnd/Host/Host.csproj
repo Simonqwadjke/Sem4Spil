@@ -61,6 +61,10 @@
       <Project>{7adef41c-1bc9-46f9-9fc5-05ac03c0f7e0}</Project>
       <Name>ApplicationServer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
+      <Project>{4f4c4eb8-3d3d-4083-80e2-cdf4b26a72d0}</Project>
+      <Name>DataAccessLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ModelLayer\ModelLayer.csproj">
       <Project>{3c46ab5b-9661-4fce-8fa5-237ee09ae563}</Project>
       <Name>ModelLayer</Name>

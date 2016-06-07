@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
+using System.Data.SqlClient;
 using ApplicationServer;
 using ServiceLibrary;
+using DataAccessLayer;
 
 #region Temp
 using ModelLayer;
@@ -21,30 +23,50 @@ namespace Host
     class Program
     {
 
-
         static void Main(string[] args)
         {
-            using (ServiceHost host = new ServiceHost(typeof(ServiceLibrary.ServerService)))
-            {
-                host.Open();
-                SessionManager mgr = SessionManager.getInstance();
-                while (host.State.ToString().Equals("Opened"))
+                try
                 {
-                    Console.Clear();
-                    Console.WriteLine("Service is open");
-                    Console.WriteLine("Number of ChannelDispatchers: " + host.ChannelDispatchers.Count);
-                    Console.WriteLine("BaseAddress: " + host.BaseAddresses[0].ToString());
-                    Console.WriteLine("Press enter to refresh: last refresh at " + DateTime.Now);
-                    if (Console.ReadLine().Equals("exit"))
+                    using (ServiceHost host = new ServiceHost(typeof(ServiceLibrary.ServerService)))
                     {
-                        host.Close();
+                        host.Open();
+                        DataConnection.GetDbCommand("");
+                        SessionManager mgr = SessionManager.getInstance();
+                        while (host.State.ToString().Equals("Opened"))
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Service is open");
+                            Console.WriteLine("Number of ChannelDispatchers: " + host.ChannelDispatchers.Count);
+                            Console.WriteLine("BaseAddress: " + host.BaseAddresses[0].ToString());
+                            Console.WriteLine("Press enter to refresh: last refresh at " + DateTime.Now);
+                            if (Console.ReadLine().Equals("exit"))
+                            {
+                                host.Close();
+                            }
+                        }
                     }
                 }
-            }
+                catch (SqlException e)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Unable to connect to database\n please check internet connection or database availability");
+                    Console.WriteLine("  enter 'exit' to shutdown, any other input will retry");
+                    if (!Console.ReadLine().Equals("exit"))
+                    {
+                        Application.Restart();
+                    }
+                }
+                catch (CommunicationObjectFaultedException e)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Please start the server application as administrator");
+                    Console.WriteLine("Press any key to exit");
+                    Console.ReadKey();
+                }
             //new Program();
         }
 
-        private static string testHashing(string input)
+        private static string TestHashing(string input)
         {
             MD5 md5 = MD5.Create();
             Byte[] hash = md5.ComputeHash(Encoding.ASCII.GetBytes(input));
