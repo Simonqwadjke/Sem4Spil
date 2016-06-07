@@ -50,8 +50,8 @@ namespace Host
                 {
                     Console.Clear();
                     Console.WriteLine("Unable to connect to database\n please check internet connection or database availability");
-                    Console.WriteLine("  enter 'exit' to shutdown, any other input will retry");
-                    if (!Console.ReadLine().Equals("exit"))
+                    Console.WriteLine("  enter 'restart' to restart and retry, any other input will exit");
+                    if (Console.ReadLine().Equals("restart"))
                     {
                         Application.Restart();
                     }
