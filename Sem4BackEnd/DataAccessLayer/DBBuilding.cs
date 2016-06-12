@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
-using System.Drawing;
 using ModelLayer;
 using ModelLayer.Buildings;
 using ModelLayer.Buildings.Defense;
@@ -103,42 +102,78 @@ namespace DataAccessLayer
             do
             {
                 Building building = null;
+
                 int x = Convert.ToInt32(reader["Xlocation"]);
                 int y = Convert.ToInt32(reader["Ylocation"]);
                 Location location = new Location(x, y);
+
+                int level = Convert.ToInt32(reader["Level"]);
+
                 switch (reader["type"].ToString())
                 {
                     case "Cannon":
                         building = new Cannon();
                         building.Location = location;
+                        building.Size = new Size(3, 3);
+                        building.Level = level;
+                        building.Armor = 10;
+                        building.HitPoints = 500;
                         break;
                     case "FlameThrower":
                         building = new FlameThrower();
                         building.Location = location;
+                        building.Size = new Size(3, 3);
+                        building.Level = level;
+                        building.Armor = 6;
+                        building.HitPoints = 400;
                         break;
                     case "GatlingTurret":
                         building = new GatlingTurret();
                         building.Location = location;
+                        building.Size = new Size(3, 3);
+                        building.Level = level;
+                        building.Armor = 8;
+                        building.HitPoints = 350;
                         break;
                     case "Wall":
                         building = new Wall();
                         building.Location = location;
+                        building.Size = new Size(1, 1);
+                        building.Level = level;
+                        building.Armor = 20;
+                        building.HitPoints = 150;
                         break;
                     case "HeadQuarters":
                         building = new HeadQuarters();
                         building.Location = location;
+                        building.Size = new Size(5, 5);
+                        building.Level = level;
+                        building.Armor = 5;
+                        building.HitPoints = 800;
                         break;
                     case "Labratory":
                         building = new Labratory();
                         building.Location = location;
+                        building.Size = new Size(4, 4);
+                        building.Level = level;
+                        building.Armor = 2;
+                        building.HitPoints = 400;
                         break;
                     case "SawMill":
                         building = new SawMill();
                         building.Location = location;
+                        building.Size = new Size(5, 5);
+                        building.Level = level;
+                        building.Armor = 3;
+                        building.HitPoints = 200;
                         break;
                     case "IronMine":
                         building = new IronMine();
                         building.Location = location;
+                        building.Size = new Size(5, 5);
+                        building.Level = level;
+                        building.Armor = 3;
+                        building.HitPoints = 200;
                         break;
                     default:
                         Console.WriteLine("Error: found unknown building type: " + reader["type"].ToString());
