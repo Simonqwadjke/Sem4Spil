@@ -25,44 +25,45 @@ namespace Host
 
         static void Main(string[] args)
         {
-                try
+            try
+            {
+                DateTime startTime = DateTime.Now;
+                using (ServiceHost host = new ServiceHost(typeof(ServiceLibrary.ServerService)))
                 {
-                    using (ServiceHost host = new ServiceHost(typeof(ServiceLibrary.ServerService)))
+                    host.Open();
+                    DataConnection.GetDbCommand("");
+                    SessionManager mgr = SessionManager.getInstance();
+                    while (host.State.ToString().Equals("Opened"))
                     {
-                        host.Open();
-                        DataConnection.GetDbCommand("");
-                        SessionManager mgr = SessionManager.getInstance();
-                        while (host.State.ToString().Equals("Opened"))
+                        Console.Clear();
+                        Console.WriteLine("Service is open, Started at: " + startTime);
+                        Console.WriteLine("Number of ChannelDispatchers: " + host.ChannelDispatchers.Count);
+                        Console.WriteLine("BaseAddress: " + host.BaseAddresses[0].ToString());
+                        Console.WriteLine("Press enter to refresh: last refresh at " + DateTime.Now);
+                        if (Console.ReadLine().Equals("exit"))
                         {
-                            Console.Clear();
-                            Console.WriteLine("Service is open");
-                            Console.WriteLine("Number of ChannelDispatchers: " + host.ChannelDispatchers.Count);
-                            Console.WriteLine("BaseAddress: " + host.BaseAddresses[0].ToString());
-                            Console.WriteLine("Press enter to refresh: last refresh at " + DateTime.Now);
-                            if (Console.ReadLine().Equals("exit"))
-                            {
-                                host.Close();
-                            }
+                            host.Close();
                         }
                     }
                 }
-                catch (SqlException e)
+            }
+            catch (SqlException e)
+            {
+                Console.Clear();
+                Console.WriteLine("Unable to connect to database\n please check internet connection or database availability");
+                Console.WriteLine("  enter 'restart' to restart and retry, any other input will exit");
+                if (Console.ReadLine().Equals("restart"))
                 {
-                    Console.Clear();
-                    Console.WriteLine("Unable to connect to database\n please check internet connection or database availability");
-                    Console.WriteLine("  enter 'restart' to restart and retry, any other input will exit");
-                    if (Console.ReadLine().Equals("restart"))
-                    {
-                        Application.Restart();
-                    }
+                    Application.Restart();
                 }
-                catch (CommunicationObjectFaultedException e)
-                {
-                    Console.Clear();
-                    Console.WriteLine("Please start the server application as administrator");
-                    Console.WriteLine("Press any key to exit");
-                    Console.ReadKey();
-                }
+            }
+            catch (CommunicationObjectFaultedException e)
+            {
+                Console.Clear();
+                Console.WriteLine("Please start the server application as administrator");
+                Console.WriteLine("Press any key to exit");
+                Console.ReadKey();
+            }
             //new Program();
         }
 

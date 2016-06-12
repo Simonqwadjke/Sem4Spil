@@ -65,9 +65,8 @@ namespace ApplicationServer
         public bool SaveData(User user)
         {
             bool success = false, partSuccess = true;
-            //TODO: Implement
 
-            if (new DBUser().GetUser(user.Username) != null)
+            if (new DBUser().GetUser(user.Username) != null && sessionmgr.checkSession(user.Session))
             {
                 if (user.Garison != null)
                 {
