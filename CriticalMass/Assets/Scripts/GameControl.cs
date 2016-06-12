@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using ModelLayer;
 using System.Collections;
 
@@ -25,7 +26,12 @@ public class GameControl : MonoBehaviour {
     {
         if (user != null)
         {
-            GUI.Label(new Rect(100, 100, 100, 30), user.Username);
+            GUI.Label(new Rect(10, 10, 100, 30), user.Username);
+            if(GUI.Button(new Rect(10, 50, 100, 30), "Log out"))
+            {
+                user = null;
+                SceneManager.LoadScene("LogIn");
+            }
         }
         else
         {

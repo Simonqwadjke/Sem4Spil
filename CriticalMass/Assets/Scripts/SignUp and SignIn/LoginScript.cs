@@ -21,12 +21,14 @@ public class LoginScript : MonoBehaviour
         client = new ServerServiceClient(new BasicHttpBinding(), new EndpointAddress("http://localhost:8081/ServiceLibrary"));
         md5 = MD5.Create();
         outputText.text = "Please Enter Username and Password";
+        usernameField.Select();
     }
 
     public void LoginStart()
     {
         try
         {
+            outputText.text = "Attempting Login";
             if (Authenticate(usernameField.text, passwordField.text))
             {
                 //change scene
@@ -73,4 +75,33 @@ public class LoginScript : MonoBehaviour
         return hashedPassword;
     }
 
+    void Update()
+    {
+        //if(passwordField.isFocused)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.Tab))
+        //    {
+        //        usernameField.Select();
+        //    }
+        //}
+        if (usernameField.isFocused)
+        {
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                passwordField.Select();
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                usernameField.Select();
+            }
+        }
+
+        if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+        {
+            LoginStart();
+        }
+    }
 }

@@ -4,7 +4,7 @@ using ModelLayer.Buildings.Defense;
 using System;
 
 
-public class GattlingTurretBehavior : MonoBehaviour {
+public class GatlingTurretBehavior : MonoBehaviour {
     public GatlingTurret source;
 
     // Use this for initialization

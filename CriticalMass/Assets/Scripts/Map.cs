@@ -43,9 +43,9 @@ public class Map : MonoBehaviour {
     void Start() {
         ModelLayer.Buildings.Defense.GatlingTurret source = demo();
 
-        GameObject gObj = createBuilding("GattlingTurret");
-        gObj.GetComponent<GattlingTurretBehavior>().source = source;
-        gObj.GetComponent<GattlingTurretBehavior>().Init();
+        GameObject gObj = createBuilding("GatlingTurret");
+        gObj.GetComponent<GatlingTurretBehavior>().source = source;
+        gObj.GetComponent<GatlingTurretBehavior>().Init();
     }
 
     ModelLayer.Buildings.Defense.GatlingTurret demo() {
