@@ -25,6 +25,7 @@ namespace Host
 
         static void Main(string[] args)
         {
+            Console.WriteLine("starting...");
             try
             {
                 DateTime startTime = DateTime.Now;
@@ -59,10 +60,15 @@ namespace Host
             }
             catch (CommunicationObjectFaultedException e)
             {
-                Console.Clear();
                 Console.WriteLine("Please start the server application as administrator");
                 Console.WriteLine("Press any key to exit");
                 Console.ReadKey();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("FUCK: " + e.GetType());
+                Console.WriteLine("DET: " + e.Message);
+                Console.WriteLine("PIS: " + e.StackTrace);
             }
             //new Program();
         }

@@ -12,26 +12,29 @@ public class BuildingPlacemnet : MonoBehaviour
         {
             Map localMap = FindObjectOfType<Map>();
             ModelLayer.Map userMap = GameControl.control.user.Map;
-            foreach (Building building in userMap.Buildinds)
+            foreach(Building building in userMap.Buildinds)
             {
-                foreach (GameObject prefab in localMap.prefabs)
-                {
-                    if (building.GetType().Name.Equals(prefab.name))
-                    {
-                        GameObject obj = Instantiate(prefab);
-                        obj.GetComponent<BuildingBehavior>().source = building;
-                        obj.GetComponent<BuildingBehavior>().init();
-                        obj.transform.localScale = new Vector3(10, 10);
-                        obj.transform.parent = localMap.Buildings.transform;
-                        obj.tag = "Building";
-                        obj.name = building.GetType().Name;
-                        break;
-                    }
-                }
+                GameObject obj = localMap.createBuilding(building.GetType().Name);
+
+                obj.GetComponent<BuildingBehavior>().source = building;
+                obj.GetComponent<BuildingBehavior>().init();
             }
             //foreach (Building building in userMap.Buildinds)
             //{
-            //    localMap.createBuilding(building.GetType().Name);
+            //    foreach (GameObject prefab in localMap.prefabs)
+            //    {
+            //        if (building.GetType().Name.Equals(prefab.name))
+            //        {
+            //            GameObject obj = Instantiate(prefab);
+            //            obj.GetComponent<BuildingBehavior>().source = building;
+            //            obj.GetComponent<BuildingBehavior>().init();
+            //            obj.transform.localScale = new Vector3(10, 10);
+            //            obj.transform.parent = localMap.Buildings.transform;
+            //            obj.tag = "Building";
+            //            obj.name = building.GetType().Name;
+            //            break;
+            //        }
+            //    }
             //}
         }
 
