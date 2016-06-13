@@ -83,8 +83,8 @@ public class BuildingBehavior : MonoBehaviour {
 
         //float posDifX = originPos.x - ((animSize / 100f) / 6.6f);
         //float posDifY = originPos.y - ((animSize / 100f) / 6.6f);
-        float posDifX = originPos.x - ((animSize / 1000f) / 2 * source.Size.Width);
-        float posDifY = originPos.y - ((animSize / 1000f) / 2 * source.Size.Height);
+        float posDifX = originPos.x - (((animSize / 1000f) / 2) * source.Size.Width);
+        float posDifY = originPos.y - (((animSize / 1000f) / 2) * source.Size.Height);
         transform.localPosition = new Vector3(posDifX, posDifY);
 	}
 
