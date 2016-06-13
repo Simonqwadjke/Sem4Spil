@@ -7,6 +7,8 @@ select top(50) buildingid from buildings
 
 select type from Units where groupid in (select groupid from groups where userid = 0)
 
+--Update Buildings set ylocation = ylocation + 1 where BuildingID = 11
+
 --update units set groupid = 1 where unitid = 1
 
 --insert into userdata(userid,name,username,password,email,age,country,ranking,level) values(1,'knud','kanut','pass','nope@haha','2200-1-1','denemark',1,1)
