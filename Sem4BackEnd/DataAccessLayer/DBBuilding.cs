@@ -177,7 +177,7 @@ namespace DataAccessLayer
                         break;
                     default:
                         Console.WriteLine("Error: found unknown building type: " + reader["type"].ToString());
-                        break;
+                        continue;
                 }
                 list.Add(building);
             } while (reader.Read());

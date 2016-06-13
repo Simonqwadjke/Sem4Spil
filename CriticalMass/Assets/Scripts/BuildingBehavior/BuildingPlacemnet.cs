@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using ModelLayer.Buildings;
+using ModelLayer.Buildings.Defense;
+using ModelLayer.Buildings.Passive;
+using System;
 
 public class BuildingPlacemnet : MonoBehaviour
 {
@@ -12,12 +15,26 @@ public class BuildingPlacemnet : MonoBehaviour
         {
             Map localMap = FindObjectOfType<Map>();
             ModelLayer.Map userMap = GameControl.control.user.Map;
-            foreach(Building building in userMap.Buildinds)
+            foreach (Building building in userMap.Buildinds)
             {
-                GameObject obj = localMap.createBuilding(building.GetType().Name);
-
-                obj.GetComponent<BuildingBehavior>().source = building;
-                obj.GetComponent<BuildingBehavior>().init();
+                try
+                {
+                    GameObject obj = localMap.createBuilding(building.GetType().Name);
+                    if (building.GetType().Name.Equals("GatlingTurret"))
+                    {
+                        obj.GetComponent<GatlingTurretBehavior>().source = (GatlingTurret)building;
+                        obj.GetComponent<GatlingTurretBehavior>().Init();
+                    }
+                    else
+                    {
+                        obj.GetComponent<BuildingBehavior>().source = building;
+                        obj.GetComponent<BuildingBehavior>().init();
+                    }
+                }
+                catch (ArgumentException e)
+                {
+                    Debug.Log("Found unknown building type: " + building.GetType().Name);
+                }
             }
             //foreach (Building building in userMap.Buildinds)
             //{

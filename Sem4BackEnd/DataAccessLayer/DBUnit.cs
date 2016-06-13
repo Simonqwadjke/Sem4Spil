@@ -146,9 +146,23 @@ namespace DataAccessLayer
                         {
                             case "Rifleman":
                                 unit = new Rifleman();
+                                unit.Armor = 2;
+                                unit.AttackSpeed = 750;
+                                unit.Damage = 25;
+                                unit.HitPoints = 120;
+                                unit.Range = 3;
+                                unit.Speed = 5;
+                                unit.UnitSize = 1;
                                 break;
                             case "Tank":
                                 unit = new Tank();
+                                unit.Armor = 15;
+                                unit.AttackSpeed = 2200;
+                                unit.Damage = 90;
+                                unit.HitPoints = 350;
+                                unit.Range = 5;
+                                unit.Speed = 3;
+                                unit.UnitSize = 3;
                                 break;
                             default:
                                 Console.WriteLine("Error: DBUnit found an unknown unit type");

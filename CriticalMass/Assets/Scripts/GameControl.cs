@@ -26,7 +26,7 @@ public class GameControl : MonoBehaviour {
     {
         if (user != null)
         {
-            GUI.Label(new Rect(10, 10, 100, 30), user.Username);
+            GUI.Label(new Rect(20, 20, 150, 30), user.Username);
             if(GUI.Button(new Rect(10, 50, 100, 30), "Log out"))
             {
                 user = null;
@@ -35,7 +35,8 @@ public class GameControl : MonoBehaviour {
         }
         else
         {
-            GUI.Label(new Rect(100, 100, 100, 30), "none is logged in");
+            //GUI.Label(new Rect(100, 100, 200, 30), "Result:" + (new Vector3(30,30,30) - new Vector3(20,20,20)));
+            GUI.Label(new Rect(20, 20, 150, 30), "No one is logged in");
         }
     }
 }

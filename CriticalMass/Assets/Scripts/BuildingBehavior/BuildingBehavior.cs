@@ -14,6 +14,7 @@ public class BuildingBehavior : MonoBehaviour {
     bool status;
     bool alive;
 	MapUtil map = new MapUtil();
+
     void Start() {
         
     }
@@ -31,7 +32,6 @@ public class BuildingBehavior : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update() {
-        float x = source.Location.X;
 		if (selected) {
 			cycleSelect();
 		}
