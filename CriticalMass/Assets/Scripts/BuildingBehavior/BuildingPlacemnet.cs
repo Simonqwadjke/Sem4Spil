@@ -23,6 +23,7 @@ public class BuildingPlacemnet : MonoBehaviour
                         obj.GetComponent<BuildingBehavior>().init();
                         obj.transform.localScale = new Vector3(10, 10);
                         obj.transform.parent = localMap.Buildings.transform;
+                        obj.tag = "Building";
                         obj.name = building.GetType().Name;
                         break;
                     }

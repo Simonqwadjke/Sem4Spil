@@ -73,7 +73,7 @@ public class BuildingBehavior : MonoBehaviour {
 			animSize--;
 		}
 
-		if (animSize == animMax || animSize == 0) {
+		if (animSize >= animMax || animSize <= 0) {
 			status = !status;
 		}
 
