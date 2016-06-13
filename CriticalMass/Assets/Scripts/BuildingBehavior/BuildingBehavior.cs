@@ -81,9 +81,11 @@ public class BuildingBehavior : MonoBehaviour {
 		float scaleDifY = originScale.y + animSize / 100f;
 		transform.localScale = new Vector3(scaleDifX, scaleDifY);
 
-		float posDifX = originPos.x - ((animSize / 100f) / 6.6f);
-		float posDifY = originPos.y - ((animSize / 100f) / 6.6f);
-		transform.localPosition = new Vector3(posDifX, posDifY);
+        //float posDifX = originPos.x - ((animSize / 100f) / 6.6f);
+        //float posDifY = originPos.y - ((animSize / 100f) / 6.6f);
+        float posDifX = originPos.x - ((animSize / 1000f) / 2 * source.Size.Width);
+        float posDifY = originPos.y - ((animSize / 1000f) / 2 * source.Size.Height);
+        transform.localPosition = new Vector3(posDifX, posDifY);
 	}
 
 
