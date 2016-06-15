@@ -9,7 +9,6 @@ public class GatlingTurretBehavior : MonoBehaviour {
 
     // Use this for initialization
     public void Init() {
-        //demo();
 
         GetComponent<DefensiveBuildingBehavior>().source = source;
         GetComponent<DefensiveBuildingBehavior>().init();
