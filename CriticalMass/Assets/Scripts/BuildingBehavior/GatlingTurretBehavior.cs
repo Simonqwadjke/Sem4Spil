@@ -18,22 +18,4 @@ public class GatlingTurretBehavior : MonoBehaviour {
     void Update() {
 
     }
-
-    void demo() {
-        if (source == null) {
-            source = new ModelLayer.Buildings.Defense.GatlingTurret();
-        }
-        source.Range = 5;
-        source.Location = new ModelLayer.Location() {
-            X = 3,
-            Y = 3
-        };
-        source.Size = new ModelLayer.Size() {
-            Height = 3,
-            Width = 3
-        };
-        String s = "";
-    }
-
-
 }
