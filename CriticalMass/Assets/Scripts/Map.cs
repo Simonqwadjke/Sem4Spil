@@ -11,7 +11,6 @@ public class Map : MonoBehaviour {
     public GameObject Buildings;
     public GameObject Tiles;
     public GameObject[] prefabs;
-    MapUtil map = new MapUtil();
     System.Random r;
 
     void OnLevelWasLoaded(int level) {
@@ -25,27 +24,27 @@ public class Map : MonoBehaviour {
             for (float x = 0; x < width; x++) {
                 randomPick = r.Next(0, tileSprites.Count - 1);
                 if ((x == 1 || x == width - 2) && !(y >= height - 2)) {
-                    map.CreateComponent(tileSprites[8], new Vector3(x, y), "Wall (" + x + "," + y + ")", Tiles.transform, "EdgeMap").AddComponent<BoxCollider2D>();
+                    MapUtil.CreateComponent(tileSprites[8], new Vector3(x, y), "Wall (" + x + "," + y + ")", Tiles.transform, "EdgeMap").AddComponent<BoxCollider2D>();
                 }
                 else if ((y == height - 2) && !(x == 0 || x == width - 1)) {
-                    map.CreateComponent(tileSprites[8], new Vector3(x, y), "Wall (" + x + "," + y + ")", Tiles.transform, "EdgeMap").AddComponent<BoxCollider2D>();
+                    MapUtil.CreateComponent(tileSprites[8], new Vector3(x, y), "Wall (" + x + "," + y + ")", Tiles.transform, "EdgeMap").AddComponent<BoxCollider2D>();
                 }
-                map.CreateComponent(tileSprites[randomPick], new Vector3(x, y), "tile_" + randomPick + "(" + x + "," + y + ")", transform, "GroundMap");
+                MapUtil.CreateComponent(tileSprites[randomPick], new Vector3(x, y), "tile_" + randomPick + "(" + x + "," + y + ")", transform, "GroundMap");
             }
         }
 
         BoxCollider2D bc = gameObject.AddComponent<BoxCollider2D>();
         bc.isTrigger = true;
-        bc.size = new Vector3(width, height) / 10;
+        bc.size = new Vector3(width, height);
         bc.offset = bc.size / 2;
     }
 
     void Start() {
-        ModelLayer.Buildings.Defense.GatlingTurret source = demo();
+        //ModelLayer.Buildings.Defense.GatlingTurret source = demo();
 
-        GameObject gObj = createBuilding("GatlingTurret");
-        gObj.GetComponent<GatlingTurretBehavior>().source = source;
-        gObj.GetComponent<GatlingTurretBehavior>().Init();
+        //GameObject gObj = createBuilding("GatlingTurret");
+        //gObj.GetComponent<GatlingTurretBehavior>().source = source;
+        //gObj.GetComponent<GatlingTurretBehavior>().Init();
     }
 
     ModelLayer.Buildings.Defense.GatlingTurret demo() {

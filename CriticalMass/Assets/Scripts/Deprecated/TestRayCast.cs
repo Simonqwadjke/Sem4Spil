@@ -7,7 +7,6 @@ public class TestRayCast : MonoBehaviour {
 	bool select = false;
 	
 	public Text text;
-	MapUtil map = new MapUtil();
 	public GameObject gameMap;
 	GameObject go;
 
@@ -20,7 +19,7 @@ public class TestRayCast : MonoBehaviour {
 				Vector3 v3 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 				
 				//go.GetComponent<BuildingBehavior>()
-				go.GetComponent<BuildingBehavior>().move(map.posV3(v3.x, v3.y));
+				go.GetComponent<BuildingBehavior>().move(MapUtil.posV3(v3.x, v3.y));
 			}
 		}
 
@@ -55,7 +54,7 @@ public class TestRayCast : MonoBehaviour {
 			v3 = v3 - gameMap.transform.position;
 			s += "\nInput.mouse = " + Input.mousePosition;
 			s += "\nScreen to world point" + v3;
-			s += "\nMapPos = " + map.posV3(v3.x, v3.y);
+			s += "\nMapPos = " + MapUtil.posV3(v3.x, v3.y);
 			s += "\nSelect = " + select.ToString();
 			text.text = s;
 		}

@@ -3,18 +3,20 @@ using System.Collections;
 using ModelLayer.Buildings.Defense;
 using ModelLayer.Units;
 
-public class DefensiveBuildingBehavior : MonoBehaviour {
-    public Defensive source;
+public class DefensiveBuildingBehavior : BuildingBehavior {
     public Sprite[] sprites;
     GameObject target;
     int currentSprite = 0;
+    int id = -1;
+    float lastAttack;
+    static int nextid = 0;
 
     // Use this for initialization
-    public void init() {
-        
-        GetComponent<BuildingBehavior>().source = source;
-        GetComponent<BuildingBehavior>().init();
-
+    public override void init() {
+        base.init();
+        id = nextid;
+        nextid++;
+        lastAttack = Time.time;
         updateTurretSprite();
     }
 
@@ -22,48 +24,57 @@ public class DefensiveBuildingBehavior : MonoBehaviour {
         SpriteRenderer sp = GetComponent<SpriteRenderer>();
         sp.sprite = sprites[currentSprite];
     }
-
-    // Update is called once per frame
+    
     void Update() {
+        bool noneFound = true;
+        int range = 125;
+        float attackDelay = 0.5f;
+        int damage = 1;
+        
         foreach(GameObject unit in TargetList.targets)
         {
-            if((unit.transform.position - transform.position).sqrMagnitude < 25)
+            float sqrDistance = SqrDistanceTo(unit);
+            if (sqrDistance < range)
             {
+                noneFound = false;
                 if (target == null)
+                {
+                    target = unit;
+                }
+                else if(sqrDistance < SqrDistanceTo(target))
                 {
                     target = unit;
                 }
             }
             else
             {
-                target = null;
+                if (noneFound)
+                {
+                    target = null;
+                }
             }
         }
+        if(target != null && Time.time - lastAttack > attackDelay)
+        {
+            target.GetComponent<UnitBehavior>().health -= damage;
+            lastAttack = Time.time;
+        }
+    }
+
+    float SqrDistanceTo(GameObject obj)
+    {
+        return (obj.transform.position - (transform.position + MapUtil.Convert(source.Size) / 2)).sqrMagnitude;
     }
 
     void OnGUI()
     {
         if(target != null)
         {
-            GUI.Label(new Rect(100, 100, 100, 30), "DU DØ!");
+            GUI.Label(new Rect(100, 10 + 30 * id, 100, 30), "DU' DØ! " + id);
         }
         else
         {
             GUI.Label(new Rect(100, 100, 100, 30), "You missed!");
-        }
-    }
-
-
-    int a = 200;
-    int b = 0;
-    void demoTurretSprites() {
-        b++;
-        if (b == a) {
-            b = 0;
-            currentSprite++;
-            if (currentSprite == sprites.Length)
-                currentSprite = 0;
-            updateTurretSprite();
         }
     }
 }

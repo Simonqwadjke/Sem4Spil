@@ -13,28 +13,27 @@ public class BuildingBehavior : MonoBehaviour {
 	bool selected;
     bool status;
     bool alive;
-	MapUtil map = new MapUtil();
 
     void Start() {
         
     }
-
-	// Use this for initialization
-	public void init() {
-		originScale = transform.localScale;
-		originPos = transform.localPosition;
-		selected = false;
-        status = true;
-        alive = true;
-		animSize = 0;
-		transform.position = map.posV3(source.Location);
-	}
 
 	// Update is called once per frame
 	void Update() {
 		if (selected) {
 			cycleSelect();
 		}
+	}
+
+	// Use this for initialization
+	public virtual void init() {
+		originScale = transform.localScale;
+		originPos = transform.localPosition;
+		selected = false;
+        status = true;
+        alive = true;
+		animSize = 0;
+		transform.position = MapUtil.posV3(source.Location);
 	}
 
 	public void Select() {
@@ -57,8 +56,8 @@ public class BuildingBehavior : MonoBehaviour {
 		transform.localScale = originScale;
 		transform.localPosition = originPos;
 
-		source.Location = map.posLoc(v3);
-		transform.localPosition = map.posV3(source.Location) / 10;
+		source.Location = MapUtil.posLoc(v3);
+		transform.localPosition = MapUtil.posV3(source.Location);
 
 		originScale = transform.localScale;
 		originPos = transform.localPosition;
@@ -81,8 +80,6 @@ public class BuildingBehavior : MonoBehaviour {
 		float scaleDifY = originScale.y + animSize / 100f;
 		transform.localScale = new Vector3(scaleDifX, scaleDifY);
 
-        //float posDifX = originPos.x - ((animSize / 100f) / 6.6f);
-        //float posDifY = originPos.y - ((animSize / 100f) / 6.6f);
         float posDifX = originPos.x - (((animSize / 100f) / 20) * source.Size.Width);
         float posDifY = originPos.y - (((animSize / 100f) / 20) * source.Size.Height);
         transform.localPosition = new Vector3(posDifX, posDifY);

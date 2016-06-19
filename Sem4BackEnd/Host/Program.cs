@@ -52,7 +52,8 @@ namespace Host
             {
                 Console.Clear();
                 Console.WriteLine("Unable to connect to database\n please check internet connection or database availability");
-                Console.WriteLine("  enter 'restart' to restart and retry, any other input will exit");
+                Console.WriteLine("If this does not say timeout... Fuck: " + e.Message);
+                Console.WriteLine("\nenter 'restart' to restart and retry, any other input will exit");
                 if (Console.ReadLine().Equals("restart"))
                 {
                     Application.Restart();

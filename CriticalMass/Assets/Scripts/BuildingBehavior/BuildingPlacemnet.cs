@@ -20,16 +20,18 @@ public class BuildingPlacemnet : MonoBehaviour
                 try
                 {
                     GameObject obj = localMap.createBuilding(building.GetType().Name);
-                    if (building.GetType().Name.Equals("GatlingTurret"))
-                    {
-                        obj.GetComponent<GatlingTurretBehavior>().source = (GatlingTurret)building;
-                        obj.GetComponent<GatlingTurretBehavior>().Init();
-                    }
-                    else
-                    {
-                        obj.GetComponent<BuildingBehavior>().source = building;
-                        obj.GetComponent<BuildingBehavior>().init();
-                    }
+                    //if (building.GetType().Name.Equals("GatlingTurret"))
+                    //{
+                    //    obj.GetComponent<GatlingTurretBehavior>().source = (GatlingTurret)building;
+                    //    obj.GetComponent<GatlingTurretBehavior>().Init();
+                    //}
+                    //else
+                    //{
+                    //    obj.GetComponent<BuildingBehavior>().source = building;
+                    //    obj.GetComponent<BuildingBehavior>().init();
+                    //}
+                    obj.GetComponent<BuildingBehavior>().source = building;
+                    obj.GetComponent<BuildingBehavior>().init();
                 }
                 catch (ArgumentException e)
                 {

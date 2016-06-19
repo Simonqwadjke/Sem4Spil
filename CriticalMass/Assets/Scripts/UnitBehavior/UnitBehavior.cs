@@ -8,7 +8,7 @@ public class UnitBehavior : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        health = 10;
+        health = 100;
         alive = true;
 	}
 	

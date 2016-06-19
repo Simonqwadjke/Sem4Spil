@@ -4,18 +4,11 @@ using ModelLayer.Buildings.Defense;
 using System;
 
 
-public class GatlingTurretBehavior : MonoBehaviour {
-    public GatlingTurret source;
-
-    // Use this for initialization
+public class GatlingTurretBehavior : DefensiveBuildingBehavior {
+    
     public void Init() {
-
-        GetComponent<DefensiveBuildingBehavior>().source = source;
-        GetComponent<DefensiveBuildingBehavior>().init();
-    }
-
-    // Update is called once per frame
-    void Update() {
-
+        base.init();
+        GatlingTurret turret = (GatlingTurret)source;
+        
     }
 }
