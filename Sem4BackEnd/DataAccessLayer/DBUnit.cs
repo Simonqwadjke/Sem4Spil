@@ -141,35 +141,37 @@ namespace DataAccessLayer
                     do
                     {
                         //TODO: make Units and add to List
-                        Unit unit = null;
                         switch (reader["Type"].ToString())
                         {
                             case "Rifleman":
-                                unit = new Rifleman();
-                                unit.Armor = 2;
-                                unit.AttackSpeed = 750;
-                                unit.Damage = 25;
-                                unit.HitPoints = 120;
-                                unit.Range = 3;
-                                unit.Speed = 5;
-                                unit.UnitSize = 1;
+                                Rifleman rifle = new Rifleman();
+                                rifle.Accuricy = 90;
+                                rifle.Armor = 2;
+                                rifle.AttackSpeed = 750;
+                                rifle.Damage = 25;
+                                rifle.HitPoints = 120;
+                                rifle.Range = 3;
+                                rifle.Speed = 5;
+                                rifle.UnitSize = 1;
+                                group.units.Add(rifle);
                                 break;
                             case "Tank":
-                                unit = new Tank();
-                                unit.Armor = 15;
-                                unit.AttackSpeed = 2200;
-                                unit.Damage = 90;
-                                unit.HitPoints = 350;
-                                unit.Range = 5;
-                                unit.Speed = 3;
-                                unit.UnitSize = 3;
+                                Tank tank = new Tank();
+                                tank.Armor = 15;
+                                tank.AttackSpeed = 2200;
+                                tank.Damage = 90;
+                                tank.HitPoints = 350;
+                                tank.Range = 5;
+                                tank.Speed = 3;
+                                tank.SplashDamage = 50;
+                                tank.SplashRadius = 1.5;
+                                tank.UnitSize = 3;
+                                group.units.Add(tank);
                                 break;
                             default:
                                 Console.WriteLine("Error: DBUnit found an unknown unit type");
                                 break;
                         }
-
-                        group.units.Add(unit);
                     } while (reader.Read());
                     user.Garison.Add(group);
                     success = true;

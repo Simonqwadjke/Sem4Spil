@@ -18,7 +18,8 @@ public class GatlingTurretBehavior : DefensiveBuildingBehavior {
 
     void Update()
     {
-        CheckForTarget();
+        CheckTarget();
+        CheckDirection();
         AttemptAttack(accuracy);
     }
 }

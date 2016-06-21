@@ -5,6 +5,7 @@ using ModelLayer.Units;
 using System;
 
 public class DefensiveBuildingBehavior : BuildingBehavior {
+    enum DIRECTION { SOUTH, WEST, NORTH, EAST};
     public Sprite[] sprites;
     int currentSprite = 0;
 
@@ -38,12 +39,50 @@ public class DefensiveBuildingBehavior : BuildingBehavior {
         sp.sprite = sprites[currentSprite];
     }
 
+    protected void CheckDirection()
+    {
+        if(target != null)
+        {
+            Vector3 direction = target.transform.position - (transform.position + (MapUtil.Convert(source.Size) / 2));
+            int scale = (int)(direction.x / direction.y);
+
+            if(-1 <= scale && scale <= 1)
+            {
+                if(direction.y >= 0)
+                {
+                    currentSprite = (int)DIRECTION.NORTH;
+                }
+                else
+                {
+                    currentSprite = (int)DIRECTION.SOUTH;
+                }
+            }
+            else
+            {
+                if(direction.x >= 0)
+                {
+                    currentSprite = (int)DIRECTION.EAST; 
+                }
+                else
+                {
+                    currentSprite = (int)DIRECTION.WEST;
+                }
+            }
+            updateTurretSprite();
+        }
+        else if(currentSprite != 0)
+        {
+            currentSprite = 0;
+            updateTurretSprite();
+        }
+    }
+
     float SqrDistanceTo(GameObject obj)
     {
         return (obj.transform.position - (transform.position + MapUtil.Convert(source.Size) / 2)).sqrMagnitude;
     }
 
-    protected void CheckForTarget()
+    protected void CheckTarget()
     {
         bool noneFound = true;
 
@@ -62,13 +101,10 @@ public class DefensiveBuildingBehavior : BuildingBehavior {
                     target = unit;
                 }
             }
-            else
-            {
-                if (noneFound)
-                {
-                    target = null;
-                }
-            }
+        }
+        if (noneFound)
+        {
+            target = null;
         }
     }
 
@@ -78,7 +114,7 @@ public class DefensiveBuildingBehavior : BuildingBehavior {
         {
             if (UnityEngine.Random.Range(0, 100) < chance)
             {
-                target.GetComponent<UnitBehavior>().health -= damage;
+                target.GetComponent<UnitBehavior>().TakeDamage(damage);
             }
             lastAttack = Time.time;
         }

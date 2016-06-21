@@ -92,7 +92,7 @@ public class PlayerInput : MonoBehaviour {
 				}
 
 				if (source.Location.X != loc.X || source.Location.Y != loc.Y) {
-					selectedObject.GetComponent<BuildingBehavior>().move(v3);
+					selectedObject.GetComponent<BuildingBehavior>().Move(v3);
 				}
 			}
 		}

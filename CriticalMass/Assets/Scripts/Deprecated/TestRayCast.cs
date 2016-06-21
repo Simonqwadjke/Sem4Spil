@@ -19,7 +19,7 @@ public class TestRayCast : MonoBehaviour {
 				Vector3 v3 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 				
 				//go.GetComponent<BuildingBehavior>()
-				go.GetComponent<BuildingBehavior>().move(MapUtil.posV3(v3.x, v3.y));
+				go.GetComponent<BuildingBehavior>().Move(MapUtil.posV3(v3.x, v3.y));
 			}
 		}
 

@@ -25,9 +25,18 @@ public class BuildingBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update() {
 		if (selected) {
-			cycleSelect();
+			CycleSelect();
 		}
+        if(health <= 0 && alive)
+        {
+            alive = false;
+        }
 	}
+
+    public bool IsDead()
+    {
+        return !alive;
+    }
 
 	// Use this for initialization
 	public virtual void Init() {
@@ -60,7 +69,7 @@ public class BuildingBehavior : MonoBehaviour {
 		return selected;
 	}
 
-	public void move(Vector3 v3) {
+	public void Move(Vector3 v3) {
 		selected = false;
 		transform.localScale = originScale;
 		transform.localPosition = originPos;
@@ -73,7 +82,7 @@ public class BuildingBehavior : MonoBehaviour {
 		selected = true;
 	}
 
-	void cycleSelect() {
+	void CycleSelect() {
 		if (status) {
 			animSize++;
 		}

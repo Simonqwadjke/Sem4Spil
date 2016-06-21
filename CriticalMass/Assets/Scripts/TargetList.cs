@@ -33,7 +33,7 @@ public class TargetList : MonoBehaviour
     {
         for(int i = 0; i < targets.Count; i++)
         {
-            GUI.Label(new Rect(10, 120 + i * 10, 150, 20), "" + targets[i].GetComponent<UnitBehavior>().health);
+            GUI.Label(new Rect(10, 120 + i * 10, 150, 20), "" + targets[i].GetComponent<UnitBehavior>());
         }
     }
 }
