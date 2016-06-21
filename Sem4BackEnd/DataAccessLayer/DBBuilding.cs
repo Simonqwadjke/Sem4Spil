@@ -101,8 +101,6 @@ namespace DataAccessLayer
             List<Building> list = new List<Building>();
             do
             {
-                Building building = null;
-
                 int x = Convert.ToInt32(reader["Xlocation"]);
                 int y = Convert.ToInt32(reader["Ylocation"]);
                 Location location = new Location(x, y);
@@ -112,74 +110,101 @@ namespace DataAccessLayer
                 switch (reader["type"].ToString())
                 {
                     case "Cannon":
-                        building = new Cannon();
-                        building.Location = location;
-                        building.Size = new Size(3, 3);
-                        building.Level = level;
-                        building.Armor = 10;
-                        building.HitPoints = 500;
+                        Cannon cannon = new Cannon();
+                        cannon.Armor = 10;
+                        cannon.AttackSpeed = 2250;
+                        cannon.Damage = 110;
+                        cannon.HitPoints = 500;
+                        cannon.Level = level;
+                        cannon.Location = location;
+                        cannon.Range = 7;
+                        cannon.Size = new Size(3, 3);
+                        cannon.SplashDamage = 50;
+                        cannon.SplashRadius = 1.5;
+                        list.Add(cannon);
                         break;
                     case "FlameThrower":
-                        building = new FlameThrower();
-                        building.Location = location;
-                        building.Size = new Size(3, 3);
-                        building.Level = level;
-                        building.Armor = 6;
-                        building.HitPoints = 400;
+                        FlameThrower flame = new FlameThrower();
+                        flame.Armor = 6;
+                        flame.AttackSpeed = 200;
+                        flame.BurnDamage = 5;
+                        flame.BurnTime = 5;
+                        flame.Damage = 18;
+                        flame.HitPoints = 400;
+                        flame.Level = level;
+                        flame.Location = location;
+                        flame.Range = 4;
+                        flame.Size = new Size(3, 3);
+                        list.Add(flame);
                         break;
                     case "GatlingTurret":
-                        building = new GatlingTurret();
-                        building.Location = location;
-                        building.Size = new Size(3, 3);
-                        building.Level = level;
-                        building.Armor = 8;
-                        building.HitPoints = 350;
+                        GatlingTurret gatling = new GatlingTurret();
+                        gatling.Accuracy = 85;
+                        gatling.Armor = 8;
+                        gatling.AttackSpeed = 500;
+                        gatling.Damage = 30;
+                        gatling.HitPoints = 350;
+                        gatling.Level = level;
+                        gatling.Location = location;
+                        gatling.Range = 5;
+                        gatling.Size = new Size(3, 3);
+                        list.Add(gatling);
                         break;
                     case "Wall":
-                        building = new Wall();
-                        building.Location = location;
-                        building.Size = new Size(1, 1);
-                        building.Level = level;
-                        building.Armor = 20;
-                        building.HitPoints = 150;
+                        Wall wall = new Wall();
+                        wall.Armor = 20;
+                        wall.AttackSpeed = 0;
+                        wall.Damage = 0;
+                        wall.DefensiveFactor = 10;
+                        wall.HitPoints = 150;
+                        wall.Level = level;
+                        wall.Location = location;
+                        wall.Range = 0;
+                        wall.Size = new Size(1, 1);
+                        list.Add(wall);
                         break;
                     case "HeadQuarters":
-                        building = new HeadQuarters();
-                        building.Location = location;
-                        building.Size = new Size(5, 5);
-                        building.Level = level;
-                        building.Armor = 5;
-                        building.HitPoints = 800;
+                        HeadQuarters head = new HeadQuarters();
+                        head.Armor = 5;
+                        head.HitPoints = 800;
+                        head.Level = level;
+                        head.Location = location;
+                        head.Size = new Size(5, 5);
+                        list.Add(head);
                         break;
                     case "Labratory":
-                        building = new Labratory();
-                        building.Location = location;
-                        building.Size = new Size(4, 4);
-                        building.Level = level;
-                        building.Armor = 2;
-                        building.HitPoints = 400;
+                        Labratory lab = new Labratory();
+                        lab.Armor = 2;
+                        lab.HitPoints = 400;
+                        lab.Level = level;
+                        lab.Location = location;
+                        lab.Size = new Size(4, 4);
+                        list.Add(lab);
                         break;
                     case "SawMill":
-                        building = new SawMill();
-                        building.Location = location;
-                        building.Size = new Size(5, 5);
-                        building.Level = level;
-                        building.Armor = 3;
-                        building.HitPoints = 200;
+                        SawMill saw = new SawMill();
+                        saw.Armor = 3;
+                        saw.HitPoints = 200;
+                        saw.Level = level;
+                        saw.Location = location;
+                        saw.prodductionHour = 200;
+                        saw.Size = new Size(5, 5);
+                        list.Add(saw);
                         break;
                     case "IronMine":
-                        building = new IronMine();
-                        building.Location = location;
-                        building.Size = new Size(5, 5);
-                        building.Level = level;
-                        building.Armor = 3;
-                        building.HitPoints = 200;
+                        IronMine mine= new IronMine();
+                        mine.Armor = 3;
+                        mine.HitPoints = 200;
+                        mine.Level = level;
+                        mine.Location = location;
+                        mine.prodductionHour = 200;
+                        mine.Size = new Size(5, 5);
+                        list.Add(mine);
                         break;
                     default:
                         Console.WriteLine("Error: found unknown building type: " + reader["type"].ToString());
-                        continue;
+                        break;
                 }
-                list.Add(building);
             } while (reader.Read());
 
             user.Map.Buildinds = list;

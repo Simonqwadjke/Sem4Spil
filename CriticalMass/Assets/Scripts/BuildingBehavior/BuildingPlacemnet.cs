@@ -31,7 +31,7 @@ public class BuildingPlacemnet : MonoBehaviour
                     //    obj.GetComponent<BuildingBehavior>().init();
                     //}
                     obj.GetComponent<BuildingBehavior>().source = building;
-                    obj.GetComponent<BuildingBehavior>().init();
+                    obj.GetComponent<BuildingBehavior>().Init();
                 }
                 catch (ArgumentException e)
                 {

@@ -12,7 +12,11 @@ public class BuildingBehavior : MonoBehaviour {
 	float animSize;
 	bool selected;
     bool status;
+
     bool alive;
+    protected int health;
+    protected int armor;
+    protected int level;
 
     void Start() {
         
@@ -26,13 +30,18 @@ public class BuildingBehavior : MonoBehaviour {
 	}
 
 	// Use this for initialization
-	public virtual void init() {
+	public virtual void Init() {
 		originScale = transform.localScale;
 		originPos = transform.localPosition;
+		animSize = 0;
 		selected = false;
         status = true;
+
         alive = true;
-		animSize = 0;
+        health = source.HitPoints;
+        armor = source.Armor;
+        level = source.Level;
+
 		transform.position = MapUtil.posV3(source.Location);
 	}
 

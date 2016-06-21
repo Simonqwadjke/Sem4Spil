@@ -5,10 +5,20 @@ using System;
 
 
 public class GatlingTurretBehavior : DefensiveBuildingBehavior {
-    
-    public void Init() {
-        base.init();
-        GatlingTurret turret = (GatlingTurret)source;
-        
+
+    GatlingTurret turret;
+
+    double accuracy;
+
+    public override void Init() {
+        base.Init();
+        turret = (GatlingTurret)source;
+        accuracy = turret.Accuracy;
+    }
+
+    void Update()
+    {
+        CheckForTarget();
+        AttemptAttack(accuracy);
     }
 }

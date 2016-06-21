@@ -2,21 +2,34 @@
 using System.Collections;
 using ModelLayer.Buildings.Defense;
 using ModelLayer.Units;
+using System;
 
 public class DefensiveBuildingBehavior : BuildingBehavior {
     public Sprite[] sprites;
-    GameObject target;
     int currentSprite = 0;
+
     int id = -1;
-    float lastAttack;
     static int nextid = 0;
+    Defensive def;
+
+    int damage;
+    double sqrRange;
+    float attackDelay;  
+    GameObject target;
+    float lastAttack;
 
     // Use this for initialization
-    public override void init() {
-        base.init();
+    public override void Init() {
+        base.Init();
         id = nextid;
         nextid++;
-        lastAttack = Time.time;
+        lastAttack = 0;
+
+        def = (Defensive)source;
+        damage = def.Damage;
+        sqrRange = Math.Pow(def.Range, 2);
+        attackDelay = (float)def.AttackSpeed/1000;
+
         updateTurretSprite();
     }
 
@@ -24,24 +37,27 @@ public class DefensiveBuildingBehavior : BuildingBehavior {
         SpriteRenderer sp = GetComponent<SpriteRenderer>();
         sp.sprite = sprites[currentSprite];
     }
-    
-    void Update() {
+
+    float SqrDistanceTo(GameObject obj)
+    {
+        return (obj.transform.position - (transform.position + MapUtil.Convert(source.Size) / 2)).sqrMagnitude;
+    }
+
+    protected void CheckForTarget()
+    {
         bool noneFound = true;
-        int range = 125;
-        float attackDelay = 0.5f;
-        int damage = 1;
-        
-        foreach(GameObject unit in TargetList.targets)
+
+        foreach (GameObject unit in TargetList.targets)
         {
             float sqrDistance = SqrDistanceTo(unit);
-            if (sqrDistance < range)
+            if (sqrDistance < sqrRange)
             {
                 noneFound = false;
                 if (target == null)
                 {
                     target = unit;
                 }
-                else if(sqrDistance < SqrDistanceTo(target))
+                else if (sqrDistance < SqrDistanceTo(target))
                 {
                     target = unit;
                 }
@@ -54,16 +70,18 @@ public class DefensiveBuildingBehavior : BuildingBehavior {
                 }
             }
         }
-        if(target != null && Time.time - lastAttack > attackDelay)
-        {
-            target.GetComponent<UnitBehavior>().health -= damage;
-            lastAttack = Time.time;
-        }
     }
 
-    float SqrDistanceTo(GameObject obj)
+    protected void AttemptAttack(double chance)
     {
-        return (obj.transform.position - (transform.position + MapUtil.Convert(source.Size) / 2)).sqrMagnitude;
+        if (target != null && Time.time - lastAttack > attackDelay)
+        {
+            if (UnityEngine.Random.Range(0, 100) < chance)
+            {
+                target.GetComponent<UnitBehavior>().health -= damage;
+            }
+            lastAttack = Time.time;
+        }
     }
 
     void OnGUI()
